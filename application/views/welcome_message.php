@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<p>These are our options.</p>
 
 		<p>Student:</p>
-		<code><a href="<?php echo site_url('student') ?>">Link</a></code>
+		<code><a href="<?php echo 'http://localhost/app_prediction/index.php/Student' ?>">Student</a></code>
 
 		<p>Class:</p>
 		<code></code>

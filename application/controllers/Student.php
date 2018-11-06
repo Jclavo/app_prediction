@@ -7,7 +7,7 @@ class Student extends CI_Controller
     function __construct()
     {
         parent::__construct();
-//         $this->load->model('user_model');
+        $this->load->model('student_model');
     }
 
     public function index()
@@ -15,36 +15,36 @@ class Student extends CI_Controller
         $this->load->view('student/student');
     }
 
-//     public function get_user()
-//     {
-//         $id = $this->input->get('id');
-//         $data['user'] = $this->user_model->get_user($id);
-//         echo json_encode($data);
-//     }
+    public function get_student()
+    {
+        $id = $this->input->get('id');
+        $data['student'] = $this->student_model->get_student($id);
+        echo json_encode($data);
+    }
 
-//     public function create_user()
+//     public function create_student()
 //     {
 //         $name = $this->input->get('name');
 //         $email = $this->input->get('email');
 
-//         $data['status'] = $this->user_model->create_user($name, $email);
+//         $data['status'] = $this->student_model->create_student($name, $email);
 //         echo json_encode($data);
 //     }
 
-//     public function delete_user()
+//     public function delete_student()
 //     {
 //         $id = $this->input->get('id');
-//         $data['status'] = $this->user_model->delete_user($id);
+//         $data['status'] = $this->student_model->delete_student($id);
 //         echo json_encode($data);
 //     }
 
-//     public function update_user()
+//     public function update_student()
 //     {
 //         $id = $this->input->get('id');
 //         $name = $this->input->get('name');
 //         $email = $this->input->get('email');
 
-//         $data['status'] = $this->user_model->update_user($id, $name, $email);
+//         $data['status'] = $this->student_model->update_student($id, $name, $email);
 //         echo json_encode($data);
 //     }
 }

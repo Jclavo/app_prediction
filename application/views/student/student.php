@@ -3,44 +3,57 @@
 <head>
 <meta charset="utf-8">
 <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
-<title>Example - CRUD</title>
+<title>Student - CRUD</title>
 <link
-	href="<?php echo base_url('assets/css/bootstrap/bootstrap.min.css')?>" rel="stylesheet">
+	href="<?php echo base_url('assets/css/bootstrap/bootstrap.min.css')?>"
+	rel="stylesheet">
 </head>
 <body>
 	<div class="container">
 		<div class="row">
 			<!-- FORM  -->
 			<div class="col-md-12">
-				<form class="form-horizontal" id="form-edit-user">
+				<form class="form-horizontal" id="form-edit-student">
 					<fieldset>
 						<!-- Form Name -->
-						<legend>user</legend>
+						<legend>Student</legend>
 
 						<!-- Text input-->
 						<div class="form-group">
 							<div class="col-md-4">
-								<input id="user-id" name="user-id" type="hidden"
-									placeholder="" class="form-control input-md"  disabled>
+								<input id="student-id" name="student-id" type="hidden"
+									placeholder="" class="form-control input-md" disabled>
 							</div>
 						</div>
-						
+
 						<!-- Text input-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="user-name">Name</label>
+							<label class="col-md-4 control-label" for="student-name">Name</label>
 							<div class="col-md-4">
-								<input id="user-name" name="user-name" type="text"
-									placeholder="your user's name" class="form-control input-md">
+								<input id="student-name" name="student-name" type="text"
+									placeholder="your student's name" class="form-control input-md">
+							</div>
+						</div>
+
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="student-lastname">LastName</label>
+							<div class="col-md-4">
+								<input id="student-lastname" name="student-lastname" type="text"
+									placeholder="your student's lastname"
+									class="form-control input-md">
 							</div>
 						</div>
 
 						<!-- Prepended text-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="user-email">Email</label>
+							<label class="col-md-4 control-label" for="student-email">cellphone
+								Number</label>
 							<div class="col-md-4">
 								<div class="input-group">
-									<input id="user-email" name="user-email" class="form-control"
-										type="text" placeholder="your user's email">
+									<input id="student-email" name="student-cellphone"
+										class="form-control" type="text"
+										placeholder="your student's cellphone">
 								</div>
 							</div>
 						</div>
@@ -52,25 +65,26 @@
 					<label class="col-md-4 control-label" for="btn-save"></label>
 					<div class="col-md-4" id="saveupdate">
 						<button id="btn-save" name="btn-save" class="btn btn-success"
-							onclick="add_user()">Save</button>
+							onclick="add_student()">Save</button>
 					</div>
 				</div>
 			</div>
 
 			<!-- LIST -->
 			<div class=col-md-12>
-				List of users
+				List of students
 				<table class="table table-bordered table-condensed table-hover">
 					<thead>
 						<tr>
-							<td>Id</td>
-							<td>Name</td>
-							<th>Email</th>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Lastname</th>
+							<th>Cellphone</th>
 							<th>Actions</th>
 						</tr>
 
 					</thead>
-					<tbody id="form-list-user-body">
+					<tbody id="form-list-student-body">
 
 					</tbody>
 				</table>
@@ -80,9 +94,12 @@
 		</div>
 	</div>
 
-	<script src="<?php echo base_url('assets/js/jquery/jquery-3.3.1.min.js')?>"></script>
-	<script src="<?php echo base_url('assets/js/bootstrap/bootstrap.min.js')?>"></script>
-	<script src="<?php echo base_url('application/views/user/student.js')?>"></script>
+	<script
+		src="<?php echo base_url('assets/js/jquery/jquery-3.3.1.min.js')?>"></script>
+	<script
+		src="<?php echo base_url('assets/js/bootstrap/bootstrap.min.js')?>"></script>
+	<script
+		src="<?php echo base_url('application/views/student/student.js')?>"></script>
 
 </body>
 </html>
