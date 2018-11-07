@@ -31,7 +31,7 @@
 							<label class="col-md-4 control-label" for="student-name">Name</label>
 							<div class="col-md-4">
 								<input id="student-name" name="student-name" type="text"
-									placeholder="your student's name" class="form-control input-md">
+									placeholder="your student's name" class="form-control input-md" required>
 							</div>
 						</div>
 
@@ -41,17 +41,17 @@
 							<div class="col-md-4">
 								<input id="student-lastname" name="student-lastname" type="text"
 									placeholder="your student's lastname"
-									class="form-control input-md">
+									class="form-control input-md" required>
 							</div>
 						</div>
 
 						<!-- Prepended text-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="student-email">cellphone
+							<label class="col-md-4 control-label" for="student-cellphone">cellphone
 								Number</label>
 							<div class="col-md-4">
 								<div class="input-group">
-									<input id="student-email" name="student-cellphone"
+									<input id="student-cellphone" name="student-cellphone"
 										class="form-control" type="text"
 										placeholder="your student's cellphone">
 								</div>

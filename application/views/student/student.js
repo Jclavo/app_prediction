@@ -4,17 +4,16 @@ var DELETE 	 = 'DELETE'
 var UPDATE 	 = 'UPDATE'
 var READ 	 = 'READ'
 
-var URL_CREATE 	 = 'http://localhost/example_CRUD/index.php/student/create_student'
+var URL_CREATE 	 = BASE_URL + '/student/create_student'
 var URL_READ_ALL = BASE_URL + '/student/get_student'
-
-//var URL_READ_ALL = 'http://localhost/app_prediction/index.php/student/get_student'
-var URL_DELETE 	 = 'http://localhost/example_CRUD/index.php/student/delete_student'
-var URL_UPDATE 	 = 'http://localhost/example_CRUD/index.php/student/update_student'
+var URL_DELETE 	 = BASE_URL + '/student/delete_student'
+var URL_UPDATE 	 = BASE_URL + '/student/update_student'
 		
 var global_student = {
 		id : '',
 		name : '',
-		email : ''
+		lastname : '',
+	    cellphone : ''
 	}
 
 
@@ -28,9 +27,14 @@ function add_student() {
 
 	clear_global_student()
 	global_student.name  = document.getElementById("student-name").value
-	global_student.email = document.getElementById("student-email").value
+	global_student.lastname  = document.getElementById("student-lastname").value
+	global_student.cellphone  = document.getElementById("student-cellphone").value
+
+	if(required_field(global_student.name,global_student.lastname))
+	{
+		call_ajax(CREATE,global_student);
+	}
 	
-	call_ajax(CREATE,global_student);
 }
 
 //Editing student
@@ -48,9 +52,14 @@ function update_student() {
 	clear_global_student()
 	global_student.id 	  = document.getElementById("student-id").value
 	global_student.name  = document.getElementById("student-name").value
-	global_student.email = document.getElementById("student-email").value
-		
-	call_ajax(UPDATE,global_student);
+	global_student.lastname  = document.getElementById("student-lastname").value
+	global_student.cellphone  = document.getElementById("student-cellphone").value
+	
+	if(required_field(global_student.name,global_student.lastname))
+	{
+		call_ajax(UPDATE,global_student);
+	}
+	
 	
 }
 
@@ -159,12 +168,12 @@ function display_students(student) {
 		var editBtn = document.createElement("button")
 		editBtn.innerHTML = "Edit"
 		editBtn.setAttribute("class", "btn btn-sm btn-primary")
-		editBtn.setAttribute("onclick", "edit_student(" + student[i]['id'] + ")")
+		editBtn.setAttribute("onclick", "edit_student(" + student[i]['student_id'] + ")")
 
 		var deletebtn = document.createElement("button")
 		deletebtn.innerHTML = "Delete"
 		deletebtn.setAttribute("class", "btn btn-sm btn-danger")
-		deletebtn.setAttribute("onclick", "delete_student(" + student[i]['id'] + ")")
+		deletebtn.setAttribute("onclick", "delete_student(" + student[i]['student_id'] + ")")
 
 		actionTd.appendChild(editBtn)
 		actionTd.appendChild(deletebtn)
@@ -175,7 +184,9 @@ function display_students(student) {
 	
 	document.getElementById("student-id").value = "";
 	document.getElementById("student-name").value = "";
-	document.getElementById("student-email").value = ""
+	document.getElementById("student-lastname").value = "";
+	document.getElementById("student-cellphone").value = "";
+
 
 }
 
@@ -188,19 +199,30 @@ function display_student(student) {
 
 	document.getElementById("saveupdate").innerHTML = ""
 	document.getElementById("saveupdate").appendChild(updatebtn)
-	document.getElementById("student-id").value = student[0]['id']
+	document.getElementById("student-id").value = student[0]['student_id']
 	document.getElementById("student-name").value = student[0]['name']
-	document.getElementById("student-email").value = student[0]['email']
-				
+	document.getElementById("student-lastname").value = student[0]['lastname']
+	document.getElementById("student-cellphone").value = student[0]['cellphone']
+
 }
-
-
 
 function clear_global_student() {
 	
 	global_student.id	  = ''
 	global_student.name  = ''
-	global_student.email = ''
+    global_student.lastname  = ''
+    global_student.cellphone  = ''
+
+}
+
+function required_field(name,lastname){
+	
+	if (name == '' || lastname == '' )
+	{
+		alert('Fulfill required fields')
+		return false
+	}
+	return true
 }
 
 /*

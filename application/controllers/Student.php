@@ -22,29 +22,31 @@ class Student extends CI_Controller
         echo json_encode($data);
     }
 
-//     public function create_student()
-//     {
-//         $name = $this->input->get('name');
-//         $email = $this->input->get('email');
+    public function create_student()
+    {
+        $name = $this->input->get('name');
+        $lastname = $this->input->get('lastname');
+        $cellphone = $this->input->get('cellphone');
 
-//         $data['status'] = $this->student_model->create_student($name, $email);
-//         echo json_encode($data);
-//     }
+        $data['status'] = $this->student_model->create_student($name, $lastname, $cellphone);
+        echo json_encode($data);
+    }
 
-//     public function delete_student()
-//     {
-//         $id = $this->input->get('id');
-//         $data['status'] = $this->student_model->delete_student($id);
-//         echo json_encode($data);
-//     }
+    public function delete_student()
+    {
+        $id = $this->input->get('id');
+        $data['status'] = $this->student_model->delete_student($id);
+        echo json_encode($data);
+    }
+    
+    public function update_student()
+    {
+        $id = $this->input->get('id');
+        $name = $this->input->get('name');
+        $lastname = $this->input->get('lastname');
+        $cellphone = $this->input->get('cellphone');
 
-//     public function update_student()
-//     {
-//         $id = $this->input->get('id');
-//         $name = $this->input->get('name');
-//         $email = $this->input->get('email');
-
-//         $data['status'] = $this->student_model->update_student($id, $name, $email);
-//         echo json_encode($data);
-//     }
+        $data['status'] = $this->student_model->update_student($id, $name, $lastname, $cellphone);
+        echo json_encode($data);
+    }
 }

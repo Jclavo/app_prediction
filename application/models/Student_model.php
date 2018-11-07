@@ -21,10 +21,10 @@ class Student_model extends CI_Model
 
     }
 
-    public function create_student($name, $email)
+    public function create_student($name, $lastname, $cellphone)
     {
-        $sql = 'CALL usp_student_add(?,?)';
-        return $this->db->query($sql,array($name,$email));        
+        $sql = 'CALL usp_student_add(?,?,?)';
+        return $this->db->query($sql,array($name,$lastname,$cellphone));        
     }
 
     public function delete_student($id)
@@ -33,11 +33,11 @@ class Student_model extends CI_Model
            return $this->db->query($sql,array($id)); 
     }
     
-    public function update_student($id, $name, $email)
+    public function update_student($id, $name, $lastname, $cellphone)
     {
         
-        $sql = 'CALL usp_student_update(?,?,?)';
-        return $this->db->query($sql,array($id,$name,$email)); 
+        $sql = 'CALL usp_student_update(?,?,?,?)';
+        return $this->db->query($sql,array($id,$name,$lastname,$cellphone)); 
         
     }
 }
