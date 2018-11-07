@@ -5,7 +5,9 @@ var UPDATE 	 = 'UPDATE'
 var READ 	 = 'READ'
 
 var URL_CREATE 	 = 'http://localhost/example_CRUD/index.php/student/create_student'
-var URL_READ_ALL = 'http://localhost/app_prediction/index.php/student/get_student'
+var URL_READ_ALL = BASE_URL + '/student/get_student'
+
+//var URL_READ_ALL = 'http://localhost/app_prediction/index.php/student/get_student'
 var URL_DELETE 	 = 'http://localhost/example_CRUD/index.php/student/delete_student'
 var URL_UPDATE 	 = 'http://localhost/example_CRUD/index.php/student/update_student'
 		

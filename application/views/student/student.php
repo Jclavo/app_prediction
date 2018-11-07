@@ -93,7 +93,8 @@
 			<!-- view -->
 		</div>
 	</div>
-
+	<script>
+  		var BASE_URL = <?php echo json_encode(site_url()); ?>;</script>
 	<script
 		src="<?php echo base_url('assets/js/jquery/jquery-3.3.1.min.js')?>"></script>
 	<script
