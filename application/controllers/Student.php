@@ -20,6 +20,7 @@ class Student extends CI_Controller
     {
         $id = $this->input->get('id');
         $data['student'] = $this->student_model->get_student($id);
+        $this->db->close();
         $data['course'] = $this->course_model->get_course($id);
         echo json_encode($data);
     }
