@@ -7,7 +7,8 @@ class Student extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('student_model');
+//         $this->load->model('student_model');
+        $this->load->model(array('student_model','course_model'));
     }
 
     public function index()
@@ -19,6 +20,7 @@ class Student extends CI_Controller
     {
         $id = $this->input->get('id');
         $data['student'] = $this->student_model->get_student($id);
+        $data['course'] = $this->course_model->get_course($id);
         echo json_encode($data);
     }
 

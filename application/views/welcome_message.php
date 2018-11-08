@@ -76,8 +76,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<p>Student:</p>
 		<code><a href="<?php echo 'http://localhost/app_prediction/index.php/Student' ?>">Student</a></code>
 
-		<p>Class:</p>
-		<code></code>
+		<p>Course:</p>
+		<code><a href="<?php echo 'http://localhost/app_prediction/index.php/Course' ?>">Course</a></code>
 
 		<p>Any question, let's contact me <a href="user_guide/">jclavotafur@gmail.com</a>.</p>
 	</div>

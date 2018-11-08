@@ -57,6 +57,18 @@
 								</div>
 							</div>
 						</div>
+						
+						<!-- Prepended text-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="student-course">Courses</label>
+							<div class="col-md-4">
+								<div class="input-group">
+									<input id="student-course" name="student-course"
+										class="form-control" type="time"
+										placeholder="xxxxxx">
+								</div>
+							</div>
+						</div>
 						<!-- Button -->
 
 					</fieldset>

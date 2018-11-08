@@ -8,6 +8,8 @@ var URL_CREATE 	 = BASE_URL + '/student/create_student'
 var URL_READ_ALL = BASE_URL + '/student/get_student'
 var URL_DELETE 	 = BASE_URL + '/student/delete_student'
 var URL_UPDATE 	 = BASE_URL + '/student/update_student'
+
+//var URL_READ_ALL_COURSE = BASE_URL + '/course/get_course'
 		
 var global_student = {
 		id : '',
@@ -73,12 +75,7 @@ function delete_student(id_student) {
 }
 
 function call_ajax(operation, data_input) {
-	/*
-	 * $.ajax({ //data : parametros, url :
-	 * favor..."); }, success : function(response) {
-	 * //$("#resultado").html(response); alert(response);
-	 * //alert(response['student']); //students = response; //alert(students.student); } });
-	 */
+
 	var url_operation
 
 	switch (operation) {
@@ -120,6 +117,7 @@ function call_ajax(operation, data_input) {
 			break
 		case READ_ALL:
 			display_students(data.student)
+			display_courses(data.course)
 			break
 		case DELETE:
 			alert(data.status)
@@ -206,6 +204,41 @@ function display_student(student) {
 
 }
 
+function display_courses(course){
+	// codigo para cargar los valores
+//	document.getElementById("form-list-student-body").innerHTML = "";
+//
+//	for (i = 0; i < student.length; i++) {
+//
+//		var myTr = document.createElement("tr")
+//
+//		for (student_field in student[i]) {
+//
+//			var mytd = document.createElement("td")
+//			mytd.innerHTML = student[i][student_field]
+//			myTr.appendChild(mytd)
+//
+//		}
+//		var actionTd = document.createElement("td")
+//		
+//		var editBtn = document.createElement("button")
+//		editBtn.innerHTML = "Edit"
+//		editBtn.setAttribute("class", "btn btn-sm btn-primary")
+//		editBtn.setAttribute("onclick", "edit_student(" + student[i]['student_id'] + ")")
+//
+//		var deletebtn = document.createElement("button")
+//		deletebtn.innerHTML = "Delete"
+//		deletebtn.setAttribute("class", "btn btn-sm btn-danger")
+//		deletebtn.setAttribute("onclick", "delete_student(" + student[i]['student_id'] + ")")
+//
+//		actionTd.appendChild(editBtn)
+//		actionTd.appendChild(deletebtn)
+//		myTr.appendChild(actionTd)
+//		
+//		document.getElementById("form-list-student-body").appendChild(myTr)
+//	}
+}
+
 function clear_global_student() {
 	
 	global_student.id	  = ''
@@ -224,12 +257,3 @@ function required_field(name,lastname){
 	}
 	return true
 }
-
-/*
- * function call_ajax() {
- * 
- * $.ajax({ data : parametros, url : 'ejemplo_ajax_proceso.php', type : 'post',
- * beforeSend : function() { $("#resultado").html("Procesando, espere por
- * favor..."); }, success : function(response) { $("#resultado").html(response); }
- * }); }
- */
