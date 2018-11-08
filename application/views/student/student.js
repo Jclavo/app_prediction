@@ -206,37 +206,15 @@ function display_student(student) {
 
 function display_courses(course){
 	// codigo para cargar los valores
-//	document.getElementById("form-list-student-body").innerHTML = "";
-//
-//	for (i = 0; i < student.length; i++) {
-//
-//		var myTr = document.createElement("tr")
-//
-//		for (student_field in student[i]) {
-//
-//			var mytd = document.createElement("td")
-//			mytd.innerHTML = student[i][student_field]
-//			myTr.appendChild(mytd)
-//
-//		}
-//		var actionTd = document.createElement("td")
-//		
-//		var editBtn = document.createElement("button")
-//		editBtn.innerHTML = "Edit"
-//		editBtn.setAttribute("class", "btn btn-sm btn-primary")
-//		editBtn.setAttribute("onclick", "edit_student(" + student[i]['student_id'] + ")")
-//
-//		var deletebtn = document.createElement("button")
-//		deletebtn.innerHTML = "Delete"
-//		deletebtn.setAttribute("class", "btn btn-sm btn-danger")
-//		deletebtn.setAttribute("onclick", "delete_student(" + student[i]['student_id'] + ")")
-//
-//		actionTd.appendChild(editBtn)
-//		actionTd.appendChild(deletebtn)
-//		myTr.appendChild(actionTd)
-//		
-//		document.getElementById("form-list-student-body").appendChild(myTr)
-//	}
+	document.getElementById("student-course").innerHTML = "";
+	
+	for (i = 0; i < course.length; i++) {
+		var myTr = document.createElement("option")
+		myTr.innerHTML = course[i]['description']
+		myTr.setAttribute("value", course[i]['course_id'])
+		document.getElementById("student-course").appendChild(myTr)
+	}
+	
 }
 
 function clear_global_student() {

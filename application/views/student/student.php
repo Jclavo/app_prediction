@@ -31,7 +31,8 @@
 							<label class="col-md-4 control-label" for="student-name">Name</label>
 							<div class="col-md-4">
 								<input id="student-name" name="student-name" type="text"
-									placeholder="your student's name" class="form-control input-md" required>
+									placeholder="your student's name" class="form-control input-md"
+									required>
 							</div>
 						</div>
 
@@ -57,15 +58,20 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<!-- Prepended text-->
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="student-course">Courses</label>
 							<div class="col-md-4">
 								<div class="input-group">
-									<input id="student-course" name="student-course"
-										class="form-control" type="time"
-										placeholder="xxxxxx">
+									<select 
+										class="form-control" id="student-course">
+										<option value="volvo">1</option>
+										<option value="volvo">2</option>
+										<option value="volvo">3</option>
+										<option value="volvo">4</option>
+										<option value="volvo">5</option>
+									</select>
 								</div>
 							</div>
 						</div>
