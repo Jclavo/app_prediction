@@ -66,11 +66,6 @@
 								<div class="input-group">
 									<select 
 										class="form-control" id="student-course">
-										<option value="volvo">1</option>
-										<option value="volvo">2</option>
-										<option value="volvo">3</option>
-										<option value="volvo">4</option>
-										<option value="volvo">5</option>
 									</select>
 								</div>
 							</div>
@@ -98,6 +93,8 @@
 							<th>Name</th>
 							<th>Lastname</th>
 							<th>Cellphone</th>
+							<th>Course id</th>
+							<th>Course</th>
 							<th>Actions</th>
 						</tr>
 

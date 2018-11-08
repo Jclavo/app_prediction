@@ -15,7 +15,8 @@ var global_student = {
 		id : '',
 		name : '',
 		lastname : '',
-	    cellphone : ''
+	    cellphone : '',
+	    course_id : ''
 	}
 
 
@@ -31,8 +32,9 @@ function add_student() {
 	global_student.name  = document.getElementById("student-name").value
 	global_student.lastname  = document.getElementById("student-lastname").value
 	global_student.cellphone  = document.getElementById("student-cellphone").value
+	global_student.course_id  = document.getElementById("student-course").value
 
-	if(required_field(global_student.name,global_student.lastname))
+	if(required_field(global_student.name,global_student.lastname,global_student.course_id))
 	{
 		call_ajax(CREATE,global_student);
 	}
@@ -125,6 +127,7 @@ function call_ajax(operation, data_input) {
 			break;
 		case READ:
 			display_student(data.student)
+			display_courses(data.course)
 			break
 		case UPDATE:
 			alert(data.status)
@@ -184,6 +187,7 @@ function display_students(student) {
 	document.getElementById("student-name").value = "";
 	document.getElementById("student-lastname").value = "";
 	document.getElementById("student-cellphone").value = "";
+//	document.getElementById("student-course").value = "";
 
 
 }
@@ -201,6 +205,7 @@ function display_student(student) {
 	document.getElementById("student-name").value = student[0]['name']
 	document.getElementById("student-lastname").value = student[0]['lastname']
 	document.getElementById("student-cellphone").value = student[0]['cellphone']
+	document.getElementById("student-course").value = student[0]['course_id']
 
 }
 
@@ -226,9 +231,9 @@ function clear_global_student() {
 
 }
 
-function required_field(name,lastname){
+function required_field(name,lastname,course_id ){
 	
-	if (name == '' || lastname == '' )
+	if (name == '' || lastname == '' || course_id == '')
 	{
 		alert('Fulfill required fields')
 		return false
