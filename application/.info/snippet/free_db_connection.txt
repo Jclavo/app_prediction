@@ -1,0 +1,2 @@
+//free db connection to another query
+mysqli_next_result( $this->db->conn_id );
