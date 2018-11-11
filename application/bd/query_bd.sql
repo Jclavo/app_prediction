@@ -80,8 +80,12 @@ DROP TABLE IF EXISTS `exam`;
 CREATE TABLE `exam` (
   `exam_id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(45) NOT NULL,
-  PRIMARY KEY (`exam_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `state` int(1) NOT NULL DEFAULT 1,
+  `course_id` int(11) NOT NULL,
+  PRIMARY KEY (`exam_id`),
+  KEY `fk_exam_1` (`course_id`),
+  CONSTRAINT `fk_exam_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,6 +94,7 @@ CREATE TABLE `exam` (
 
 LOCK TABLES `exam` WRITE;
 /*!40000 ALTER TABLE `exam` DISABLE KEYS */;
+INSERT INTO `exam` VALUES (1,'EXAM CHANGE',0,1),(2,'test2',1,5),(3,'test 1',1,1);
 /*!40000 ALTER TABLE `exam` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,12 +109,9 @@ CREATE TABLE `grade` (
   `grade_id` int(11) NOT NULL,
   `score` decimal(2,2) NOT NULL,
   `exam_id` int(11) NOT NULL,
-  `student_course_id` int(11) NOT NULL,
   PRIMARY KEY (`grade_id`),
   KEY `exam_id` (`exam_id`),
-  KEY `grade_ibfk_2` (`student_course_id`),
-  CONSTRAINT `grade_ibfk_1` FOREIGN KEY (`exam_id`) REFERENCES `exam` (`exam_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `grade_ibfk_2` FOREIGN KEY (`student_course_id`) REFERENCES `student_course` (`student_course_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `grade_ibfk_1` FOREIGN KEY (`exam_id`) REFERENCES `exam` (`exam_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -191,7 +193,7 @@ CREATE TABLE `student` (
   `cellphone` varchar(12) DEFAULT NULL,
   `state` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`student_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,7 +202,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (1,'erickx','xcelis','+51942051000',0),(2,'Alex','Culki hdz','942051001',0),(3,'Jose','clavo','+51942051470',1),(4,'luis','everis','',0),(5,'Alex','Culki','+51942051004',1),(6,'','','',0),(7,'Harry','Portales','',1),(8,'rober','social','',0),(9,'rober','social','',0),(10,'rober','social','',0),(11,'rober','social','',0),(12,'rober','social','',1),(13,'coco','lastname','',1),(14,'coco1','gato','',0),(15,'coco2','gato','',0),(16,'coco3','gato','',0),(17,'coco4','gato','',0),(18,'coco5','gato','',0),(19,'coco2','gato','',1),(20,'coco3','gato','',1),(29,'rober','social','',1),(52,'xxxxx','yyyyy','',1),(53,'sss','xxxxx','',1),(54,'asa','vvv','',1),(55,'x','c','',1),(56,'w','e','',1),(57,'jose','tired','',1),(59,'now','i sleep','',1),(62,'the end','is here','',1);
+INSERT INTO `student` VALUES (1,'erickx','xcelis','+51942051000',0),(2,'Alex','Culki hdz','942051001',0),(3,'Jose','clavo','+51942051470',1),(4,'luis','everis','',0),(5,'Alex','Culki','+51942051004',1),(6,'','','',0),(7,'Harry','Portales','',1),(8,'rober','social','',0),(9,'rober','social','',0),(10,'rober','social','',0),(11,'rober','social','',0),(12,'rober','social','',0),(13,'coco','lastname','',1),(14,'coco1','gato','',0),(15,'coco2','gato','',0),(16,'coco3','gato','',0),(17,'coco4','gato','',0),(18,'coco5','gato','',0),(19,'coco2','gato','',1),(20,'coco3','gato','',1),(29,'rober','social','',1),(52,'Hugo','Lira','',1),(53,'sss','xxxxx','',0),(54,'Hebert','Serrano','',1),(55,'x','c','',0),(56,'w','e','',0),(57,'JUAN','Pineda','+51942051005',1),(59,'now','i sleep','',0),(62,'the end','is here','',0),(63,'walter','tocas','',1);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -373,6 +375,125 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `usp_exam_add` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_exam_add`(IN in_description  VARCHAR(45),
+								 IN in_course_id INT(11)                                 
+)
+BEGIN
+	INSERT INTO exam(description,course_id) 
+        VALUES (in_description,in_course_id);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `usp_exam_delete` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_exam_delete`(IN in_id INT(11))
+BEGIN
+
+	UPDATE exam
+		SET state = 0
+        WHERE exam_id = in_id;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `usp_exam_get` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_exam_get`()
+BEGIN
+
+	SELECT e.exam_id, e.description , c.course_id, c.description as course_description
+	FROM exam e
+	INNER JOIN course c ON e.course_id = c.course_id
+	AND e.state = c.state
+	WHERE e.state = '1';
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `usp_exam_getbyid` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_exam_getbyid`(IN in_id INT(11))
+BEGIN
+	SELECT e.exam_id, e.description , c.course_id, c.description as course_description
+	FROM exam e
+	INNER JOIN course c ON e.course_id = c.course_id
+	AND e.state = c.state
+	WHERE e.exam_id = in_id
+    AND   e.state = '1';
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `usp_exam_update` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_exam_update`(IN in_id INT(11),
+															IN in_description VARCHAR(11)
+)
+BEGIN
+		UPDATE exam
+		SET description = in_description
+        WHERE exam_id   = in_id
+	    AND   state 	= 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `usp_student_add` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -513,15 +634,10 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_student_get`()
 BEGIN
-	SELECT s.student_id, s.name, s.lastname, s.cellphone, c.course_id, c.description
-		FROM student as s
-			LEFT JOIN student_course as sc 
-				ON s.student_id = sc.student_id
-			LEFT JOIN course as c 
-				ON  sc.course_id = c.course_id
-				AND s.state = c.state
-		WHERE s.state = 1
-        ORDER BY s.student_id DESC;
+	SELECT student_id , name, lastname, cellphone
+		FROM student 
+		WHERE state = 1
+        ORDER BY student_id DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -541,15 +657,10 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_student_getbyid`(IN in_id INT(11))
 BEGIN
 
-	SELECT s.student_id, s.name, s.lastname, s.cellphone, c.course_id, c.description
-		FROM student as s
-			LEFT JOIN student_course as sc 
-				ON s.student_id = sc.student_id
-			LEFT JOIN course as c 
-				ON  sc.course_id = c.course_id
-				AND s.state = c.state
-		WHERE  s.student_id = in_id
-		AND    s.state = 1;
+	SELECT student_id , name, lastname, cellphone
+		FROM student 
+		WHERE  student_id = in_id
+		AND    state = 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -595,4 +706,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-08 19:17:35
+-- Dump completed on 2018-11-11 11:56:09
