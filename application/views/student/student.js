@@ -15,8 +15,7 @@ var global_student = {
 		id : '',
 		name : '',
 		lastname : '',
-	    cellphone : '',
-	    course_id : ''
+	    cellphone : ''
 	}
 
 
@@ -32,9 +31,8 @@ function add_student() {
 	global_student.name  = document.getElementById("student-name").value
 	global_student.lastname  = document.getElementById("student-lastname").value
 	global_student.cellphone  = document.getElementById("student-cellphone").value
-	global_student.course_id  = document.getElementById("student-course").value
 
-	if(required_field(global_student.name,global_student.lastname,global_student.course_id))
+	if(required_field(global_student.name,global_student.lastname))
 	{
 		call_ajax(CREATE,global_student);
 	}
@@ -127,7 +125,6 @@ function call_ajax(operation, data_input) {
 			break;
 		case READ:
 			display_student(data.student)
-			display_courses(data.course)
 			break
 		case UPDATE:
 			alert(data.status)
@@ -187,7 +184,6 @@ function display_students(student) {
 	document.getElementById("student-name").value = "";
 	document.getElementById("student-lastname").value = "";
 	document.getElementById("student-cellphone").value = "";
-//	document.getElementById("student-course").value = "";
 
 
 }
@@ -205,21 +201,42 @@ function display_student(student) {
 	document.getElementById("student-name").value = student[0]['name']
 	document.getElementById("student-lastname").value = student[0]['lastname']
 	document.getElementById("student-cellphone").value = student[0]['cellphone']
-	document.getElementById("student-course").value = student[0]['course_id']
 
 }
 
 function display_courses(course){
 	// codigo para cargar los valores
-	document.getElementById("student-course").innerHTML = "";
-	
-	for (i = 0; i < course.length; i++) {
-		var myTr = document.createElement("option")
-		myTr.innerHTML = course[i]['description']
-		myTr.setAttribute("value", course[i]['course_id'])
-		document.getElementById("student-course").appendChild(myTr)
-	}
-	
+//	document.getElementById("form-list-student-body").innerHTML = "";
+//
+//	for (i = 0; i < student.length; i++) {
+//
+//		var myTr = document.createElement("tr")
+//
+//		for (student_field in student[i]) {
+//
+//			var mytd = document.createElement("td")
+//			mytd.innerHTML = student[i][student_field]
+//			myTr.appendChild(mytd)
+//
+//		}
+//		var actionTd = document.createElement("td")
+//		
+//		var editBtn = document.createElement("button")
+//		editBtn.innerHTML = "Edit"
+//		editBtn.setAttribute("class", "btn btn-sm btn-primary")
+//		editBtn.setAttribute("onclick", "edit_student(" + student[i]['student_id'] + ")")
+//
+//		var deletebtn = document.createElement("button")
+//		deletebtn.innerHTML = "Delete"
+//		deletebtn.setAttribute("class", "btn btn-sm btn-danger")
+//		deletebtn.setAttribute("onclick", "delete_student(" + student[i]['student_id'] + ")")
+//
+//		actionTd.appendChild(editBtn)
+//		actionTd.appendChild(deletebtn)
+//		myTr.appendChild(actionTd)
+//		
+//		document.getElementById("form-list-student-body").appendChild(myTr)
+//	}
 }
 
 function clear_global_student() {
@@ -231,9 +248,9 @@ function clear_global_student() {
 
 }
 
-function required_field(name,lastname,course_id ){
+function required_field(name,lastname){
 	
-	if (name == '' || lastname == '' || course_id == '')
+	if (name == '' || lastname == '' )
 	{
 		alert('Fulfill required fields')
 		return false

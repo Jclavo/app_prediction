@@ -31,8 +31,7 @@
 							<label class="col-md-4 control-label" for="student-name">Name</label>
 							<div class="col-md-4">
 								<input id="student-name" name="student-name" type="text"
-									placeholder="your student's name" class="form-control input-md"
-									required>
+									placeholder="your student's name" class="form-control input-md" required>
 							</div>
 						</div>
 
@@ -55,18 +54,6 @@
 									<input id="student-cellphone" name="student-cellphone"
 										class="form-control" type="text"
 										placeholder="your student's cellphone">
-								</div>
-							</div>
-						</div>
-
-						<!-- Prepended text-->
-						<div class="form-group">
-							<label class="col-md-4 control-label" for="student-course">Courses</label>
-							<div class="col-md-4">
-								<div class="input-group">
-									<select 
-										class="form-control" id="student-course">
-									</select>
 								</div>
 							</div>
 						</div>
@@ -93,8 +80,6 @@
 							<th>Name</th>
 							<th>Lastname</th>
 							<th>Cellphone</th>
-							<th>Course id</th>
-							<th>Course</th>
 							<th>Actions</th>
 						</tr>
 
