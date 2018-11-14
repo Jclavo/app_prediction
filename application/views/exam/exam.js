@@ -8,6 +8,7 @@ var URL_CREATE 	 = BASE_URL + '/exam/create_exam'
 var URL_READ_ALL = BASE_URL + '/exam/get_exam'
 var URL_DELETE 	 = BASE_URL + '/exam/delete_exam'
 var URL_UPDATE 	 = BASE_URL + '/exam/update_exam'
+var URL_GRADE 	 = BASE_URL + '/grade/index'
 
 //var URL_READ_ALL_COURSE = BASE_URL + '/course/get_course'
 		
@@ -168,9 +169,10 @@ function display_exams(exam) {
 		deletebtn.setAttribute("class", "btn btn-sm btn-danger")
 		deletebtn.setAttribute("onclick", "delete_exam(" + exam[i]['exam_id'] + ")")
 		
-		var linkbtn = document.createElement("button")
+		var linkbtn = document.createElement("a")
 		linkbtn.innerHTML = "Grades"
-		linkbtn.setAttribute("class", "btn btn-sm btn-success")
+		linkbtn.setAttribute("class", "btn btn-sm btn-link")
+		linkbtn.setAttribute("href", URL_GRADE + '/' + exam[i]['exam_id'] + '/' + exam[i]['course_id'])
 //		linkbtn.setAttribute("onclick", "delete_exam(" + exam[i]['exam_id'] + ")")
 
 		
