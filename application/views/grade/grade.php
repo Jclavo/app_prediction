@@ -22,32 +22,34 @@
 						<div class="form-group">
 							<div class="col-md-4">
 								<input id="course-id" name="course-id" type="hidden"
-									placeholder="" class="form-control input-md" disabled>
+									class="form-control input-md" 
+									value="<?php echo $course_id;?>" disabled>
 							</div>
 						</div>
 
 						<!-- Text input-->
-						<div class="form-group">
+						<div class="form-group row">
 							<label class="col-md-4 control-label" for="course-description">Course</label>
 							<div class="col-md-4">
 								<input id="course-description" name="course-description" type="text"
-									   class="form-control input-md">
+									   class="form-control-plaintext">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<div class="col-md-4">
 								<input id="exam-id" name="exam-id" type="hidden"
-									placeholder="" class="form-control input-md" disabled>
+									class="form-control input-md" 
+									value="<?php echo $exam_id;?>" disabled>
 							</div>
 						</div>
 
 						<!-- Text input-->
-						<div class="form-group">
+						<div class="form-group row">
 							<label class="col-md-4 control-label" for="exam-description">Exam</label>
 							<div class="col-md-4">
 								<input id="exam-description" name="exam-description" type="text"
-									   class="form-control input-md">
+									   class="form-control-plaintext">
 							</div>
 						</div>
 
@@ -72,8 +74,10 @@
 					<thead>
 						<tr>
 							<th>Id</th>
+							<th>Student Id</th>
 							<th>Student</th>
 							<th>Grade</th>
+							<th>Actions</th>
 						</tr>
 
 					</thead>
