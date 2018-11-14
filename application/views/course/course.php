@@ -44,16 +44,33 @@
 									class="form-control input-md" required>
 							</div>
 						</div>
+						
+						<!-- Select  -->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="course-course">Courses</label>
+							<div class="col-md-4">
+								<div class="input-group">
+									<select 
+										class="form-control" id="course-course">
+									</select>
+								</div>
+							</div>
+						</div>
 
 						<!-- Button -->
 
 					</fieldset>
 				</form>
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="btn-save"></label>
+					<label class="col-md-8 control-label" for="btn-save"></label>
 					<div class="col-md-4" id="saveupdate">
 						<button id="btn-save" name="btn-save" class="btn btn-success"
 							onclick="add_course()">Save</button>
+					</div>
+					<label class="col-md-8 control-label" for="btn-copy"></label>
+					<div class="col-md-4" id="copy">
+						<button id="btn-copy" name="btn-copy" class="btn btn-info"
+							onclick="add_course()">Copy</button>
 					</div>
 				</div>
 			</div>

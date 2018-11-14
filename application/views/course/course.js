@@ -12,7 +12,9 @@ var URL_UPDATE 	 = BASE_URL + '/course/update_course'
 var global_course = {
 		id : '',
 		description : '',
-		started_date : ''
+		started_date : '',
+		flag_copy : '',
+		course_copied : ''
 	}
 
 
@@ -27,6 +29,9 @@ function add_course() {
 	clear_global_course()
 	global_course.description  = document.getElementById("course-description").value
 	global_course.started_date  = document.getElementById("course-started_date").value
+//	global_course.flag_copy  = document.getElementById("course-copy").value
+	global_course.flag_copy  = 'X'
+	global_course.course_copied  = document.getElementById("course-course").value
 
 	if(required_field(global_course.description,global_course.started_date))
 	{
@@ -110,6 +115,7 @@ function call_ajax(operation, data_input) {
 			break
 		case READ_ALL:
 			display_courses(data.course)
+			select_courses(data.course)
 			break
 		case DELETE:
 			alert(data.status)
@@ -193,6 +199,19 @@ function display_course(course) {
 
 }
 
+function select_courses(course){
+	// codigo para cargar los valores
+	document.getElementById("course-course").innerHTML = "";
+	
+	for (i = 0; i < course.length; i++) {
+		var myTr = document.createElement("option")
+		myTr.innerHTML = course[i]['description']
+		myTr.setAttribute("value", course[i]['course_id'])
+		document.getElementById("course-course").appendChild(myTr)
+	}	
+} 
+
+
 function clear_global_course() {
 	
 	global_course.id	  = ''
@@ -202,7 +221,7 @@ function clear_global_course() {
 
 
 }
-  5
+  
 function required_field(description,started_date){
 	
 	if (description == '' || started_date  == '' )

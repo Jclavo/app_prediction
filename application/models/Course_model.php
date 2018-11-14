@@ -24,7 +24,8 @@ class Course_model extends CI_Model
     public function create_course($name, $started_date)
     {
         $sql = 'CALL usp_course_add(?,?)';
-        return $this->db->query($sql,array($name, $started_date));        
+        $query = $this->db->query($sql,array($name, $started_date));   
+        return $query->result_array();
     }
 
     public function delete_course($id)
