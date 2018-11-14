@@ -40,4 +40,12 @@ class Student_model extends CI_Model
         return $this->db->query($sql,array($id,$name,$lastname,$cellphone)); 
         
     }
+    
+    public function get_studentbycourse($id)
+    {
+        $sql = 'CALL usp_student_getbycourse(?)';
+        $query = $this->db->query($sql,array($id));
+        return $query->result_array();
+    }
+    
 }
