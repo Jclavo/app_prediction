@@ -1,2 +1,7 @@
 //free db connection to another query
+
+//MODEL
 mysqli_next_result( $this->db->conn_id );
+
+//CONTROLLER
+$this->db->close();

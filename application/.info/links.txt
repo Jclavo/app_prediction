@@ -1,2 +1,5 @@
-Import/Export
+//Import/Export
 https://dev.mysql.com/doc/workbench/en/wb-admin-export-import-management.html
+
+//Store HTML Table Values in a Javascript Array and Send to a PHP Script Using jQuery and Ajax
+https://www.fourfront.us/blog/store-html-table-data-to-javascript-array
