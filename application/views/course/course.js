@@ -27,16 +27,22 @@ $(document).ready(function() {
 function add_course() {
 
 	clear_global_course()
-	global_course.description  = document.getElementById("course-description").value
+	global_course.description  	= document.getElementById("course-description").value
 	global_course.started_date  = document.getElementById("course-started_date").value
-//	global_course.flag_copy  = document.getElementById("course-copy").value
-	global_course.flag_copy  = 'X'
-	global_course.course_copied  = document.getElementById("course-course").value
-
-	if(required_field(global_course.description,global_course.started_date))
+	
+	if($("#course-copy").is(":checked"))
 	{
-		call_ajax(CREATE,global_course);
+		global_course.flag_copy  = 'X'
 	}
+		
+	global_course.course_copied  = document.getElementById("course-course").value
+	
+	console.log(global_course)
+	
+//	if(required_field(global_course.description,global_course.started_date))
+//	{
+//		call_ajax(CREATE,global_course);
+//	}
 	
 }
 
@@ -217,8 +223,9 @@ function clear_global_course() {
 	global_course.id	  = ''
 	global_course.description  = ''
 	global_course.started_date  = ''
-
-
+    global_course.started_date  = ''
+	global_course.flag_copy = ''
+	global_course.course_copied = ''
 
 }
   

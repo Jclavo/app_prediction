@@ -67,12 +67,12 @@
 						<button id="btn-save" name="btn-save" class="btn btn-success"
 							onclick="add_course()">Save</button>
 					</div>
-					<label class="col-md-8 control-label" for="btn-copy"></label>
-					<div class="col-md-4" id="copy">
-						<button id="btn-copy" name="btn-copy" class="btn btn-info"
-							onclick="add_course()">Copy</button>
-					</div>
-				</div>
+				
+    				<div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="course-copy">
+                        <label class="form-check-label" for="course-copy">Copy</label>
+                    </div>
+                </div>
 			</div>
 
 			<!-- LIST -->
