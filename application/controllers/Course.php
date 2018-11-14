@@ -34,7 +34,7 @@ class Course extends CI_Controller
         $course = $this->course_model->create_course($name, $started_date);
         $course_new_id = $course[0]['last_course_id'];
 //         echo $course[0]['last_course_id'];
-        mysqli_next_result( $this->db->conn_id );
+        mysqli_next_result( $this->db->conn_id ); // Free BDD
         
         if ($flag_copy == 'X') {
             $list_student = $this->student_model->get_studentbycourse($course_copied);
