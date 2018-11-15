@@ -88,6 +88,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<p>Test:</p>
 		<code><a href="<?php echo 'http://localhost/app_prediction/index.php/Test' ?>">Test</a></code>
 
+		<p>Test Student:</p>
+		<code><a href="<?php echo 'http://localhost/app_prediction/index.php/Test/test_student' ?>">Test Student</a></code>
+		
 		<p>Any question, let's contact me <a href="user_guide/">jclavotafur@gmail.com</a>.</p>
 	</div>
 

@@ -72,5 +72,9 @@ class Test extends CI_Controller
         $data['status'] = $this->test_model->update_test($id, $description);
         echo json_encode($data);
     }
+    
+    public function test_student() {
+        $this->load->view('test_student/test_student');
+    }
  
 }

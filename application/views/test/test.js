@@ -170,8 +170,14 @@ function display_tests(test) {
 		deletebtn.setAttribute("class", "btn btn-sm btn-danger")
 		deletebtn.setAttribute("onclick", "delete_test(" + test[i]['test_id'] + ")")
 
+/*		var linkbtn = document.createElement("a")
+		linkbtn.innerHTML = "Students"
+		linkbtn.setAttribute("class", "btn btn-sm btn-link")
+		linkbtn.setAttribute("href", URL_GRADE + '/' + exam[i]['exam_id'] + '/' + exam[i]['course_id'])
+*/
 		actionTd.appendChild(editBtn)
 		actionTd.appendChild(deletebtn)
+	//	actionTd.appendChild(linkbtn)
 		myTr.appendChild(actionTd)
 		
 		document.getElementById("form-list-test-body").appendChild(myTr)

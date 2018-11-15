@@ -49,4 +49,11 @@ class Student extends CI_Controller
         $data['status'] = $this->student_model->update_student($id, $name, $lastname, $cellphone);
         echo json_encode($data);
     }
+    
+    public function get_studentbycourse()
+    {
+        $course_id = $this->input->get('course_id');
+        $data['student'] = $this->student_model->get_studentbycourse($course_id);
+        echo json_encode($data);
+    }
 }

@@ -173,7 +173,6 @@ function display_exams(exam) {
 		linkbtn.innerHTML = "Grades"
 		linkbtn.setAttribute("class", "btn btn-sm btn-link")
 		linkbtn.setAttribute("href", URL_GRADE + '/' + exam[i]['exam_id'] + '/' + exam[i]['course_id'])
-//		linkbtn.setAttribute("onclick", "delete_exam(" + exam[i]['exam_id'] + ")")
 
 		
 		actionTd.appendChild(editBtn)
