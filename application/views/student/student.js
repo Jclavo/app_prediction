@@ -185,7 +185,7 @@ function display_students(student) {
 	document.getElementById("student-lastname").value = "";
 	document.getElementById("student-cellphone").value = "";
 
-
+	
 }
 
 function display_student(student) {

@@ -52,8 +52,19 @@
 									class="form-control input-md" required>
 							</div>
 						</div>
-
 						<!-- Button -->
+						
+						<!-- Select-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="test-course">Courses</label>
+							<div class="col-md-4">
+								<div class="input-group">
+									<select 
+										class="form-control" id="test-course">
+									</select>
+								</div>
+							</div>
+						</div>
 
 					</fieldset>
 				</form>
@@ -76,6 +87,8 @@
 							<th>Description</th>
 							<th>Total Questions</th>
 							<th>Total Options</th>
+							<th>Course Id</th>
+							<th>Course</th>
 							<th>Actions</th>
 						</tr>
 

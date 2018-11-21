@@ -40,4 +40,11 @@ class Exam_model extends CI_Model
         return $this->db->query($sql,array($id, $description)); 
         
     }
+    
+    public function get_exambytest($test_id) {
+        $sql = 'CALL usp_exam_getbytest(?)';
+        $query = $this->db->query($sql,array($test_id));
+        return $query->result_array();
+        
+    }
 }

@@ -7,7 +7,7 @@ class Test extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model(array('test_model','question_model','alternative_model'));
+        $this->load->model(array('test_model','question_model','alternative_model','course_model'));
     }
 
     public function index()
@@ -19,6 +19,8 @@ class Test extends CI_Controller
     {
         $id = $this->input->get('id');
         $data['test'] = $this->test_model->get_test($id);
+        mysqli_next_result( $this->db->conn_id ); // Free BDD
+        $data['course'] = $this->course_model->get_course($id);
         echo json_encode($data);
     }
 
@@ -29,10 +31,11 @@ class Test extends CI_Controller
         $description  = $this->input->get('description');
         $total_question = $this->input->get('total_question');
         $total_alternative = $this->input->get('total_alternative');
+        $course_id = $this->input->get('course_id');
         
         $this->db->trans_start();// start Tx 
         
-        $data_test = $this->test_model->create_test($description,$total_question,$total_alternative);
+        $data_test = $this->test_model->create_test($description,$total_question,$total_alternative,$course_id);
         $test_new_id = $data_test[0]['last_test_id'];
         
         mysqli_next_result( $this->db->conn_id ); // Free BDD
@@ -68,13 +71,18 @@ class Test extends CI_Controller
     {
         $id = $this->input->get('id');
         $description  = $this->input->get('description');
+        $course_id = $this->input->get('course_id');
 
-        $data['status'] = $this->test_model->update_test($id, $description);
+        $data['status'] = $this->test_model->update_test($id, $description, $course_id);
         echo json_encode($data);
     }
     
     public function test_student() {
         $this->load->view('test_student/test_student');
+    }
+    
+    public function set_($param) {
+        ;
     }
  
 }

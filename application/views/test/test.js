@@ -15,7 +15,8 @@ var global_test = {
 		id : '',
 		description : '',
 		total_question : '',
-	    total_alternative : ''
+	    total_alternative : '',
+	    course_id : ''
 	}
 
 
@@ -31,8 +32,12 @@ function add_test() {
 	global_test.description  = document.getElementById("test-description").value
 	global_test.total_question  = document.getElementById("test-total_question").value
 	global_test.total_alternative  = document.getElementById("test-total_alternative").value
+	global_test.course_id  = document.getElementById("test-course").value
 
-	if(required_field(global_test.description,global_test.total_question,global_test.total_alternative))
+	if(required_field(global_test.description) && 
+	   required_field(global_test.total_question) &&
+	   required_field(global_test.total_alternative) &&
+	   required_field(global_test.course_id))
 	{
 		call_ajax(CREATE,global_test);
 	}
@@ -55,7 +60,10 @@ function update_test() {
 	global_test.id 	  = document.getElementById("test-id").value
 	global_test.description  = document.getElementById("test-description").value
 	
-	if(required_field(global_test.id,global_test.description))
+	global_test.course_id  = document.getElementById("test-course").value
+
+	if(required_field(global_test.description) && 
+	   required_field(global_test.course_id))
 	{
 		call_ajax(UPDATE,global_test);
 	}
@@ -203,42 +211,20 @@ function display_test(test) {
 	document.getElementById("test-description").value = test[0]['description']
 	document.getElementById("test-total_question").value = test[0]['total_question']
 	document.getElementById("test-total_alternative").value = test[0]['total_alternative']
-
+	document.getElementById("test-course").value = test[0]['course_id']
 }
 
 function display_courses(course){
 	// codigo para cargar los valores
-//	document.getElementById("form-list-test-body").innerHTML = "";
-//
-//	for (i = 0; i < test.length; i++) {
-//
-//		var myTr = document.createElement("tr")
-//
-//		for (test_field in test[i]) {
-//
-//			var mytd = document.createElement("td")
-//			mytd.innerHTML = test[i][test_field]
-//			myTr.appendChild(mytd)
-//
-//		}
-//		var actionTd = document.createElement("td")
-//		
-//		var editBtn = document.createElement("button")
-//		editBtn.innerHTML = "Edit"
-//		editBtn.setAttribute("class", "btn btn-sm btn-primary")
-//		editBtn.setAttribute("onclick", "edit_test(" + test[i]['test_id'] + ")")
-//
-//		var deletebtn = document.createElement("button")
-//		deletebtn.innerHTML = "Delete"
-//		deletebtn.setAttribute("class", "btn btn-sm btn-danger")
-//		deletebtn.setAttribute("onclick", "delete_test(" + test[i]['test_id'] + ")")
-//
-//		actionTd.appendChild(editBtn)
-//		actionTd.appendChild(deletebtn)
-//		myTr.appendChild(actionTd)
-//		
-//		document.getElementById("form-list-test-body").appendChild(myTr)
-//	}
+	document.getElementById("test-course").innerHTML = "";
+	
+	for (i = 0; i < course.length; i++) {
+		var myTr = document.createElement("option")
+		myTr.innerHTML = course[i]['description']
+		myTr.setAttribute("value", course[i]['course_id'])
+		document.getElementById("test-course").appendChild(myTr)
+	}
+	
 }
 
 function clear_global_test() {
@@ -250,9 +236,9 @@ function clear_global_test() {
 	
 }
 
-function required_field(field1,field2,field3){
+function required_field(field){
 	
-	if (field1 == '' || field2 == '' || field3 == '')
+	if (field == '')
 	{
 		alert('Fulfill required fields')
 		return false

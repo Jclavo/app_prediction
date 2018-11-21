@@ -21,10 +21,10 @@ class Test_model extends CI_Model
 
     }
 
-    public function create_test($description,$total_question,$total_option)
+    public function create_test($description,$total_question,$total_option,$course_id)
     {
-        $sql = 'CALL usp_test_add(?,?,?)';
-        $query = $this->db->query($sql,array($description,$total_question,$total_option)); 
+        $sql = 'CALL usp_test_add(?,?,?,?)';
+        $query = $this->db->query($sql,array($description,$total_question,$total_option,$course_id)); 
         return $query->result_array();
     }
 
@@ -34,11 +34,11 @@ class Test_model extends CI_Model
            return $this->db->query($sql,array($id)); 
     }
     
-    public function update_test($id, $description)
+    public function update_test($id, $description, $course_id)
     {
         
-        $sql = 'CALL usp_test_update(?,?)';
-        return $this->db->query($sql,array($id, $description)); 
+        $sql = 'CALL usp_test_update(?,?,?)';
+        return $this->db->query($sql,array($id, $description, $course_id)); 
         
     }
         

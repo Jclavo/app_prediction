@@ -7,7 +7,7 @@ class Student extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('student_model');
+        $this->load->model(array('student_model','exam_model'));
     }
 
     public function index()
@@ -56,4 +56,19 @@ class Student extends CI_Controller
         $data['student'] = $this->student_model->get_studentbycourse($course_id);
         echo json_encode($data);
     }
+    
+    public function get_studentbytest()
+    {
+        $test_id = $this->input->get('test_id');
+        
+        $data_course = $this->exam_model->get_exambytest($test_id);
+        $course_id  = $data_course[0]['course_id'];
+        
+        mysqli_next_result( $this->db->conn_id ); // Free BDD
+        
+        $data['student'] = $this->student_model->get_studentbycourse($course_id);
+        echo json_encode($data);
+    }
+      
+    
 }
