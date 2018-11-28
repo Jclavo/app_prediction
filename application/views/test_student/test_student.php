@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
-<title>course - CRUD</title>
+<title>Test_Student - CRUD</title>
 <link
 	href="<?php echo base_url('assets/css/bootstrap/bootstrap.min.css')?>"
 	rel="stylesheet">
@@ -13,18 +13,18 @@
 		<div class="row">
 			<!-- FORM  -->
 			<div class="col-md-12">
-				<form class="form-horizontal" id="form-edit-course">
+				<form class="form-horizontal" id="form-edit-test">
 					<fieldset>
 						<!-- Form description -->
 						<legend>Test Student</legend>
 					
 						<!-- Select  -->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="test_student-course">Courses</label>
+							<label class="col-md-4 control-label" for="test_student-test">tests</label>
 							<div class="col-md-4">
 								<div class="input-group">
 									<select 
-										class="form-control" id="test_student-course">
+										class="form-control" id="test_student-test">
 									</select>
 								</div>
 							</div>
@@ -45,7 +45,7 @@
 
 			<!-- LIST -->
 			<div class=col-md-12>
-				List of courses
+				List of tests
 				<table class="table table-bordered table-condensed table-hover">
 					<thead>
 						<tr>

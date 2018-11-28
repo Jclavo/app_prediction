@@ -13,6 +13,15 @@ class Alternative_model extends CI_Model
         $sql = 'CALL usp_alternative_add(?,?,?)';
         return $this->db->query($sql,array($letter,$description,$question_id));        
     }
+    
+    public function getbytest($test_id)
+    {
+        $sql = 'CALL usp_alternative_getbytest(?)';
+        $query = $this->db->query($sql,array($test_id));
+        return $query->result_array();
+    }
+    
+    
 
 
 }

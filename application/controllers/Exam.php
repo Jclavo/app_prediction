@@ -49,4 +49,5 @@ class Exam extends CI_Controller
         $data['status'] = $this->exam_model->update_exam($id, $description);
         echo json_encode($data);
     }
+    
 }
