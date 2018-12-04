@@ -61,7 +61,7 @@
 					<label class="col-md-4 control-label" for="btn-save"></label>
 					<div class="col-md-4" id="saveupdate">
 						<button id="btn-save" name="btn-save" class="btn btn-success"
-							onclick="add_answer()">Save</button>
+							onclick="save_answer()">Save</button>
 					</div>
 				</div>
 			</div>
@@ -73,10 +73,8 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>Student Id</th>
-							<th>Student</th>
-							<th>answer</th>
-							<th>Actions</th>
+							<th>Description</th>
+							<th>Selected</th>
 						</tr>
 
 					</thead>

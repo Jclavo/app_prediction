@@ -7,7 +7,7 @@ class Answer extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model(array('alternative_model','student_model','test_model'));
+        $this->load->model(array('question_model','student_model','test_model','answer_model'));
     }
 
     public function index($student_id,$test_id)
@@ -23,50 +23,44 @@ class Answer extends CI_Controller
         $student_id = $this->input->get('student_id');
         $test_id = $this->input->get('test_id');
         
-        $data['test_alternative'] = $this->alternative_model->getbytest($test_id);
-        mysqli_next_result( $this->db->conn_id ); // Free BDD
+//         $this->db->trans_start();// start Tx 
+
         $data['student'] = $this->student_model->get_student($student_id);
         mysqli_next_result( $this->db->conn_id ); // Free BDD
         $data['test'] = $this->test_model->get_test($test_id);
+        mysqli_next_result( $this->db->conn_id ); // Free BDD
+        
+        $list_questions = $this->question_model->get_questionbytest($test_id);
+        
+        mysqli_next_result( $this->db->conn_id ); // Free BDD
+        
+        foreach ($list_questions as $question) {
+            $this->answer_model->create_answer($student_id,$test_id,$question['question_id']);
+        }
+        
+        $data['answer'] = $this->answer_model->get_answerbystudentbytest($student_id,$test_id);
+        
+//         $this->db->trans_complete();// End Tx, if there is any error, there is a ROLL BACK, otherwise a COMMIT
         
         echo json_encode($data);
     }
 
-    
-/* 
-    public function create_answer()
-    {
-        $name = $this->input->get('name');
-        $lastname = $this->input->get('lastname');
-        $cellphone = $this->input->get('cellphone');
 
-        $data['status'] = $this->answer_model->create_answer($name, $lastname, $cellphone);
-        echo json_encode($data);
-    }
-
-    public function delete_answer()
-    {
-        $id = $this->input->get('id');
-        $data['status'] = $this->answer_model->delete_answer($id);
-        echo json_encode($data);
-    }
-    
     public function update_answer()
     {
-        $id = $this->input->get('id');
-        $name = $this->input->get('name');
-        $lastname = $this->input->get('lastname');
-        $cellphone = $this->input->get('cellphone');
-
-        $data['status'] = $this->answer_model->update_answer($id, $name, $lastname, $cellphone);
-        echo json_encode($data);
+        // Unescape the string values in the JSON array
+        $answers = stripcslashes($this->input->get('answer'));
+        
+        // Decode the JSON array
+        $answers = json_decode($answers,TRUE);
+        
+        foreach ($answers as $answer) {
+            $data['status'] = $this->answer_model->update_answer($answer['answer_id'],$answer['selected_option']);
+        }
+        
+        return $data['status'];
     }
     
-    public function get_answerbycourse()
-    {
-        $test_id = $this->input->get('test_id');
-        $data['answer'] = $this->answer_model->get_answerbycourse($test_id);
-        echo json_encode($data);
-    }
-    */
+
+
 }
