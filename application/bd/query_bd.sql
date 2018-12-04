@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.1.31-MariaDB, for Win32 (AMD64)
+-- MySQL dump 10.16  Distrib 10.2.17-MariaDB, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: app_prediction
+-- Host: localhost    Database: app_prediction
 -- ------------------------------------------------------
--- Server version	10.1.31-MariaDB
+-- Server version	10.2.17-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -51,16 +51,19 @@ DROP TABLE IF EXISTS `answer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `answer` (
-  `answer_id` int(11) NOT NULL,
-  `selected_option` varchar(1) NOT NULL,
-  `course_student_id` int(11) NOT NULL,
+  `answer_id` int(11) NOT NULL AUTO_INCREMENT,
+  `selected_option` varchar(1) NOT NULL DEFAULT '0',
+  `student_id` int(11) NOT NULL,
+  `test_id` int(11) NOT NULL,
   `question_id` int(11) NOT NULL,
   PRIMARY KEY (`answer_id`),
   KEY `question_id` (`question_id`),
-  KEY `answer_ibfk_1` (`course_student_id`),
-  CONSTRAINT `answer_ibfk_1` FOREIGN KEY (`course_student_id`) REFERENCES `student_course` (`student_course_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `answer_ibfk_2` FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `answer_ibfk_1` (`student_id`),
+  KEY `fk_answer_2` (`test_id`),
+  CONSTRAINT `answer_ibfk_2` FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_answer_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_answer_2` FOREIGN KEY (`test_id`) REFERENCES `test` (`test_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,6 +72,7 @@ CREATE TABLE `answer` (
 
 LOCK TABLES `answer` WRITE;
 /*!40000 ALTER TABLE `answer` DISABLE KEYS */;
+INSERT INTO `answer` VALUES (41,'0',20,12,13),(42,'2',20,12,14),(43,'1',20,12,15),(44,'2',20,12,16),(45,'5',20,12,17),(46,'2',63,12,13),(47,'2',63,12,14),(48,'2',63,12,15),(49,'2',63,12,16),(50,'2',63,12,17);
 /*!40000 ALTER TABLE `answer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,7 +87,7 @@ CREATE TABLE `course` (
   `course_id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(45) NOT NULL,
   `started_date` date NOT NULL,
-  `state` int(11) NOT NULL DEFAULT '1',
+  `state` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`course_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -108,7 +112,7 @@ DROP TABLE IF EXISTS `exam`;
 CREATE TABLE `exam` (
   `exam_id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(45) NOT NULL,
-  `state` int(1) NOT NULL DEFAULT '1',
+  `state` int(1) NOT NULL DEFAULT 1,
   `course_id` int(11) NOT NULL,
   PRIMARY KEY (`exam_id`),
   KEY `fk_exam_1` (`course_id`),
@@ -135,7 +139,7 @@ DROP TABLE IF EXISTS `grade`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `grade` (
   `grade_id` int(11) NOT NULL AUTO_INCREMENT,
-  `score` decimal(4,2) NOT NULL DEFAULT '0.00',
+  `score` decimal(4,2) NOT NULL DEFAULT 0.00,
   `student_id` int(11) NOT NULL,
   `exam_id` int(11) NOT NULL,
   PRIMARY KEY (`grade_id`),
@@ -154,6 +158,33 @@ LOCK TABLES `grade` WRITE;
 /*!40000 ALTER TABLE `grade` DISABLE KEYS */;
 INSERT INTO `grade` VALUES (7,19.00,20,3),(8,20.00,63,3),(9,15.00,52,3),(10,18.00,57,2);
 /*!40000 ALTER TABLE `grade` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `option`
+--
+
+DROP TABLE IF EXISTS `option`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `option` (
+  `option_id` int(11) NOT NULL,
+  `letter` varchar(1) NOT NULL,
+  `description` varchar(45) NOT NULL,
+  `question_id` int(11) NOT NULL,
+  PRIMARY KEY (`option_id`),
+  KEY `question_id` (`question_id`),
+  CONSTRAINT `option_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `option`
+--
+
+LOCK TABLES `option` WRITE;
+/*!40000 ALTER TABLE `option` DISABLE KEYS */;
+/*!40000 ALTER TABLE `option` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -197,7 +228,7 @@ CREATE TABLE `student` (
   `name` varchar(45) NOT NULL,
   `lastname` varchar(45) NOT NULL,
   `cellphone` varchar(12) DEFAULT NULL,
-  `state` int(11) NOT NULL DEFAULT '1',
+  `state` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`student_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -253,7 +284,7 @@ CREATE TABLE `test` (
   `description` varchar(45) NOT NULL,
   `total_question` int(11) NOT NULL,
   `total_alternative` int(11) NOT NULL,
-  `state` int(1) NOT NULL DEFAULT '1',
+  `state` int(1) NOT NULL DEFAULT 1,
   `course_id` int(11) NOT NULL,
   PRIMARY KEY (`test_id`),
   KEY `fk_exam_1_idx` (`course_id`),
@@ -271,10 +302,6 @@ LOCK TABLES `test` WRITE;
 INSERT INTO `test` VALUES (1,'XD',5,4,0,2),(9,'TESTmodif',2,4,1,2),(10,'abc',2,4,1,2),(12,'test_2',5,5,1,1);
 /*!40000 ALTER TABLE `test` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'app_prediction'
---
 
 --
 -- Dumping routines for database 'app_prediction'
@@ -335,7 +362,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_alternative_getbytest`(IN in_test_id INT(11))
 BEGIN
@@ -345,6 +372,115 @@ BEGIN
 	INNER JOIN alternative as a
 	ON q.question_id = a.question_id
 	WHERE q.test_id = in_test_id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `usp_alternative_getbytest_copy` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_alternative_getbytest_copy`(IN in_test_id INT(11))
+BEGIN
+	SELECT q.question_id as question_id, q.description as question_description,
+		   a.alternative_id as alternative_id, a.description as alternative_description
+	FROM   question as q
+	INNER JOIN alternative as a
+	ON q.question_id = a.question_id
+	WHERE q.test_id = in_test_id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `usp_answer_add` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_answer_add`(IN in_student_id  INT(11),
+								   IN in_test_id     INT(11),
+								   IN in_question_id INT(11)
+)
+BEGIN
+	SET @answer_id = NULL;
+    
+	SELECT answer_id INTO @answer_id
+	FROM   answer
+	WHERE  student_id  = in_student_id
+    AND    test_id	   = in_test_id
+    AND    question_id = in_question_id;
+    
+    IF (@answer_id IS NULL) THEN
+		INSERT INTO answer(student_id,test_id,question_id) 
+        VALUES (in_student_id,in_test_id,in_question_id);
+    END IF;
+    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `usp_answer_getbystudentbytest` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_answer_getbystudentbytest`(IN in_student_id  INT(11),
+																			IN in_test_id     INT(11)
+)
+BEGIN
+	SELECT a.answer_id,q.description,a.selected_option
+		FROM answer AS a
+	INNER JOIN question AS q
+		ON a.question_id = q.question_id 
+	WHERE a.student_id = in_student_id
+	AND   a.test_id    = in_test_id;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `usp_answer_update` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_answer_update`(IN in_answer_id INT(11),
+									  IN in_selected_option INT(11)
+)
+BEGIN
+
+    UPDATE answer
+		SET selected_option = in_selected_option
+        WHERE answer_id  = in_answer_id;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -746,6 +882,30 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `usp_question_getbytest` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_question_getbytest`(IN in_test_id INT(11))
+BEGIN
+	SELECT q.question_id, q.description, q.predict, q.correct, q.test_id 
+		FROM question as q
+	INNER JOIN test as t
+	ON q.test_id = t.test_id
+		WHERE t.test_id = in_test_id
+		AND  t.state = 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `usp_student_add` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1116,4 +1276,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-27 19:38:01
+-- Dump completed on 2018-12-04 13:15:17
