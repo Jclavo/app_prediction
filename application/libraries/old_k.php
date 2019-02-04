@@ -1,10 +1,17 @@
 <?php
 // namespace application\libraries;
+//I believe there is another world waiting for us. A better world. 
+//And I'll be waiting for you there.
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed')
+
+//KMEANS
+// Get random's cluster
 
 class kmeans
 {
+    
+    
     public function start_kmeans(array $listStudent, array $number_clusters) {
         
         $number_students = count($listStudent) - 1;
