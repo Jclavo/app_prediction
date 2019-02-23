@@ -7,6 +7,7 @@ class Kmeans extends CI_Controller
     {
         parent::__construct();
         $this->load->model(array('exam_model','student_model'));
+        $this->load->library('k_means');
     }
     
     public function index()
@@ -27,7 +28,7 @@ class Kmeans extends CI_Controller
         
         $data['student'] = $this->student_model->get_studentbycourse($course_id);
         
-        
+        $this->k_means->start_kmeans($data['student'],2); //CALL Kmeans
         
         
         

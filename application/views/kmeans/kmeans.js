@@ -1,10 +1,10 @@
 
 var READ_ALL_TEST = 'READ_ALL_TEST'
-var READ_STUDENT_BY_TEST = 'READ_STUDENT_BY_TEST'
+var EXECUTE_KMEANS = 'EXECUTE_KMEANS'
 
 
 var URL_READ_ALL_TEST = BASE_URL + '/test/get_test'
-var URL_READ_STUDENT_BY_TEST = BASE_URL + '/student/get_studentbytest'
+var URL_EXECUTE_KMEANS = BASE_URL + '/kmeans/execute_kmeans'
 var URL_ANSWER = BASE_URL + '/answer/index'
 
 		
@@ -25,9 +25,9 @@ function call_ajax(operation, data_input) {
 
 	switch (operation) {
 
-/*	case READ_STUDENT_BY_TEST:
-		url_operation = URL_READ_STUDENT_BY_TEST
-		break;*/
+	case EXECUTE_KMEANS:
+		url_operation = URL_EXECUTE_KMEANS
+		break;
 	case READ_ALL_TEST:
 		url_operation = URL_READ_ALL_TEST
 		break;
@@ -48,7 +48,7 @@ function call_ajax(operation, data_input) {
             //alert(data.test)
             select_tests(data.test)
 			break
-		case READ_STUDENT_BY_TEST:
+		case EXECUTE_KMEANS:
             //alert(data.test)
             display_students(data.student)
 			//call_ajax(READ_ALL,global_test)
@@ -107,14 +107,14 @@ function display_students(student) {
 
 function execute_kmeans() {
 	
-global_data.test_id  = document.getElementById("test_student-test").value
+global_data.test_id  = document.getElementById("kmeans-test").value
 	
 	if(global_data.test_id == '')
 	{
 		alert('Fulfill required fields')
 	}
 	else{
-		call_ajax(READ_STUDENT_BY_TEST,global_data)
+		call_ajax(EXECUTE_KMEANS,global_data)
 	}
 
 }
