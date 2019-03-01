@@ -41,4 +41,10 @@ class Course_model extends CI_Model
         return $this->db->query($sql,array($id,$name,$started_date)); 
         
     }
+    
+    public function get_avegareByCourse($course_id) {
+        $sql = 'CALL usp_grade_getAvegareByCourse(?)';
+        $query = $this->db->query($sql,array($course_id)); 
+        return $query->result_array();
+    }
 }

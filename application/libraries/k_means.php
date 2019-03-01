@@ -5,10 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class k_means
 {
-    public function start_kmeans(array $listStudent, array $number_clusters) {
+    public function start_kmeans(array $listStudent, int $number_clusters) {
         
         
-        $number_students = count($listStudent) - 1;
+        $number_students = count($listStudent);
         
         $random_clusters = $this->getRandomArray($number_students,$number_clusters);
         
@@ -22,6 +22,7 @@ class k_means
     
     private function getRandomArray($number_students,$number_clusters) {
         
+        $array_random = array();
         $random_value = rand(0,$number_students);
                 
         array_push($array_random,$random_value);
@@ -54,17 +55,27 @@ class k_means
             foreach ($students as $student) {
                 
                 $lowestCluster = 0;
+                $lowestDistance = 0;
+                $contadorCluster = 0;
                 //Get lowest distance and so on
-                foreach ($random_clusters as $ClusterValue) {
-                    $distanceCluster = $this->distanceBetweenPoints($ClusterValue,$student['average']);
+                foreach ($random_clusters as $clusterValue) {
+                    $distanceCluster = $this->distanceBetweenPoints($clusterValue,$student['average']);
                     
-                    if ($distanceCluster < $lowestCluster ) {
-                        $lowestCluster = $distanceCluster;
+                    if ($contadorCluster == 0) {
+                        $lowestDistance = $distanceCluster;
+                        $lowestCluster = $clusterValue;
                     }
+                    
+                    if ($distanceCluster < $lowestDistance ) {
+                        $lowestDistance = $distanceCluster;
+                        $lowestCluster = $clusterValue;
+                    }
+                    
+                    $contadorCluster = $contadorCluster + 1;
                 }
                 
-                if ($students['cluster_value'] != $lowestCluster) {
-                    $students['cluster_value'] = $lowestCluster;
+                if ($student['cluster_value'] != $lowestCluster) {
+                    $student['cluster_value'] = $lowestCluster;
                     $flagClusterChange = 1;
                 }
                 
@@ -83,26 +94,41 @@ class k_means
     
     private function generateStructureStudents($listStudent) {
         
-        
-        $students = (object) [
+        /*
+        $student = (object) [
             "id" => "0.0",
             "average" => "0.0",
             "cluster" => "0.0",
             "cluster_value" => "0.0"
-        ];
+        ];*/
         
         $students = array();
+        $student = array();
         
+       /* 
+        foreach ($listStudent as $std) {
+            
+            
+            $student->id = $std['student_id'];
+            $student->average = $std['average'];
+            $student->cluster = '';
+            $student->cluster_value = '';
+            
+            array_push($students,(object) $student);
+            
+            unset($studentud);
+        }*/
         
-        foreach ($listStudent as $student) {
+        foreach ($listStudent as $std) {
+            $student['id'] = $std['student_id'];
+            $student['average'] = $std['average'];
+            $student['cluster'] = '';
+            $student['cluster_value'] = '';
             
-            $students['id'] = $student['id'];
-            $students['average'] = $student['average'];
-            $students['cluster'] = '';
-            $students['cluster_value'] = '';
+            array_push($students, $student);
             
-            array_push($students,$students);
         }
+        
         
         return $students;
     }
