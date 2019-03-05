@@ -18,7 +18,9 @@ class k_means
         
         $students = $this->calculateCluster($students,$random_clusters);
         
+        return $students;
     }
+    
     
     private function getRandomArray($number_students,$number_clusters) {
         
@@ -191,33 +193,5 @@ class k_means
         return 0;
     }
     
-    /*private function asignClusterLetter($students,$random_clusters) {
-        
-        $alphabet = range('A', 'Z');
-        $contador_alphabet = 0;
-        $random_letters = array();
-        
-        foreach ($random_clusters as $random_value) {
-            $random['value'] = $random_value;
-            $random['letter'] = $alphabet[$contador_alphabet];
-            array_push($random_letters,$random);
-            $contador_alphabet =  $contador_alphabet + 1;
-        }
-        
-        foreach ($students as $key => $student) {
-            
-            foreach ($random_letters as $random_value) {
-                
-                if ($random_value['value'] == $student['cluster_value']) {
-                    $students[$key]['cluster'] = $random_value['letter'] ;
-                    break;
-                }
-            }
-            
-        }
-        return $students;
-        
-    }*/
-
 }
 

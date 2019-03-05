@@ -6,7 +6,13 @@ class Kmeans extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model(array('exam_model','student_model','course_model'));
+        $this->load->model(array('exam_model',
+                                 'student_model',
+                                 'course_model',
+                                 'answer_model',
+                                 'question_model',
+                                 'alternative_model'
+        ));
         $this->load->library('k_means');
     }
     
@@ -30,10 +36,56 @@ class Kmeans extends CI_Controller
         
         $data['student'] = $this->course_model->get_avegareByCourse($course_id);
         
-        $this->k_means->start_kmeans($data['student'],2); //CALL Kmeans
+        $students = $this->k_means->start_kmeans($data['student'],2); //CALL Kmeans
+        
+        mysqli_next_result( $this->db->conn_id ); // Free BDD
+        
+        $answers = $this->answer_model->get_gradebytest($test_id);
         
         
         
-        ;
+        //$answer_list = $this->question_model->get_questionbytest($test_id);
+
+        mysqli_next_result( $this->db->conn_id ); // Free BDD
+        $alternatives = $this->alternative_model->getbytest($test_id);
+        
+        
+        //Create Histogram Structure
+        $histograms = array();
+        foreach ($alternatives as $alternative) {
+            
+            $alternative['value'] = 0;
+            
+            array_push($histograms,$alternative);
+            
+        }        
+        
+        //Full fill Histogram
+        $index_histogram = 0;
+        foreach ($answers as $answer) {
+            
+            foreach ($histograms as $key => $histogram) {
+                
+                if ($answer['question_id'] == $histogram['question_id'] ) {
+                    
+                    if ($answer['selected_option'] > 0 ) {
+                        
+                        $index_histogram = 0;
+                        $index_histogram = $key + $answer['selected_option'] - 1;
+                        
+                        $histograms[$index_histogram]['value'] = $histograms[$index_histogram]['value'] + 1;
+                        
+                    }
+                                       
+                }
+                
+            }
+        } 
+        
+        if (1 == 1) {
+            
+        }
+        
+        
     }
 }

@@ -28,4 +28,12 @@ class Answer_model extends CI_Model
 
     }
     
+    public function get_gradebytest($test_id) {
+        
+        $sql = 'CALL usp_answer_getbytest(?)';
+        $query = $this->db->query($sql,array($test_id));
+        return $query->result_array();
+        
+    }
+    
 }
