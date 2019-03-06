@@ -50,11 +50,17 @@ class Kmeans extends CI_Controller
         $alternatives = $this->alternative_model->getbytest($test_id);
         
         
-        //Create Histogram Structure
+        /*Create Histogram Structure
+         * ADD new fields
+         * - value = 
+         */
+        
         $histograms = array();
         foreach ($alternatives as $alternative) {
             
-            $alternative['value'] = 0;
+            $alternative['total_checked'] = 0;
+            $alternative['sum_cluster']   = 0;
+            $alternative['percentage']    = 0;
             
             array_push($histograms,$alternative);
             
@@ -73,18 +79,56 @@ class Kmeans extends CI_Controller
                         $index_histogram = 0;
                         $index_histogram = $key + $answer['selected_option'] - 1;
                         
-                        $histograms[$index_histogram]['value'] = $histograms[$index_histogram]['value'] + 1;
+                        $histograms[$index_histogram]['total_checked'] = $histograms[$index_histogram]['total_checked'] + 1;
+                        
+                        foreach ($students as $student) {
+                            if ($student['id'] == $answer['student_id']) {
+                                $histograms[$index_histogram]['sum_cluster'] = $histograms[$index_histogram]['sum_cluster'] + $student['cluster_value'];
+                                break;
+                            }
+                            
+                        }
+                        
                         
                     }
-                                       
+                   
+                  break;
                 }
                 
             }
         } 
         
-        if (1 == 1) {
+        //Get % Cluster
+        $percent_histograms = array();
+        $percent_histogram  = array();
+        $percent_histogram_flag =  0;
+        
+        foreach ($histograms as $histogram) {
+            $percent_histogram_flag =  0;
+            foreach ($percent_histograms as $key => $percent_histogram) {
+                if ($histogram['question_id'] == $percent_histogram['question_id']) {
+                    $percent_histograms[$key]['total'] = $percent_histograms[$key]['total'] + $histogram['sum_cluster'];
+                    $percent_histogram_flag =  1;
+                }
+            }
+            if ($percent_histogram_flag == 0) {
+                $percent_histogram['question_id'] = $histogram['question_id'];
+                $percent_histogram['total'] = $histogram['sum_cluster'];
+                array_push($percent_histograms,$percent_histogram);
+            }
             
         }
+        
+        foreach ($histograms as $key => $histogram) {
+            foreach ($percent_histograms as $percent_histogram) {
+                if ($histogram['question_id'] == $percent_histogram['question_id'])  {
+                    $histograms[$key]['percentage'] =  ( $histograms[$key]['sum_cluster'] /  $percent_histogram['total'] ) * 100;
+                    break;
+                }
+            }
+        }
+        
+        return $histograms;
         
         
     }
