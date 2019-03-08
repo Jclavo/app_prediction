@@ -72,7 +72,7 @@ CREATE TABLE `answer` (
 
 LOCK TABLES `answer` WRITE;
 /*!40000 ALTER TABLE `answer` DISABLE KEYS */;
-INSERT INTO `answer` VALUES (41,'0',20,12,13),(42,'2',20,12,14),(43,'1',20,12,15),(44,'2',20,12,16),(45,'5',20,12,17),(46,'2',63,12,13),(47,'2',63,12,14),(48,'2',63,12,15),(49,'2',63,12,16),(50,'2',63,12,17);
+INSERT INTO `answer` VALUES (41,'3',20,12,13),(42,'2',20,12,14),(43,'1',20,12,15),(44,'2',20,12,16),(45,'5',20,12,17),(46,'2',63,12,13),(47,'2',63,12,14),(48,'2',63,12,15),(49,'2',63,12,16),(50,'2',63,12,17);
 /*!40000 ALTER TABLE `answer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -457,6 +457,31 @@ BEGIN
 	WHERE a.student_id = in_student_id
 	AND   a.test_id    = in_test_id;
 
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `usp_answer_getbytest` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_answer_getbytest`(IN in_test_id INT(11))
+BEGIN
+	SELECT a.test_id, a.question_id, q.description,  a.student_id, a.selected_option
+		FROM answer AS a
+	INNER JOIN question AS q
+		ON a.test_id = q.test_id
+		AND a.question_id = q.question_id
+	WHERE a.test_id = in_test_id
+		ORDER BY a.question_id;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1306,4 +1331,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-04  9:09:54
+-- Dump completed on 2019-03-08 17:57:06
