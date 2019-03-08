@@ -32,20 +32,17 @@ class Kmeans extends CI_Controller
         
         mysqli_next_result( $this->db->conn_id ); // Free BDD
         
-        //$data['student'] = $this->student_model->get_studentbycourse($course_id);
+        $students = $this->course_model->get_avegareByCourse($course_id);
         
-        $data['student'] = $this->course_model->get_avegareByCourse($course_id);
+        $DATA = $this->k_means->start_kmeans($students,2); //CALL Kmeans
         
-        $students = $this->k_means->start_kmeans($data['student'],2); //CALL Kmeans
+        $students = $DATA['students'];
         
         mysqli_next_result( $this->db->conn_id ); // Free BDD
         
         $answers = $this->answer_model->get_gradebytest($test_id);
         
         
-        
-        //$answer_list = $this->question_model->get_questionbytest($test_id);
-
         mysqli_next_result( $this->db->conn_id ); // Free BDD
         $alternatives = $this->alternative_model->getbytest($test_id);
         
@@ -128,8 +125,7 @@ class Kmeans extends CI_Controller
             }
         }
         
-        return $histograms;
-        
-        
+        echo json_encode($histograms);
+          
     }
 }

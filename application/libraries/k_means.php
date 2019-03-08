@@ -8,6 +8,8 @@ class k_means
     public function start_kmeans(array $listStudent, int $number_clusters) {
         
         
+        //$data[] - All the information will be loaded in this array 
+        
         $number_students = count($listStudent) - 1;
         
         $random_clusters = $this->getRandomArray($number_students,$number_clusters);
@@ -16,9 +18,13 @@ class k_means
         
         $random_clusters = $this->asignClusterLetter($students,$random_clusters);
         
+        $data['clusters'] = $random_clusters; // add "Cluster" to array DATA
+        
         $students = $this->calculateCluster($students,$random_clusters);
         
-        return $students;
+        $data['students'] = $students; // add "Students" to array DATA
+        
+        return $data;
     }
     
     
