@@ -50,7 +50,9 @@ function call_ajax(operation, data_input) {
 			break
 		case EXECUTE_KMEANS:
             //alert(data.test)
-            //display_students(data.student)
+            display_clusters(data.clusters)
+            display_students(data.students)
+            display_histograms(data.total_alternatives,data.histograms)
 			//call_ajax(READ_ALL,global_test)
 			break
 		}
@@ -70,41 +72,6 @@ function select_tests(test){
 	}	
 }
 
-
-/*
-function display_students(student) {
-	
-	// codigo para cargar los valores
-	document.getElementById("form-list-test_student-body").innerHTML = "";
-
-	for (i = 0; i < student.length; i++) {
-
-		var myTr = document.createElement("tr")
-
-		for (student_field in student[i]) {
-
-			var mytd = document.createElement("td")
-			mytd.innerHTML = student[i][student_field]
-			myTr.appendChild(mytd)
-
-		}
-		var actionTd = document.createElement("td")
-		
-		var linkbtn = document.createElement("a")
-		linkbtn.innerHTML = "Set Answer"
-		linkbtn.setAttribute("class", "btn btn-sm btn-link")
-		linkbtn.setAttribute("href", URL_ANSWER + '/' + student[i]['student_id'] + '/' + document.getElementById("test_student-test").value)
-
-		
-		actionTd.appendChild(linkbtn)
-		myTr.appendChild(actionTd)
-		
-		document.getElementById("form-list-test_student-body").appendChild(myTr)
-	}
-	
-}
-*/
-
 function execute_kmeans() {
 	
 global_data.test_id  = document.getElementById("kmeans-test").value
@@ -118,5 +85,160 @@ global_data.test_id  = document.getElementById("kmeans-test").value
 	}
 
 }
+
+function display_clusters(clusters) {
+	
+	// codigo para cargar los valores
+	document.getElementById("form-list-kmeans-clusters").innerHTML = "";
+
+	for (i = 0; i < clusters.length; i++) {
+
+		var myTr = document.createElement("tr")
+
+		for (cluster_field in clusters[i]) {
+
+			var mytd = document.createElement("td")
+			mytd.innerHTML = clusters[i][cluster_field]
+			myTr.appendChild(mytd)
+
+		}
+		
+		document.getElementById("form-list-kmeans-clusters").appendChild(myTr)
+	}
+	
+}
+
+function display_students(students) {
+	
+	// codigo para cargar los valores
+	document.getElementById("form-list-kmeans-students").innerHTML = "";
+
+	for (i = 0; i < students.length; i++) {
+
+		var myTr = document.createElement("tr")
+
+		for (student_field in students[i]) {
+
+			var mytd = document.createElement("td")
+			mytd.innerHTML = students[i][student_field]
+			myTr.appendChild(mytd)
+
+		}
+		
+		document.getElementById("form-list-kmeans-students").appendChild(myTr)
+	}
+	
+}
+
+function display_histograms(total_alternatives,histograms) {
+	
+	// codigo para cargar los valores
+	//HTML Header
+/*	<th>question id</th>
+							<th>question</th>
+							<th>option id</th>
+							<th>option</th>
+							<th>Total choosen</th>
+							<th>Sum cluster</th>
+							<th>Percentage</th>
+*/
+	/*document.getElementById("form-list-kmeans-histograms").innerHTML = "";
+
+	for (i = 0; i < histograms.length; i++) {
+
+		var myTr = document.createElement("tr")
+
+		for (histogram_field in histograms[i]) {
+
+			var mytd = document.createElement("td")
+			mytd.innerHTML = histograms[i][histogram_field]
+			myTr.appendChild(mytd)
+
+		}
+		
+		document.getElementById("form-list-kmeans-histograms").appendChild(myTr)
+	}
+
+	
+	*/
+	
+
+	
+	var j = 1
+	var mytd
+	var myTr
+	
+	while (j <= total_alternatives) {
+		
+		mytd = document.createElement("th")
+		mytd.innerHTML = 'Option # ' + j
+		document.getElementById("form-list-kmeans-histograms-header").appendChild(mytd)	
+		
+		j = j + 1
+		
+	}
+	
+	
+	document.getElementById("form-list-kmeans-histograms-body").innerHTML = "";
+	
+	j = 0;
+	for (i = 0; i < histograms.length; i++) {
+
+		/*switch (j) {
+		case 0:
+				myTr = document.createElement("tr")
+				mytd = document.createElement("td")
+				mytd.innerHTML = histograms[i]['question_id']
+				myTr.appendChild(mytd)
+				mytd = document.createElement("td")
+				mytd.innerHTML = histograms[i]['question_description']
+				myTr.appendChild(mytd)
+			break;
+		case total_alternatives:
+		
+			document.getElementById("form-list-kmeans-histograms-body").appendChild(myTr)
+			j = -1
+		break;
+
+		default:
+			mytd = document.createElement("td")
+			mytd.innerHTML = histograms[i]['total_checked']
+			myTr.appendChild(mytd)
+			break;
+		}
+		
+		j = j + 1;
+		*/
+		
+		if (j == 0) {
+			myTr = document.createElement("tr")
+			mytd = document.createElement("td")
+			mytd.innerHTML = histograms[i]['question_id']
+			myTr.appendChild(mytd)
+			mytd = document.createElement("td")
+			mytd.innerHTML = histograms[i]['question_description']
+			myTr.appendChild(mytd)
+			mytd = document.createElement("td")
+			mytd.innerHTML = histograms[i]['total_checked']
+			myTr.appendChild(mytd)
+		}
+		else {
+			if (j == total_alternatives) {
+				document.getElementById("form-list-kmeans-histograms-body").appendChild(myTr)
+				j = -1
+			}
+			else {
+				mytd = document.createElement("td")
+				mytd.innerHTML = histograms[i]['total_checked']
+				myTr.appendChild(mytd)
+			}
+		}
+		j = j + 1
+		
+	}
+	
+}
+
+
 
 

@@ -43,20 +43,54 @@
                 </div>
 			</div>
 
-			<!-- LIST -->
+			<!-- LIST CLUSTERS -->
 			<div class=col-md-12>
-				List of tests
+				Clusters
 				<table class="table table-bordered table-condensed table-hover">
 					<thead>
 						<tr>
-							<th>Id</th>
-							<th>Name</th>
-							<th>Lastname</th>
-							<th>Actions</th>
+							<th>Value</th>
+							<th>Letter</th>
 						</tr>
 
 					</thead>
-					<tbody id="form-list-kmeans-body">
+					<tbody id="form-list-kmeans-clusters">
+
+					</tbody>
+				</table>
+			</div>
+			
+			<!-- LIST STUDENTS -->
+			<div class=col-md-12>
+				Students
+				<table class="table table-bordered table-condensed table-hover">
+					<thead>
+						<tr>
+							<th>id</th>
+							<th>average</th>
+							<th>cluster</th>
+							<th>cluster value</th>
+						</tr>
+
+					</thead>
+					<tbody id="form-list-kmeans-students">
+
+					</tbody>
+				</table>
+			</div>
+			
+			<!-- LIST HISTOGRAMS -->
+			<div class=col-md-12>
+				Histograms
+				<table class="table table-bordered table-condensed table-hover">
+					<thead >
+						<tr id="form-list-kmeans-histograms-header">
+							<th>question id</th>
+							<th>question</th>
+						</tr>
+
+					</thead>
+					<tbody id="form-list-kmeans-histograms-body">
 
 					</tbody>
 				</table>
