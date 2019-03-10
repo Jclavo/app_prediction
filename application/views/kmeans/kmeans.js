@@ -50,7 +50,7 @@ function call_ajax(operation, data_input) {
 			break
 		case EXECUTE_KMEANS:
             //alert(data.test)
-            display_students(data.student)
+            //display_students(data.student)
 			//call_ajax(READ_ALL,global_test)
 			break
 		}

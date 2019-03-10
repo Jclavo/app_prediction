@@ -8,23 +8,31 @@ class k_means
     public function start_kmeans(array $listStudent, int $number_clusters) {
         
         
-        $number_students = count($listStudent);
+        //$data[] - All the information will be loaded in this array 
+        
+        $number_students = count($listStudent) - 1;
         
         $random_clusters = $this->getRandomArray($number_students,$number_clusters);
         
         $students = $this->generateStructureStudents($listStudent);
         
+        $random_clusters = $this->asignClusterLetter($students,$random_clusters);
+        
+        $data['clusters'] = $random_clusters; // add "Cluster" to array DATA
+        
         $students = $this->calculateCluster($students,$random_clusters);
         
-        $students = $this->asignClusterLetter($students,$random_clusters);
+        $data['students'] = $students; // add "Students" to array DATA
         
+        return $data;
     }
+    
     
     private function getRandomArray($number_students,$number_clusters) {
         
         $array_random = array();
         $random_value = rand(0,$number_students);
-                
+        
         array_push($array_random,$random_value);
         $condition = TRUE;
         
@@ -39,7 +47,7 @@ class k_means
             {
                 array_push($array_random,$random_value);
             }
-        }  
+        }
     }
     
     private function calculateCluster($students,$random_clusters) {
@@ -52,13 +60,14 @@ class k_means
         while ($flagClusterChange) {
             
             $flagClusterChange = 0;
-            foreach ($students as $student) {
+            foreach ($students as $key => $student) {
                 
                 $lowestCluster = 0;
                 $lowestDistance = 0;
                 $contadorCluster = 0;
                 //Get lowest distance and so on
-                foreach ($random_clusters as $clusterValue) {
+                foreach ($random_clusters as $random_cluster) {
+                    $clusterValue = $random_cluster['value'];
                     $distanceCluster = $this->distanceBetweenPoints($clusterValue,$student['average']);
                     
                     if ($contadorCluster == 0) {
@@ -75,8 +84,60 @@ class k_means
                 }
                 
                 if ($student['cluster_value'] != $lowestCluster) {
-                    $student['cluster_value'] = $lowestCluster;
+                    $students[$key]['cluster_value'] = $lowestCluster;
                     $flagClusterChange = 1;
+                }
+                
+            }
+            
+            /*foreach ($students as $key => $student) {
+                foreach ($random_clusters as $random_cluster) {
+                    
+                }
+                
+            }*/
+            $points_high_lows = array();
+            $points_high_low = array();
+            
+            foreach ($students as $key => $student) {
+                              
+                if ($this->isClusterInList($points_high_lows,$student)) {
+                        
+                    foreach ($points_high_lows as $key => $point)
+                      {
+                        if ($student['cluster_value'] == $point['cluster_value'] ) {
+                            
+                            if ($student['average'] < $point['low']) {
+                                $points_high_lows[$key]['low'] = $student['average'];
+                            }
+                            else {
+                                if ($student['average'] > $point['high']) {
+                                    $points_high_lows[$key]['high'] = $student['average'];
+                                }
+                            }                            
+                        }
+                    }
+
+                }
+                else 
+                {
+                    $points_high_low['cluster_value'] = $student['cluster_value'];
+                    $points_high_low['low']     = $student['average'];
+                    $points_high_low['high']    = $student['average'];
+                    
+                    array_push($points_high_lows, $points_high_low);
+                   
+                }
+                
+            }
+            
+            foreach ($random_clusters as $key => $random_cluster) {
+                
+                foreach ($points_high_lows as $point)
+                {
+                    if ($random_cluster['value'] == $point['cluster_value']) {
+                        $random_clusters[$key]['value'] = ( $point['low'] + $point['high'] ) / 2;
+                    }
                 }
                 
             }
@@ -93,31 +154,9 @@ class k_means
     }
     
     private function generateStructureStudents($listStudent) {
-        
-        /*
-        $student = (object) [
-            "id" => "0.0",
-            "average" => "0.0",
-            "cluster" => "0.0",
-            "cluster_value" => "0.0"
-        ];*/
-        
+                
         $students = array();
         $student = array();
-        
-       /* 
-        foreach ($listStudent as $std) {
-            
-            
-            $student->id = $std['student_id'];
-            $student->average = $std['average'];
-            $student->cluster = '';
-            $student->cluster_value = '';
-            
-            array_push($students,(object) $student);
-            
-            unset($studentud);
-        }*/
         
         foreach ($listStudent as $std) {
             $student['id'] = $std['student_id'];
@@ -129,36 +168,36 @@ class k_means
             
         }
         
-        
         return $students;
     }
     
-    private function asignClusterLetter($students,$random_clusters) {
+    private function asignClusterLetter($students,$clusters) {
                
         $alphabet = range('A', 'Z');
         $contador_alphabet = 0;
+        $random_clusters = array();
+        $random_cluster = array();
         
-        foreach ($random_clusters as $random_value) {
-            $random['value'] = $random_value;
-            $random['letter'] = $alphabet[$contador_alphabet];
-            array_push($array_random,$random);
+        foreach ($clusters as $cluster) {
+            $random_cluster['value'] = $students[$cluster]['average'];
+            $random_cluster['letter'] = $alphabet[$contador_alphabet];
+            array_push($random_clusters,$random_cluster);
             $contador_alphabet =  $contador_alphabet + 1;
         }
         
-        foreach ($students as $student) {
-            
-            foreach ($random_clusters as $random_value) {
-                
-                if ($random_value['value'] == $student['average']) {
-                    $student['cluster'] = $random_value['letter'] ;
-                    break;
-                }   
-            }           
-   
-        }
-        return $students;
-        
+        return $random_clusters;
     }
-
+    
+    private function isClusterInList($points_high_lows,$student) {
+        
+        foreach ($points_high_lows as $point)
+        {
+            if ($student['cluster_value'] == $point['cluster_value'] ) {
+                return 1;
+            }
+        }
+        return 0;
+    }
+    
 }
 
