@@ -11,9 +11,10 @@ class Kmeans extends CI_Controller
                                  'course_model',
                                  'answer_model',
                                  'question_model',
-                                 'alternative_model'
+                                 'alternative_model',
+                                 'test_model'
         ));
-        $this->load->library('k_means');
+        $this->load->library('K_means');
     }
     
     public function index()
@@ -41,6 +42,10 @@ class Kmeans extends CI_Controller
         mysqli_next_result( $this->db->conn_id ); // Free BDD
         
         $answers = $this->answer_model->get_gradebytest($test_id);
+        
+        mysqli_next_result( $this->db->conn_id ); // Free BDD
+        $test = $this->test_model->get_test($test_id);
+        $DATA['total_alternatives'] = $test[0]['total_alternative']; //Get Total alternatives by Answer
         
         
         mysqli_next_result( $this->db->conn_id ); // Free BDD
@@ -125,7 +130,8 @@ class Kmeans extends CI_Controller
             }
         }
         
-        echo json_encode($histograms);
+        $DATA['histograms']  = $histograms;
+        echo json_encode($DATA);
           
     }
 }

@@ -3,7 +3,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class k_means
+class K_means
 {
     public function start_kmeans(array $listStudent, int $number_clusters) {
         
