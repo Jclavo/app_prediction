@@ -122,6 +122,51 @@
 			<br>
 			<!-- view -->
 		</div>
+
+		<!-- THE MODAL -->
+		<div class="modal" id="myModal">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h4 class="modal-title">Details</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">
+    					<div class=col-md-12>
+    						Details
+    						<table class="table table-bordered table-condensed table-hover">
+    							<thead>
+    								<tr id="form-list-kmeans-histograms">
+    									<th>question id</th>
+            							<th>question</th>
+            							<th>option id</th>
+            							<th>option</th>
+            							<th>Total choosen</th>
+            							<th>Sum cluster</th>
+            							<th>Percentage</th>
+                					</tr>
+    
+    							</thead>
+    							<tbody id="form-list-kmeans-histograms-details">
+    
+    							</tbody>
+    						</table>
+    					</div>
+					</div>
+
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
 	</div>
 	<script>
   		var BASE_URL = <?php echo json_encode(site_url()); ?>;</script>

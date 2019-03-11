@@ -7,6 +7,7 @@ var URL_READ_ALL_TEST = BASE_URL + '/test/get_test'
 var URL_EXECUTE_KMEANS = BASE_URL + '/kmeans/execute_kmeans'
 var URL_ANSWER = BASE_URL + '/answer/index'
 
+var HISTOGRAMS_INFO
 		
 var global_data = {
 		id : '',
@@ -132,47 +133,27 @@ function display_students(students) {
 
 function display_histograms(total_alternatives,histograms) {
 	
+	HISTOGRAMS_INFO = histograms //Send info to global variable
 	// codigo para cargar los valores
 	//HTML Header
-/*	<th>question id</th>
-							<th>question</th>
-							<th>option id</th>
-							<th>option</th>
-							<th>Total choosen</th>
-							<th>Sum cluster</th>
-							<th>Percentage</th>
-*/
-	/*document.getElementById("form-list-kmeans-histograms").innerHTML = "";
 
-	for (i = 0; i < histograms.length; i++) {
-
-		var myTr = document.createElement("tr")
-
-		for (histogram_field in histograms[i]) {
-
-			var mytd = document.createElement("td")
-			mytd.innerHTML = histograms[i][histogram_field]
-			myTr.appendChild(mytd)
-
-		}
-		
-		document.getElementById("form-list-kmeans-histograms").appendChild(myTr)
-	}
-
-	
-	*/
-	
-
-	
 	var j = 1
 	var mytd
 	var myTr
+	
+	//document.getElementById("form-list-kmeans-histograms-header").innerHTML = "";
 	
 	while (j <= total_alternatives) {
 		
 		mytd = document.createElement("th")
 		mytd.innerHTML = 'Option # ' + j
 		document.getElementById("form-list-kmeans-histograms-header").appendChild(mytd)	
+		
+		if (j == total_alternatives) {
+			mytd = document.createElement("th")
+			mytd.innerHTML = 'Link' 
+			document.getElementById("form-list-kmeans-histograms-header").appendChild(mytd)	
+		}
 		
 		j = j + 1
 		
@@ -181,7 +162,7 @@ function display_histograms(total_alternatives,histograms) {
 	
 	document.getElementById("form-list-kmeans-histograms-body").innerHTML = "";
 	
-	j = 0;
+	j = 1;
 	for (i = 0; i < histograms.length; i++) {
 
 		/*switch (j) {
@@ -210,7 +191,7 @@ function display_histograms(total_alternatives,histograms) {
 		j = j + 1;
 		*/
 		
-		if (j == 0) {
+		if (j == 1) {
 			myTr = document.createElement("tr")
 			mytd = document.createElement("td")
 			mytd.innerHTML = histograms[i]['question_id']
@@ -221,11 +202,33 @@ function display_histograms(total_alternatives,histograms) {
 			mytd = document.createElement("td")
 			mytd.innerHTML = histograms[i]['total_checked']
 			myTr.appendChild(mytd)
+
 		}
 		else {
 			if (j == total_alternatives) {
+				
+				mytd = document.createElement("td")
+				mytd.innerHTML = histograms[i]['total_checked']
+				myTr.appendChild(mytd)
+								
+				mytd = document.createElement("td")
+				//var linkbtn = document.createElement("button")
+				var linkbtn = document.createElement("a")
+				linkbtn.innerHTML = "Show"
+				linkbtn.setAttribute("class", "btn btn-primary")
+				linkbtn.setAttribute("data-toggle", "modal")
+				linkbtn.setAttribute("data-target", "#myModal")
+				//linkbtn.setAttribute("id_question", histograms[i]['question_id'])
+				linkbtn.setAttribute("onclick", "show_details_answer(" + histograms[i]['question_id'] + ");")
+				
+				onclick="SleepTime(2000);"
+				
+				//linkbtn.setAttribute("href", URL_GRADE + '/' + exam[i]['exam_id'] + '/' + exam[i]['course_id'])
+				mytd.appendChild(linkbtn)
+				myTr.appendChild(mytd)
+
 				document.getElementById("form-list-kmeans-histograms-body").appendChild(myTr)
-				j = -1
+				j = 0
 			}
 			else {
 				mytd = document.createElement("td")
@@ -238,6 +241,33 @@ function display_histograms(total_alternatives,histograms) {
 	}
 	
 }
+
+function show_details_answer(question_id) {
+	
+	document.getElementById("form-list-kmeans-histograms-details").innerHTML = "";
+
+	for (i = 0; i < HISTOGRAMS_INFO.length; i++) {
+		
+		if (HISTOGRAMS_INFO[i]['question_id'] != question_id) {
+			continue;
+		}
+
+		var myTr = document.createElement("tr")
+
+		for (histogram_field in HISTOGRAMS_INFO[i]) {
+
+			var mytd = document.createElement("td")
+			mytd.innerHTML = HISTOGRAMS_INFO[i][histogram_field]
+			myTr.appendChild(mytd)
+
+		}
+		
+		document.getElementById("form-list-kmeans-histograms-details").appendChild(myTr)
+	}
+
+	
+}
+
 
 
 
