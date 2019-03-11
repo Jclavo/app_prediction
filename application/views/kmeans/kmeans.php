@@ -85,6 +85,7 @@
 							<thead>
 								<tr>
 									<th>id</th>
+									<th>name</th>
 									<th>average</th>
 									<th>cluster</th>
 									<th>cluster value</th>
