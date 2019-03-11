@@ -18,11 +18,10 @@ class K_means
         
         $random_clusters = $this->asignClusterLetter($students,$random_clusters);
         
-        $data['clusters'] = $random_clusters; // add "Cluster" to array DATA
+       $data_aux = $this->calculateCluster($students,$random_clusters);
         
-        $students = $this->calculateCluster($students,$random_clusters);
-        
-        $data['students'] = $students; // add "Students" to array DATA
+       $data['clusters'] = $data_aux['clusters']; // add "Cluster" to array DATA
+       $data['students'] = $data_aux['students']; // add "Students" to array DATA
         
         return $data;
     }
@@ -144,7 +143,9 @@ class K_means
 
         }
 
-        return $students;
+        $data_aux['students'] = $students;
+        $data_aux['clusters'] = $random_clusters;
+        return $data_aux;
     }
     
     private function distanceBetweenPoints($pointX, $pointY) {

@@ -37,6 +37,8 @@ class Kmeans extends CI_Controller
         
         $DATA = $this->k_means->start_kmeans($students,2); //CALL Kmeans
         
+        // Add Students' name and Cluster's letter
+        $DATA['students'] = $this->fill_structure_students($DATA['students'],$DATA['clusters'],$students); 
         $students = $DATA['students'];
         
         mysqli_next_result( $this->db->conn_id ); // Free BDD
@@ -133,5 +135,51 @@ class Kmeans extends CI_Controller
         $DATA['histograms']  = $histograms;
         echo json_encode($DATA);
           
+    }
+    
+    
+    private function fill_structure_students($students,$clusters,$students_names){
+        
+        $new_students = array();
+        
+        foreach ($students as $key => $student) {
+            
+            // Assign Cluster's letter
+            foreach ($clusters as $cluster) {
+                if ($student['cluster_value'] == $cluster['value']) {
+                    $students[$key]['cluster'] = $cluster['letter'];
+                    break;
+                }
+            }
+            
+                        
+           
+            
+            foreach ($students_names as $key => $student_name) {
+                if ($student['id'] == $student_name['student_id']) {
+                    //$new_student['name'] = $student_name['name'] . " " . $student_name['lastname'] ;
+                    //$new_student['name'] = $student_name['name'];
+                    $students[$key]['name'] = $student_name['name'] . " " . $student_name['lastname'] ;
+                    break;
+                }
+            }
+                        
+            
+
+        }
+        
+        foreach ($students as $key => $student) {
+            //create a new Student's structure
+            $new_student['id']              = $student['id'];
+            $new_student['name']            = $student['name'];
+            $new_student['average']         = $student['average'];
+            $new_student['cluster']         = $student['cluster'];
+            $new_student['cluster_value']   = $student['cluster_value'];
+            array_push($new_students,$new_student);
+        }
+        
+        return $new_students;
+        
+        
     }
 }
