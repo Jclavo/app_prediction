@@ -125,7 +125,7 @@
 
 		<!-- THE MODAL -->
 		<div class="modal" id="myModal">
-			<div class="modal-dialog modal-lg">
+			<div class="modal-dialog "> <!--  modal-lg -->
 				<div class="modal-content">
 
 					<!-- Modal Header -->
@@ -136,6 +136,7 @@
 
 					<!-- Modal body -->
 					<div class="modal-body">
+					<!--
     					<div class=col-md-12>
     						Details
     						<table class="table table-bordered table-condensed table-hover">
@@ -156,6 +157,9 @@
     							</tbody>
     						</table>
     					</div>
+    					 -->
+    					<canvas id="myChart" style="max-width: 500px;">
+    					</canvas>
 					</div>
 
 					<!-- Modal footer -->
@@ -176,6 +180,8 @@
 		src="<?php echo base_url('assets/js/bootstrap/bootstrap.min.js')?>"></script>
 	<script
 		src="<?php echo base_url('application/views/kmeans/kmeans.js')?>"></script>
+	<script
+		src="<?php echo base_url('assets/js/mdb/mdb.js')?>"></script>
 
 </body>
 </html>

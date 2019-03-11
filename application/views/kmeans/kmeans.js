@@ -242,6 +242,7 @@ function display_histograms(total_alternatives,histograms) {
 	
 }
 
+/*
 function show_details_answer(question_id) {
 	
 	document.getElementById("form-list-kmeans-histograms-details").innerHTML = "";
@@ -264,8 +265,71 @@ function show_details_answer(question_id) {
 		
 		document.getElementById("form-list-kmeans-histograms-details").appendChild(myTr)
 	}
+}
+*/
 
+function show_details_answer(question_id) {
 	
+	//document.getElementById("form-list-kmeans-histograms-details").innerHTML = "";
+	
+	array_labels = []
+	array_data = []
+	
+	j = 1
+	for (i = 0; i < HISTOGRAMS_INFO.length; i++) {
+		
+		if (HISTOGRAMS_INFO[i]['question_id'] != question_id) {
+			continue;
+		}
+
+	   array_data.push(HISTOGRAMS_INFO[i]['total_checked'])
+		
+		array_labels.push('Option # '+j)
+		
+		j = j + 1
+		
+		//document.getElementById("form-list-kmeans-histograms-details").appendChild(myTr)
+	}
+	
+	var ctx = document.getElementById("myChart").getContext('2d');
+	  var myChart = new Chart(ctx, {
+	    type: 'bar',
+	    data: {
+	      //labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+	      labels: array_labels,
+	      datasets: [{
+	        label: '% of Answers',
+	        //data: [12, 19, 3, 5, 2, 3],
+	        data: array_data,
+	        backgroundColor: [
+	          'rgba(255, 99, 132, 0.2)',
+	          'rgba(54, 162, 235, 0.2)',
+	          'rgba(255, 206, 86, 0.2)',
+	          'rgba(75, 192, 192, 0.2)',
+	          'rgba(153, 102, 255, 0.2)',
+	          'rgba(255, 159, 64, 0.2)'
+	        ],
+	        borderColor: [
+	          'rgba(255,99,132,1)',
+	          'rgba(54, 162, 235, 1)',
+	          'rgba(255, 206, 86, 1)',
+	          'rgba(75, 192, 192, 1)',
+	          'rgba(153, 102, 255, 1)',
+	          'rgba(255, 159, 64, 1)'
+	        ],
+	        borderWidth: 1
+	      }]
+	    },
+	    options: {
+	      scales: {
+	        yAxes: [{
+	          ticks: {
+	            beginAtZero: true
+	          }
+	        }]
+	      }
+	    }
+	  });
 }
 
 
