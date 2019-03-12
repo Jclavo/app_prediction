@@ -21,6 +21,11 @@ class Question_model extends CI_Model
         $query = $this->db->query($sql,array($test_id));
         return $query->result_array();
     }
+    
+    public function update_correct_answer($question_id,$correct_answer) {
+        $sql = 'CALL usp_question_updatecorrectanswer(?,?)';
+        return $this->db->query($sql,array($question_id,$correct_answer));
+    }
 
 
 }

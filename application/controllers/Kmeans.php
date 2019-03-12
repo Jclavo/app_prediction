@@ -133,6 +133,14 @@ class Kmeans extends CI_Controller
         }
         
         $DATA['histograms']  = $histograms;
+        
+        //Get questions and their correct answers
+        
+        $test = $this->question_model-get_questionbytest($test_id);
+        
+        $DATA['test']  = $test;
+        
+        
         echo json_encode($DATA);
           
     }

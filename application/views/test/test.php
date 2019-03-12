@@ -98,7 +98,7 @@
 					</tbody>
 				</table>
 			</div>
-			<br> 
+			<br>
 			<!-- view -->
 		</div>
 	</div>

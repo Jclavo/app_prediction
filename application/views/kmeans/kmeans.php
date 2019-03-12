@@ -51,6 +51,8 @@
 						href="#students">Students</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
 						href="#histograms">Histograms</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+						href="#answers">Answers</a></li>
 				</ul>
 			</div>
 

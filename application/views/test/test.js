@@ -8,6 +8,7 @@ var URL_CREATE 	 = BASE_URL + '/test/create_test'
 var URL_READ_ALL = BASE_URL + '/test/get_test'
 var URL_DELETE 	 = BASE_URL + '/test/delete_test'
 var URL_UPDATE 	 = BASE_URL + '/test/update_test'
+var URL_QUESTIONS = BASE_URL + '/question/index'
 
 //var URL_READ_ALL_COURSE = BASE_URL + '/course/get_course'
 		
@@ -178,14 +179,15 @@ function display_tests(test) {
 		deletebtn.setAttribute("class", "btn btn-sm btn-danger")
 		deletebtn.setAttribute("onclick", "delete_test(" + test[i]['test_id'] + ")")
 
-/*		var linkbtn = document.createElement("a")
-		linkbtn.innerHTML = "Students"
+		var linkbtn = document.createElement("a")
+		linkbtn.innerHTML = "Set Answers"
 		linkbtn.setAttribute("class", "btn btn-sm btn-link")
-		linkbtn.setAttribute("href", URL_GRADE + '/' + exam[i]['exam_id'] + '/' + exam[i]['course_id'])
-*/
+		//linkbtn.setAttribute("href", URL_GRADE + '/' + exam[i]['exam_id'] + '/' + exam[i]['course_id'])
+		linkbtn.setAttribute("href", URL_QUESTIONS + '/' + test[i]['test_id'])
+
 		actionTd.appendChild(editBtn)
 		actionTd.appendChild(deletebtn)
-	//	actionTd.appendChild(linkbtn)
+		actionTd.appendChild(linkbtn)
 		myTr.appendChild(actionTd)
 		
 		document.getElementById("form-list-test-body").appendChild(myTr)

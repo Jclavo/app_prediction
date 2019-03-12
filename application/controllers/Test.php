@@ -81,8 +81,4 @@ class Test extends CI_Controller
         $this->load->view('test_student/test_student');
     }
     
-    public function set_($param) {
-        ;
-    }
- 
 }

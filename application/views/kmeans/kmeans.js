@@ -298,7 +298,7 @@ function show_details_answer(question_id) {
 	      //labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
 	      labels: array_labels,
 	      datasets: [{
-	        label: '% of Answers',
+	        label: '# of Answers',
 	        //data: [12, 19, 3, 5, 2, 3],
 	        data: array_data,
 	        backgroundColor: [
