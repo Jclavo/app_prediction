@@ -148,7 +148,7 @@ function display_answers(answers) {
 				
 				if (answer_field == 'matched') {
 					var linkbtn = document.createElement("button")
-					if (answers[i][answer_field] == 0) { //s
+					if (answers[i][answer_field] == 0) { 
 						linkbtn.setAttribute("class", "btn btn-danger")
 					}
 					else {

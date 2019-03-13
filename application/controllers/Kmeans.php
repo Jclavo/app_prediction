@@ -19,7 +19,6 @@ class Kmeans extends CI_Controller
     
     public function index()
     {
-        //$this->load->view('kmeans/kmeans', $data);
         $data = null;
         $this->load->view('kmeans/kmeans',$data);
     }
