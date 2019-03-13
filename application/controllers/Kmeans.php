@@ -135,10 +135,40 @@ class Kmeans extends CI_Controller
         $DATA['histograms']  = $histograms;
         
         //Get questions and their correct answers
+        mysqli_next_result( $this->db->conn_id ); // Free BDD
+        $questions = $this->question_model->get_questionbytest($test_id);
         
-        $test = $this->question_model-get_questionbytest($test_id);
-        
-        $DATA['test']  = $test;
+       
+        foreach ($questions as $key => $question) {
+            $flag_first_question = 0;
+            $correct_answer = 0;
+            foreach ($histograms as $histogram) {
+                if ($question['question_id'] == $histogram['question_id']) {
+                    if ($flag_first_question == 0) {
+                        $highest_percentage = $histogram['percentage'];
+                        $correct_answer     = $flag_first_question + 1;
+                    }
+                    
+                    if ($highest_percentage < $histogram['percentage']) {
+                        $highest_percentage = $histogram['percentage'];
+                        $correct_answer     = $flag_first_question + 1;
+                    }
+                    $flag_first_question =  $flag_first_question + 1;
+                }
+            }
+            $questions[$key]['predict'] = $correct_answer;
+            
+            if ($questions[$key]['predict'] == $questions[$key]['correct']) {
+                $questions[$key]['matched'] = 1;
+            }
+            else {
+                $questions[$key]['matched'] = 0;
+            }
+            
+           
+         }
+         
+         $DATA['answers']  = $questions;
         
         
         echo json_encode($DATA);

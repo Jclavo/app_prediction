@@ -120,6 +120,30 @@
 						</table>
 					</div>
 				</div>
+				
+				<!-- LIST QUESTIONS -->
+				<div id="answers" class="container tab-pane fade">
+					<br>
+					<div class=col-md-12>
+						Answers
+						<table class="table table-bordered table-condensed table-hover">
+							<thead>
+								<tr id="form-list-kmeans-answers-header">
+									<th>question id</th>
+									<th>question</th>
+									<th>predict answer</th>
+									<th>correct answer</th>
+									<th>matched</th>
+									
+								</tr>
+
+							</thead>
+							<tbody id="form-list-kmeans-answers-body">
+
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 			<br>
 			<!-- view -->

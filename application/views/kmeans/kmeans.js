@@ -54,6 +54,7 @@ function call_ajax(operation, data_input) {
             display_clusters(data.clusters)
             display_students(data.students)
             display_histograms(data.total_alternatives,data.histograms)
+            display_answers(data.answers)
 			//call_ajax(READ_ALL,global_test)
 			break
 		}
@@ -130,6 +131,47 @@ function display_students(students) {
 	}
 	
 }
+
+function display_answers(answers) {
+	
+	// codigo para cargar los valores
+	document.getElementById("form-list-kmeans-answers-body").innerHTML = "";
+
+	for (i = 0; i < answers.length; i++) {
+
+		var myTr = document.createElement("tr")
+
+		for (answer_field in answers[i]) {
+
+			if (answer_field != 'test_id') {
+				var mytd = document.createElement("td")
+				
+				if (answer_field == 'matched') {
+					var linkbtn = document.createElement("button")
+					if (answers[i][answer_field] == 0) {
+						linkbtn.setAttribute("class", "btn btn-danger")
+					}
+					else {
+						linkbtn.setAttribute("class", "btn btn-success")
+					}
+					
+					mytd.appendChild(linkbtn)
+				}
+				else {
+					
+					mytd.innerHTML = answers[i][answer_field]
+					
+				}
+				myTr.appendChild(mytd)	
+			}
+			
+		}
+		
+		document.getElementById("form-list-kmeans-answers-body").appendChild(myTr)
+	}
+	
+}
+
 
 function display_histograms(total_alternatives,histograms) {
 	
