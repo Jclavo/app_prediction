@@ -38,10 +38,18 @@ class Kmeans extends CI_Controller
         $DATA = $this->k_means->start_kmeans($students,2); //CALL Kmeans
         
         
-        $clusters = $DATA['clusters'][count($DATA['clusters'])-1];
+        $clusters = $DATA['clusters'][count($DATA['clusters'])-1]; //Assign the last cluster 
+        
+        
         // Add Students' name and Cluster's letter
-        $DATA['students'] = $this->fill_structure_students($DATA['students'],$clusters,$students); 
-        $students = $DATA['students'];
+        foreach ($DATA['students'] as $key => $std) {
+            
+            $DATA['students'][$key] = $this->fill_structure_students($std,$DATA['clusters'][$key],$students); 
+ 
+        }
+        
+        $students = $DATA['students'][count($DATA['students'])-1]; //Assign the last student
+        
         
         mysqli_next_result( $this->db->conn_id ); // Free BDD
         

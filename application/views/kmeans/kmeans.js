@@ -167,7 +167,7 @@ function display_clusters(clusters) {
 function display_students(students) {
 
 	// codigo para cargar los valores
-	document.getElementById("form-list-kmeans-students").innerHTML = "";
+	/*document.getElementById("form-list-kmeans-students").innerHTML = "";
 
 	for (i = 0; i < students.length; i++) {
 
@@ -182,6 +182,87 @@ function display_students(students) {
 		}
 
 		document.getElementById("form-list-kmeans-students").appendChild(myTr)
+	}*/
+	
+	var myDiv
+	var myP
+	var myTable
+	var myHead
+	var myTr
+	var myTh
+	var myBody
+
+	document.getElementById("students").innerHTML = "";
+	for (i = 1; i < students.length; i++) {
+
+		myDiv = document.createElement("div")
+		myDiv.setAttribute("class", "col-md-12")
+		myP = document.createElement("p")
+		myP.innerHTML = 'Cluster ' + i
+
+		myTable = document.createElement("table")
+		myTable.setAttribute("class",
+				"table table-bordered table-condensed table-hover")
+
+		// Create Table Header
+		myHead = document.createElement("thead")
+		myTr = document.createElement("tr")
+		
+		//Add Column  => Id
+		myTh = document.createElement("th")
+		myTh.innerHTML = 'Id'
+		myTr.appendChild(myTh)
+		
+		//Add Column  => Name
+		myTh = document.createElement("th")
+		myTh.innerHTML = 'Name'
+		myTr.appendChild(myTh)
+		
+		//Add Column  => Average
+		myTh = document.createElement("th")
+		myTh.innerHTML = 'Average'
+		myTr.appendChild(myTh)
+		
+		//Add Column  => Cluster
+		myTh = document.createElement("th")
+		myTh.innerHTML = 'Cluster'
+		myTr.appendChild(myTh)
+		
+		//Add Column  => Cluster value 
+		myTh = document.createElement("th")
+		myTh.innerHTML = 'Cluster Value'
+		myTr.appendChild(myTh)
+		
+		//Load Header
+		myHead.appendChild(myTr)
+		myTable.appendChild(myHead)
+
+		// Create Table Body
+		myBody = document.createElement("tbody")
+		myBody.setAttribute("id", "form-list-kmeans-students" + i)
+
+		for (j = 0; j < students[i].length; j++) {
+
+			myTr = document.createElement("tr")
+
+			for (student_field in students[i][j]) {
+
+				mytd = document.createElement("td")
+				mytd.innerHTML = students[i][j][student_field]
+				myTr.appendChild(mytd)
+
+			}
+			
+			myBody.appendChild(myTr)
+		}
+		
+		myTable.appendChild(myBody)
+
+		myDiv.appendChild(myP)
+		myDiv.appendChild(myTable)
+
+		document.getElementById("students").appendChild(myDiv)
+
 	}
 	
 }
