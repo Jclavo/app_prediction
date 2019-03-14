@@ -94,6 +94,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<p>Kmeans:</p>
 		<code><a href="<?php echo 'http://localhost/app_prediction/index.php/Kmeans/index' ?>">Kmeans</a></code>
 		
+		<p>Kmeans Graph!:</p>
+		<code><a href="<?php echo 'http://localhost/app_prediction/index.php/Kmeans_graph/index' ?>">Kmeans</a></code>
 		
 		<br>
 		<br>
