@@ -55,8 +55,11 @@ class K_means
         $lowestCluster = 0;
         $distanceCluster = 0;
         $flagClusterChange = 1;
+        $list_random_clusters = array();
         
         while ($flagClusterChange) {
+            
+            array_push($list_random_clusters,$random_clusters); //Acumulate all clusters iterations
             
             $flagClusterChange = 0;
             foreach ($students as $key => $student) {
@@ -140,11 +143,13 @@ class K_means
                 }
                 
             }
+            
 
         }
 
         $data_aux['students'] = $students;
-        $data_aux['clusters'] = $random_clusters;
+        //$data_aux['clusters'] = array_pop($list_random_clusters); //the last element is deleted
+        $data_aux['clusters'] = $list_random_clusters; 
         return $data_aux;
     }
     

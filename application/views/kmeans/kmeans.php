@@ -99,6 +99,7 @@
 							</tbody>
 						</table>
 					</div>
+
 				</div>
 
 				<!-- LIST HISTOGRAMS -->
@@ -120,7 +121,7 @@
 						</table>
 					</div>
 				</div>
-				
+
 				<!-- LIST QUESTIONS -->
 				<div id="answers" class="container tab-pane fade">
 					<br>
@@ -134,7 +135,7 @@
 									<th>predict answer</th>
 									<th>correct answer</th>
 									<th>matched</th>
-									
+
 								</tr>
 
 							</thead>
@@ -142,6 +143,11 @@
 
 							</tbody>
 						</table>
+					</div>
+					<div class=col-md-12>
+						Percentage of correct answers
+						<canvas id="pieChart">
+						</canvas>
 					</div>
 				</div>
 			</div>
@@ -151,7 +157,8 @@
 
 		<!-- THE MODAL -->
 		<div class="modal" id="myModal">
-			<div class="modal-dialog "> <!--  modal-lg -->
+			<div class="modal-dialog modal-lg">
+				<!--  modal-lg -->
 				<div class="modal-content">
 
 					<!-- Modal Header -->
@@ -162,7 +169,7 @@
 
 					<!-- Modal body -->
 					<div class="modal-body">
-					<!--
+						<!--
     					<div class=col-md-12>
     						Details
     						<table class="table table-bordered table-condensed table-hover">
@@ -184,8 +191,11 @@
     						</table>
     					</div>
     					 -->
-    					<canvas id="myChart" style="max-width: 500px;">
+						<canvas id="myChart" class=col-md-12>
     					</canvas>
+						<canvas id="polarChart" class=col-md-12>
+						</canvas>
+
 					</div>
 
 					<!-- Modal footer -->
@@ -206,8 +216,7 @@
 		src="<?php echo base_url('assets/js/bootstrap/bootstrap.min.js')?>"></script>
 	<script
 		src="<?php echo base_url('application/views/kmeans/kmeans.js')?>"></script>
-	<script
-		src="<?php echo base_url('assets/js/mdb/mdb.js')?>"></script>
+	<script src="<?php echo base_url('assets/js/mdb/mdb.js')?>"></script>
 
 </body>
 </html>
