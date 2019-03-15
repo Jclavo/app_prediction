@@ -267,6 +267,90 @@ function display_students(students) {
 	
 }
 
+function display_students_graph(students) {
+	
+	cluster_values = []
+	
+	/*for (i = 1; i < students.length; i++) {
+		for (j = 0; j < students[i].length; j++) {
+
+			for (student_field in students[i][j]) {
+
+				mytd = document.createElement("td")
+				mytd.innerHTML = students[i][j][student_field]
+				myTr.appendChild(mytd)
+
+			}
+			
+			myBody.appendChild(myTr)
+		}
+	}*/
+	
+	var ctxSc = document.getElementById('scatterChart').getContext('2d');
+	  var scatterData = {
+	    datasets: [{
+	      borderColor: 'rgba(99,0,125, .2)',
+	      backgroundColor: 'rgba(99,0,125, .5)',
+	      label: 'V(node2)',
+	      data: [{
+	        x: 16,
+	        y: 16,
+	      }, {
+	        x: 20,
+	        y: 20,
+	      }, {
+	        x: 17,
+	        y: 17
+	      }]
+	    },
+	  // second part
+	   {
+	      borderColor: 'rgba(199,0,025, .2)',
+	      backgroundColor: 'rgba(199,0,025, .5)',
+	      label: 'V(node2)',
+	      data: [{
+	        x: 10,
+	        y: 10,
+	      }, {
+	        x: 12,
+	        y: 12,
+	      }, {
+	        x: 9,
+	        y: 9
+	      }]
+	    },            
+	              ]
+	  }
+
+	  var config1 = new Chart.Scatter(ctxSc, {
+	    data: scatterData,
+	    options: {
+	      title: {
+	        display: true,
+	        text: 'Scatter Chart - Logarithmic X-Axis'
+	      },
+	      scales: {
+	        xAxes: [{
+	          type: 'linear',
+	          position: 'bottom',
+	          scaleLabel: {
+	            labelString: 'Frequency',
+	            display: true,
+	          }
+	        }],
+	        yAxes: [{
+	          type: 'linear',
+	          scaleLabel: {
+	            labelString: 'Voltage',
+	            display: true
+	          }
+	        }]
+	      }
+	    }
+	  });
+	
+}
+
 function display_answers(answers) {
 
 	// codigo para cargar los valores

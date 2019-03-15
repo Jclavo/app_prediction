@@ -49,6 +49,8 @@
 						href="#clusters">Clusters</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
 						href="#students">Students</a></li>
+						<li class="nav-item"><a class="nav-link" data-toggle="tab"
+						href="#students-graph">Students Graph</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
 						href="#histograms">Histograms</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
@@ -98,8 +100,17 @@
 
 							</tbody>
 						</table>
-					</div>
-
+					</div>					
+				</div>
+				
+				<!-- LIST STUDENTS CHART -->
+				<div id="students-graph" class="container tab-pane fade">
+					<br>
+					<div class=col-md-12>
+						Students
+						<canvas id="scatterChart">
+						</canvas>
+					</div>					
 				</div>
 
 				<!-- LIST HISTOGRAMS -->
