@@ -30,7 +30,7 @@ CREATE TABLE `alternative` (
   PRIMARY KEY (`alternative_id`),
   KEY `question_id` (`question_id`),
   CONSTRAINT `alternative_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `alternative` (
 
 LOCK TABLES `alternative` WRITE;
 /*!40000 ALTER TABLE `alternative` DISABLE KEYS */;
-INSERT INTO `alternative` VALUES (1,'A','Option 1',1),(2,'B','Option 2',1),(3,'A','Option 1',8),(4,'B','Option 2',8),(5,'C','Option 3',8),(6,'D','Option 4',8),(7,'A','Option 1',9),(8,'B','Option 2',9),(9,'C','Option 3',9),(10,'D','Option 4',9),(11,'A','Option 1',10),(12,'B','Option 2',10),(13,'C','Option 3',10),(14,'D','Option 4',10),(15,'A','Option 1',11),(16,'B','Option 2',11),(17,'C','Option 3',11),(18,'D','Option 4',11),(19,'A','Option 1',13),(20,'B','Option 2',13),(21,'C','Option 3',13),(22,'D','Option 4',13),(23,'E','Option 5',13),(24,'A','Option 1',14),(25,'B','Option 2',14),(26,'C','Option 3',14),(27,'D','Option 4',14),(28,'E','Option 5',14),(29,'A','Option 1',15),(30,'B','Option 2',15),(31,'C','Option 3',15),(32,'D','Option 4',15),(33,'E','Option 5',15),(34,'A','Option 1',16),(35,'B','Option 2',16),(36,'C','Option 3',16),(37,'D','Option 4',16),(38,'E','Option 5',16),(39,'A','Option 1',17),(40,'B','Option 2',17),(41,'C','Option 3',17),(42,'D','Option 4',17),(43,'E','Option 5',17);
+INSERT INTO `alternative` VALUES (1,'A','Option 1',1),(2,'B','Option 2',1),(3,'A','Option 1',8),(4,'B','Option 2',8),(5,'C','Option 3',8),(6,'D','Option 4',8),(7,'A','Option 1',9),(8,'B','Option 2',9),(9,'C','Option 3',9),(10,'D','Option 4',9),(11,'A','Option 1',10),(12,'B','Option 2',10),(13,'C','Option 3',10),(14,'D','Option 4',10),(15,'A','Option 1',11),(16,'B','Option 2',11),(17,'C','Option 3',11),(18,'D','Option 4',11),(19,'A','Option 1',13),(20,'B','Option 2',13),(21,'C','Option 3',13),(22,'D','Option 4',13),(23,'E','Option 5',13),(24,'A','Option 1',14),(25,'B','Option 2',14),(26,'C','Option 3',14),(27,'D','Option 4',14),(28,'E','Option 5',14),(29,'A','Option 1',15),(30,'B','Option 2',15),(31,'C','Option 3',15),(32,'D','Option 4',15),(33,'E','Option 5',15),(34,'A','Option 1',16),(35,'B','Option 2',16),(36,'C','Option 3',16),(37,'D','Option 4',16),(38,'E','Option 5',16),(39,'A','Option 1',17),(40,'B','Option 2',17),(41,'C','Option 3',17),(42,'D','Option 4',17),(43,'E','Option 5',17),(44,'A','Option 1',18),(45,'B','Option 2',18),(46,'C','Option 3',18),(47,'D','Option 4',18),(48,'A','Option 1',19),(49,'B','Option 2',19),(50,'C','Option 3',19),(51,'D','Option 4',19),(52,'A','Option 1',20),(53,'B','Option 2',20),(54,'C','Option 3',20),(55,'D','Option 4',20);
 /*!40000 ALTER TABLE `alternative` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,7 +89,7 @@ CREATE TABLE `course` (
   `started_date` date NOT NULL,
   `state` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`course_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (1,'Class November','2018-11-01',1),(2,'Class September','2018-09-01',1),(3,'Class October','2018-10-01',1),(4,'class january','2018-01-01',0),(5,'Class September','2018-09-01',0),(6,'clase stiembre','2018-09-01',1);
+INSERT INTO `course` VALUES (1,'Class November','2018-11-01',1),(2,'Class September','2018-09-01',1),(3,'Class October','2018-10-01',1),(4,'class january','2018-01-01',0),(5,'Class September','2018-09-01',0),(6,'clase stiembre','2018-09-01',1),(14,'xd','2019-03-25',1),(15,'COURSE - TEST 1','2019-03-25',1);
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,7 +117,7 @@ CREATE TABLE `exam` (
   PRIMARY KEY (`exam_id`),
   KEY `fk_exam_1` (`course_id`),
   CONSTRAINT `fk_exam_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +126,7 @@ CREATE TABLE `exam` (
 
 LOCK TABLES `exam` WRITE;
 /*!40000 ALTER TABLE `exam` DISABLE KEYS */;
-INSERT INTO `exam` VALUES (1,'EXAM CHANGE',0,1),(2,'test2',1,5),(3,'test 1',1,1);
+INSERT INTO `exam` VALUES (1,'EXAM CHANGE',0,1),(2,'test2',1,5),(3,'test 1',1,1),(4,'Exam - Test # 1',1,15);
 /*!40000 ALTER TABLE `exam` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +147,7 @@ CREATE TABLE `grade` (
   KEY `fk_grade_1` (`student_id`),
   CONSTRAINT `fk_grade_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `grade_ibfk_1` FOREIGN KEY (`exam_id`) REFERENCES `exam` (`exam_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,7 +156,7 @@ CREATE TABLE `grade` (
 
 LOCK TABLES `grade` WRITE;
 /*!40000 ALTER TABLE `grade` DISABLE KEYS */;
-INSERT INTO `grade` VALUES (7,19.00,20,3),(8,20.00,63,3),(9,15.00,52,3),(10,18.00,57,2),(11,13.00,20,2);
+INSERT INTO `grade` VALUES (7,19.00,20,3),(8,20.00,63,3),(9,15.00,52,3),(10,18.00,57,2),(11,13.00,20,2),(12,5.00,70,4),(13,2.50,69,4),(14,3.00,68,4),(15,8.50,67,4),(16,4.00,66,4),(17,4.00,65,4),(18,6.00,64,4);
 /*!40000 ALTER TABLE `grade` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +203,7 @@ CREATE TABLE `question` (
   PRIMARY KEY (`question_id`),
   KEY `test_id` (`test_id`),
   CONSTRAINT `question_ibfk_1` FOREIGN KEY (`test_id`) REFERENCES `test` (`test_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +212,7 @@ CREATE TABLE `question` (
 
 LOCK TABLES `question` WRITE;
 /*!40000 ALTER TABLE `question` DISABLE KEYS */;
-INSERT INTO `question` VALUES (1,'Question 1',NULL,'3',1),(2,'Question 2',NULL,'2',1),(3,'Question 3',NULL,NULL,1),(8,'Question 1',NULL,'2',9),(9,'Question 2',NULL,'5',9),(10,'Question 1',NULL,NULL,10),(11,'Question 2',NULL,NULL,10),(13,'Question 1',NULL,'2',12),(14,'Question 2',NULL,'1',12),(15,'Question 3',NULL,'2',12),(16,'Question 4',NULL,'2',12),(17,'Question 5',NULL,'3',12);
+INSERT INTO `question` VALUES (1,'Question 1',NULL,'3',1),(2,'Question 2',NULL,'2',1),(3,'Question 3',NULL,NULL,1),(8,'Question 1',NULL,'2',9),(9,'Question 2',NULL,'5',9),(10,'Question 1',NULL,NULL,10),(11,'Question 2',NULL,NULL,10),(13,'Question 1',NULL,'2',12),(14,'Question 2',NULL,'1',12),(15,'Question 3',NULL,'2',12),(16,'Question 4',NULL,'2',12),(17,'Question 5',NULL,'3',12),(18,'Question 1',NULL,NULL,13),(19,'Question 1',NULL,NULL,15),(20,'Question 1',NULL,NULL,16);
 /*!40000 ALTER TABLE `question` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,7 +230,7 @@ CREATE TABLE `student` (
   `cellphone` varchar(12) DEFAULT NULL,
   `state` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`student_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +239,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (1,'erickx','xcelis','+51942051000',0),(2,'Alex','Culki hdz','942051001',0),(3,'Jose','clavo','+51942051470',1),(4,'luis','everis','',0),(5,'Alex','Culki','+51942051004',1),(6,'','','',0),(7,'Harry','Portales','',1),(8,'rober','social','',0),(9,'rober','social','',0),(10,'rober','social','',0),(11,'rober','social','',0),(12,'rober','social','',0),(13,'coco','lastname','',1),(14,'coco1','gato','',0),(15,'coco2','gato','',0),(16,'coco3','gato','',0),(17,'coco4','gato','',0),(18,'coco5','gato','',0),(19,'coco2','gato','',1),(20,'coco3','gato','',1),(29,'rober','social','',1),(52,'Hugo','Lira','',1),(53,'sss','xxxxx','',0),(54,'Hebert','Serrano','',1),(55,'x','c','',0),(56,'w','e','',0),(57,'JUAN','Pineda','+51942051005',1),(59,'now','i sleep','',0),(62,'the end','is here','',0),(63,'walter','tocas','',1);
+INSERT INTO `student` VALUES (1,'erickx','xcelis','+51942051000',0),(2,'Alex','Culki hdz','942051001',0),(3,'Jose','clavo','+51942051470',1),(4,'luis','everis','',0),(5,'Alex','Culki','+51942051004',1),(6,'','','',0),(7,'Harry','Portales','',1),(8,'rober','social','',0),(9,'rober','social','',0),(10,'rober','social','',0),(11,'rober','social','',0),(12,'rober','social','',0),(13,'coco','lastname','',1),(14,'coco1','gato','',0),(15,'coco2','gato','',0),(16,'coco3','gato','',0),(17,'coco4','gato','',0),(18,'coco5','gato','',0),(19,'coco2','gato','',1),(20,'coco3','gato','',1),(29,'rober','social','',1),(52,'Hugo','Lira','',1),(53,'sss','xxxxx','',0),(54,'Hebert','Serrano','',1),(55,'x','c','',0),(56,'w','e','',0),(57,'JUAN','Pineda','+51942051005',1),(59,'now','i sleep','',0),(62,'the end','is here','',0),(63,'walter','tocas','',1),(64,'A','A','',1),(65,'B','B','',1),(66,'C','C','',1),(67,'D','D','',1),(68,'E','E','',1),(69,'F','F','',1),(70,'G','G','',1);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -259,7 +259,7 @@ CREATE TABLE `student_course` (
   KEY `fk_course_student_1` (`course_id`),
   CONSTRAINT `fk_course_student_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `student_course_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -268,7 +268,7 @@ CREATE TABLE `student_course` (
 
 LOCK TABLES `student_course` WRITE;
 /*!40000 ALTER TABLE `student_course` DISABLE KEYS */;
-INSERT INTO `student_course` VALUES (1,1,3),(2,12,1),(4,12,3),(12,57,5),(18,20,1),(19,7,6),(20,63,6),(21,63,1),(22,52,1);
+INSERT INTO `student_course` VALUES (1,1,3),(2,12,1),(4,12,3),(12,57,5),(18,20,1),(19,7,6),(20,63,6),(21,63,1),(22,52,1),(23,70,15),(24,69,15),(25,68,15),(26,67,15),(27,66,15),(28,65,15),(29,64,15);
 /*!40000 ALTER TABLE `student_course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -288,9 +288,8 @@ CREATE TABLE `test` (
   `course_id` int(11) NOT NULL,
   PRIMARY KEY (`test_id`),
   KEY `fk_exam_1_idx` (`course_id`),
-  CONSTRAINT `fk_course` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_exam` FOREIGN KEY (`course_id`) REFERENCES `exam` (`exam_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+  CONSTRAINT `fk_course` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -299,7 +298,7 @@ CREATE TABLE `test` (
 
 LOCK TABLES `test` WRITE;
 /*!40000 ALTER TABLE `test` DISABLE KEYS */;
-INSERT INTO `test` VALUES (1,'XD',5,4,0,2),(9,'TESTmodif',2,4,1,2),(10,'abc',2,4,1,2),(12,'test_2',5,5,1,1);
+INSERT INTO `test` VALUES (1,'XD',5,4,0,2),(9,'TESTmodif',2,4,1,2),(10,'abc',2,4,1,2),(12,'test_2',5,5,1,1),(13,'TEST - 1',1,4,0,1),(15,'TEST 1',1,4,1,1),(16,'TEST # 1 (1 question)',1,4,1,15);
 /*!40000 ALTER TABLE `test` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -520,7 +519,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_course_add`(IN in_description  VARCHAR(45),
 								  IN in_started_date DATE
@@ -528,6 +527,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_course_add`(IN in_description  
 BEGIN
 	INSERT INTO course(description,started_date) 
         VALUES (in_description,in_started_date);
+        
+	SELECT LAST_INSERT_ID() as last_course_id;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -864,7 +865,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_grade_getbyexam`(IN in_exam_id INT(11)
 )
@@ -875,7 +876,8 @@ BEGIN
 	INNER JOIN student as s
 		ON g.student_id = s.student_id
 	WHERE g.exam_id = in_exam_id
-	AND   s.state   = 1;
+	AND   s.state   = 1
+    ORDER BY full_name;
 
 END ;;
 DELIMITER ;
@@ -1143,7 +1145,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_student_getbycourse`(IN in_id_course INT(11))
 BEGIN
@@ -1155,7 +1157,8 @@ BEGIN
 		ON sc.course_id = c.course_id
 	WHERE c.course_id = in_id_course
 		AND   s.state = c.state
-		AND   s.state = 1;
+		AND   s.state = 1
+	ORDER BY s.name, s.lastname;
 
 END ;;
 DELIMITER ;
@@ -1355,4 +1358,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-15 18:00:54
+-- Dump completed on 2019-03-25 17:46:02
