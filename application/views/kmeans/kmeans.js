@@ -9,7 +9,8 @@ var HISTOGRAMS_INFO
 
 var global_data = {
 	id : '',
-	test_id : ''
+	test_id : '',
+	cluster_number : ''
 }
 
 $(document).ready(function() {
@@ -74,8 +75,9 @@ function select_tests(test) {
 function execute_kmeans() {
 
 	global_data.test_id = document.getElementById("kmeans-test").value
+	global_data.cluster_number = document.getElementById("kmeans-cluster_number").value
 
-	if (global_data.test_id == '') {
+	if (global_data.test_id == '' && global_data.cluster_number == '' ) {
 		alert('Fulfill required fields')
 	} else {
 		call_ajax(EXECUTE_KMEANS, global_data)

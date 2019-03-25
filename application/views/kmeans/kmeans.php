@@ -29,7 +29,14 @@
 							</div>
 						</div>
 
-						<!-- Button -->
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="test-total_question"># Clusters</label>
+							<div class="col-md-4">
+								<input id="kmeans-cluster_number" name="kmeans-cluster_number" type="number" min="2"
+									class="form-control input-md" required>
+							</div>
+						</div>
 
 					</fieldset>
 				</form>
