@@ -37,12 +37,12 @@ function add_course() {
 		
 	global_course.course_copied  = document.getElementById("course-course").value
 	
-	console.log(global_course)
+	//console.log(global_course)
 	
-//	if(required_field(global_course.description,global_course.started_date))
-//	{
-//		call_ajax(CREATE,global_course);
-//	}
+	if(required_field(global_course.description,global_course.started_date))
+	{
+		call_ajax(CREATE,global_course);
+	}
 	
 }
 
