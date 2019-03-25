@@ -27,6 +27,7 @@ class Kmeans extends CI_Controller
     public  function execute_kmeans() {
         
         $test_id = $this->input->get('test_id');
+        $cluster_number = $this->input->get('cluster_number');
         
         $data_course = $this->exam_model->get_exambytest($test_id);
         $course_id  = $data_course[0]['course_id'];
@@ -35,7 +36,7 @@ class Kmeans extends CI_Controller
         
         $students = $this->course_model->get_avegareByCourse($course_id);
         
-        $DATA = $this->k_means->start_kmeans($students,2); //CALL Kmeans
+        $DATA = $this->k_means->start_kmeans($students,$cluster_number); //CALL Kmeans
         
         
         $clusters = $DATA['clusters'][count($DATA['clusters'])-1]; //Assign the last cluster 
@@ -135,6 +136,9 @@ class Kmeans extends CI_Controller
         
         foreach ($histograms as $key => $histogram) {
             foreach ($percent_histograms as $percent_histogram) {
+                if ($percent_histogram['total'] == 0) {
+                    continue;
+                }
                 if ($histogram['question_id'] == $percent_histogram['question_id'])  {
                     $histograms[$key]['percentage'] =  ( $histograms[$key]['sum_cluster'] /  $percent_histogram['total'] ) * 100;
                     break;

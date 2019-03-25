@@ -36,7 +36,7 @@ class K_means
         $condition = TRUE;
         
         while ($condition) {
-            IF (count($array_random) == 2)
+            IF (count($array_random) == $number_clusters)
             {
                 return $array_random;
             }
