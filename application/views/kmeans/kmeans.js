@@ -112,6 +112,8 @@ function display_clusters(clusters) {
 	var myTr
 	var myTh
 	var myBody
+	
+	var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 	document.getElementById("clusters").innerHTML = "";
 	for (i = 1; i < clusters.length; i++) {
@@ -141,6 +143,7 @@ function display_clusters(clusters) {
 		myBody = document.createElement("tbody")
 		myBody.setAttribute("id", "form-list-kmeans-clusters" + i)
 
+	
 		for (j = 0; j < clusters[i].length; j++) {
 
 			myTr = document.createElement("tr")
@@ -161,6 +164,7 @@ function display_clusters(clusters) {
 		myDiv.appendChild(myP)
 		myDiv.appendChild(myTable)
 
+		
 		document.getElementById("clusters").appendChild(myDiv)
 
 	}
@@ -236,6 +240,11 @@ function display_students(students) {
 		myTh.innerHTML = 'Cluster Value'
 		myTr.appendChild(myTh)
 		
+		//Add Column  => Index Cluster
+		myTh = document.createElement("th")
+		myTh.innerHTML = 'Index Cluster'
+		myTr.appendChild(myTh)
+		
 		//Load Header
 		myHead.appendChild(myTr)
 		myTable.appendChild(myHead)
@@ -277,13 +286,13 @@ function display_students_graph(students) {
 	
 	//Arrays
 	
-	var borderColor = ["rgba( 99,0,125, .2)",
-					   "rgba(199,0,025, .2)",
-					   "rgba(299,0,025, .2)"]
+	var list_borderColor = ["rgba( 99,0,125, .2)",
+					   		"rgba(199,0,025, .2)",
+					   		"rgba(299,0,025, .2)"]
 	
-	var backgroundColor = ["rgba( 99,0,125, .5)",
-		   				   "rgba(199,0,025, .5)",
-		   				   "rgba(299,0,025, .5)"]
+	var list_backgroundColor = ["rgba( 99,0,125, .5)",
+		   				   		"rgba(199,0,025, .5)",
+		   				   		"rgba(299,0,025, .5)"]
 	
 	object_dataset = {
 			borderColor : '',
@@ -291,14 +300,16 @@ function display_students_graph(students) {
 			label: '',
 			data: ''
 		}
+	
+	object_data = {
+			x : '',
+			y : ''
+	}
+	
+	
 
 	var myDiv
 	var myP
-	var myTable
-	var myHead
-	var myTr
-	var myTh
-	var myBody
 	var myCanvas
 	
 	document.getElementById("students-graph").innerHTML = "";
@@ -316,45 +327,65 @@ function display_students_graph(students) {
 		myDiv.appendChild(myP)
 		myDiv.appendChild(myCanvas)
 
+		
+		for (j = 0; j < students[i].length; j++) {
+
+			myTr = document.createElement("tr")
+
+			for (student_field in students[i][j]) {
+
+				mytd = document.createElement("td")
+				mytd.innerHTML = students[i][j][student_field]
+				myTr.appendChild(mytd)
+
+			}
+			
+			myBody.appendChild(myTr)
+		}
+		
+		
+		
+		
+		
+		
 		document.getElementById("students-graph").appendChild(myDiv)
 		
+		
+		var array_data = []
+		var array_dataset = []
+			
+		object_data.x = 16
+		object_data.y = 16
+		
+		//array_data.push(object_data)
+		array_data.push({x:16, y:16});
+		
+		object_data.x = 20
+		object_data.y = 20
+		
+		//array_data.push(object_data)
+		array_data.push({x:20, y:20});
+		
+		object_data.x = 17
+		object_data.y = 17
+		
+		//array_data.push(object_data)
+		array_data.push({x:17, y:17});
+		
+		object_dataset.borderColor = list_borderColor[i - 1]
+		object_dataset.backgroundColor = list_backgroundColor[i - 1]
+		object_dataset.label = 'Cluster ' + i
+		object_dataset.data = array_data
+		
+		array_dataset.push(object_dataset)
+			
 		var ctxSc = document.getElementById("scatterChart" + i).getContext('2d');
 		  var scatterData = {
-		    datasets: [{
-		      borderColor: 'rgba(99,0,125, .2)',
-		      backgroundColor: 'rgba(99,0,125, .5)',
-		      label: 'V(node2)',
-		      data: [{
-		        x: 16,
-		        y: 16,
-		      }, {
-		        x: 20,
-		        y: 20,
-		      }, {
-		        x: 17,
-		        y: 17
-		      }]
-		    },
-		  // second part
-		   {
-		      borderColor: 'rgba(199,0,025, .2)',
-		      backgroundColor: 'rgba(199,0,025, .5)',
-		      label: 'V(node2)',
-		      data: [{
-		        x: 10,
-		        y: 10,
-		      }, {
-		        x: 12,
-		        y: 12,
-		      }, {
-		        x: 9,
-		        y: 9
-		      }]
-		    },            
-		              ]
+		    datasets: array_dataset
 		  }
 
-		 var config1 = new Chart.Scatter(ctxSc, {
+		  	var xd = 'config'+i;
+		  	xd = new Chart.Scatter(ctxSc, {
 		    data: scatterData,
 		    options: {
 		      title: {
@@ -380,7 +411,8 @@ function display_students_graph(students) {
 		      }
 		    }
 		  });
-		
+			
+
 	}
 	
 	

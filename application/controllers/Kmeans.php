@@ -36,6 +36,10 @@ class Kmeans extends CI_Controller
         
         $students = $this->course_model->get_avegareByCourse($course_id);
         
+        if (count($students) < 1) {
+            return;
+        }
+        
         $DATA = $this->k_means->start_kmeans($students,$cluster_number); //CALL Kmeans
         
         
@@ -200,12 +204,10 @@ class Kmeans extends CI_Controller
             foreach ($clusters as $cluster) {
                 if ($student['cluster_value'] == $cluster['value']) {
                     $students[$key]['cluster'] = $cluster['letter'];
+                    $students[$key]['index_cluster'] =  $cluster['number'];
                     break;
                 }
             }
-            
-                        
-           
             
             foreach ($students_names as $key => $student_name) {
                 if ($student['id'] == $student_name['student_id']) {
@@ -227,6 +229,7 @@ class Kmeans extends CI_Controller
             $new_student['average']         = $student['average'];
             $new_student['cluster']         = $student['cluster'];
             $new_student['cluster_value']   = $student['cluster_value'];
+            $new_student['index_cluster']   = $student['index_cluster'];
             array_push($new_students,$new_student);
         }
         

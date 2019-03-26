@@ -189,6 +189,7 @@ class K_means
         foreach ($clusters as $cluster) {
             $random_cluster['value'] = $students[$cluster]['average'];
             $random_cluster['letter'] = $alphabet[$contador_alphabet];
+            $random_cluster['number'] = $contador_alphabet;
             array_push($random_clusters,$random_cluster);
             $contador_alphabet =  $contador_alphabet + 1;
         }
