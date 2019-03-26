@@ -114,7 +114,7 @@
 				<div id="students-graph" class="container tab-pane fade">
 					<br>
 					<div class=col-md-12>
-						Students
+						GRAPH
 						<canvas id="scatterChart">
 						</canvas>
 					</div>					

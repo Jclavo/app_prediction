@@ -51,6 +51,7 @@ function call_ajax(operation, data_input) {
 			// alert(data.test)
 			display_clusters(data.clusters)
 			display_students(data.students)
+			display_students_graph(data.students)
 			display_histograms(data.total_alternatives, data.histograms)
 			display_answers(data.answers)
 			// call_ajax(READ_ALL,global_test)
@@ -272,6 +273,117 @@ function display_students(students) {
 function display_students_graph(students) {
 	
 	cluster_values = []
+	array_datasets = []
+	
+	//Arrays
+	
+	var borderColor = ["rgba( 99,0,125, .2)",
+					   "rgba(199,0,025, .2)",
+					   "rgba(299,0,025, .2)"]
+	
+	var backgroundColor = ["rgba( 99,0,125, .5)",
+		   				   "rgba(199,0,025, .5)",
+		   				   "rgba(299,0,025, .5)"]
+	
+	object_dataset = {
+			borderColor : '',
+			backgroundColor : '',
+			label: '',
+			data: ''
+		}
+
+	var myDiv
+	var myP
+	var myTable
+	var myHead
+	var myTr
+	var myTh
+	var myBody
+	var myCanvas
+	
+	document.getElementById("students-graph").innerHTML = "";
+	
+	for (i = 1; i < students.length; i++) {
+		
+		myDiv = document.createElement("div")
+		myDiv.setAttribute("class", "col-md-12")
+		myP = document.createElement("p")
+		myP.innerHTML = 'Cluster ' + i
+		
+		myCanvas = document.createElement("canvas")
+		myCanvas.setAttribute("id", "scatterChart" + i)
+		
+		myDiv.appendChild(myP)
+		myDiv.appendChild(myCanvas)
+
+		document.getElementById("students-graph").appendChild(myDiv)
+		
+		var ctxSc = document.getElementById("scatterChart" + i).getContext('2d');
+		  var scatterData = {
+		    datasets: [{
+		      borderColor: 'rgba(99,0,125, .2)',
+		      backgroundColor: 'rgba(99,0,125, .5)',
+		      label: 'V(node2)',
+		      data: [{
+		        x: 16,
+		        y: 16,
+		      }, {
+		        x: 20,
+		        y: 20,
+		      }, {
+		        x: 17,
+		        y: 17
+		      }]
+		    },
+		  // second part
+		   {
+		      borderColor: 'rgba(199,0,025, .2)',
+		      backgroundColor: 'rgba(199,0,025, .5)',
+		      label: 'V(node2)',
+		      data: [{
+		        x: 10,
+		        y: 10,
+		      }, {
+		        x: 12,
+		        y: 12,
+		      }, {
+		        x: 9,
+		        y: 9
+		      }]
+		    },            
+		              ]
+		  }
+
+		 var config1 = new Chart.Scatter(ctxSc, {
+		    data: scatterData,
+		    options: {
+		      title: {
+		        display: true,
+		        text: 'Cluster # ..'
+		      },
+		      scales: {
+		        xAxes: [{
+		          type: 'linear',
+		          position: 'bottom',
+		          scaleLabel: {
+		            labelString: 'X',
+		            display: true,
+		          }
+		        }],
+		        yAxes: [{
+		          type: 'linear',
+		          scaleLabel: {
+		            labelString: 'Y',
+		            display: true
+		          }
+		        }]
+		      }
+		    }
+		  });
+		
+	}
+	
+	
 	
 	/*for (i = 1; i < students.length; i++) {
 		for (j = 0; j < students[i].length; j++) {
@@ -288,69 +400,8 @@ function display_students_graph(students) {
 		}
 	}*/
 	
-	var ctxSc = document.getElementById('scatterChart').getContext('2d');
-	  var scatterData = {
-	    datasets: [{
-	      borderColor: 'rgba(99,0,125, .2)',
-	      backgroundColor: 'rgba(99,0,125, .5)',
-	      label: 'V(node2)',
-	      data: [{
-	        x: 16,
-	        y: 16,
-	      }, {
-	        x: 20,
-	        y: 20,
-	      }, {
-	        x: 17,
-	        y: 17
-	      }]
-	    },
-	  // second part
-	   {
-	      borderColor: 'rgba(199,0,025, .2)',
-	      backgroundColor: 'rgba(199,0,025, .5)',
-	      label: 'V(node2)',
-	      data: [{
-	        x: 10,
-	        y: 10,
-	      }, {
-	        x: 12,
-	        y: 12,
-	      }, {
-	        x: 9,
-	        y: 9
-	      }]
-	    },            
-	              ]
-	  }
+  
 
-	  var config1 = new Chart.Scatter(ctxSc, {
-	    data: scatterData,
-	    options: {
-	      title: {
-	        display: true,
-	        text: 'Scatter Chart - Logarithmic X-Axis'
-	      },
-	      scales: {
-	        xAxes: [{
-	          type: 'linear',
-	          position: 'bottom',
-	          scaleLabel: {
-	            labelString: 'Frequency',
-	            display: true,
-	          }
-	        }],
-	        yAxes: [{
-	          type: 'linear',
-	          scaleLabel: {
-	            labelString: 'Voltage',
-	            display: true
-	          }
-	        }]
-	      }
-	    }
-	  });
-	
 }
 
 function display_answers(answers) {
