@@ -7,6 +7,20 @@ var URL_ANSWER = BASE_URL + '/answer/index'
 
 var HISTOGRAMS_INFO
 
+var list_borderColor = [ 'rgba(255,  99, 132,1)', 
+						 'rgba( 54, 162, 235, 1)',
+						 'rgba(255, 206,  86, 1)', 
+						 'rgba( 75, 192, 192, 1)',
+						 'rgba(153, 102, 255, 1)',
+						 'rgba(255, 159,  64, 1)' ]
+
+var list_backgroundColor = [ 'rgba(255,  99, 132, 0.2)',
+							 'rgba( 54, 162, 235, 0.2)', 
+							 'rgba(255, 206,  86, 0.2)',
+							 'rgba( 75, 192, 192, 0.2)',
+							 'rgba(153, 102, 255, 0.2)',
+							 'rgba(255, 159,  64, 0.2)' ]
+
 var global_data = {
 	id : '',
 	test_id : '',
@@ -281,61 +295,12 @@ function display_students(students) {
 
 function display_students_graph(students) {
 	
-	cluster_values = []
-	array_datasets = []
-	
-	//Arrays
-	
-	var list_borderColor = ["rgba( 50,0,125, .2)",
-					   		"rgba(100,0, 25, .2)",
-					   		"rgba(150,0,125, .2)",
-					   		"rgba(200,0,125, .2)",
-					   		"rgba(250,0,125, .2)"]
-	
-	var list_backgroundColor = ["rgba( 50,0,125, .5)",
-						   		"rgba(100,0, 25, .5)",
-						   		"rgba(150,0,125, .5)",
-						   		"rgba(200,0,125, .5)",
-						   		"rgba(250,0,125, .5)"]
-
-	
-	object_dataset = {
-			borderColor : '',
-			backgroundColor : '',
-			label: '',
-			data: ''
-		}
-	
-	object_data = {
-			x : '',
-			y : ''
-	}
-	
-	
-
 	var myDiv
 	var myP
 	var myCanvas
 	
 	document.getElementById("students-graph").innerHTML = "";
-	
-	/*for (i = 1; i < students.length; i++) {
-		
-		myDiv = document.createElement("div")
-		myDiv.setAttribute("class", "col-md-12")
-		myP = document.createElement("p")
-		myP.innerHTML = 'Cluster ' + i
-		
-		myCanvas = document.createElement("canvas")
-		myCanvas.setAttribute("id", "scatterChart" + i)
-		
-		myDiv.appendChild(myP)
-		myDiv.appendChild(myCanvas)
 
-		document.getElementById("students-graph").appendChild(myDiv)
-	}*/
-	
-	//return;
 	
 	//for (i = 1; i < students.length; i++) {
 	for (i = 0; i < 2; i++) {
@@ -356,7 +321,8 @@ function display_students_graph(students) {
 		document.getElementById("students-graph").appendChild(myDiv)
 		
 		var array_dataset = []
-		var cluster_value = 0
+		var average_value = 0
+		var cluster_center = 0
 		var k = 0
 
 		while (k < global_data.cluster_number) {
@@ -364,59 +330,27 @@ function display_students_graph(students) {
 			var array_data = []
 			
 			for (j = 0; j < students[i].length; j++) {
-				
-				/*for (student_field in students[i][j]) {
-
-					if (student_field == "index_cluster") {
-						cluster_value = students[i][j]["cluster_value"]
-						array_data.push({x:cluster_value, y:cluster_value});
-					}
-
-				}*/
-				
+						
 				if (k == students[i][j]["index_cluster"]) {
-					cluster_value = students[i][j]["average"]
-					array_data.push({x:cluster_value, y:cluster_value});
+					average_value = students[i][j]["average"]
+					cluster_center = students[i][j]["cluster_value"]
+					array_data.push({x:average_value, y:average_value});
+					
 				}
 			}
 			
-			/*object_dataset.borderColor = list_borderColor[i - 1]
-			object_dataset.backgroundColor = list_backgroundColor[i - 1]
-			object_dataset.label = 'Cluster ' + i
-			object_dataset.data = array_data*/
-			
-			//array_dataset.push(object_dataset)
+		
 			array_dataset.push({
 				borderColor: list_borderColor[k],
 				backgroundColor : list_backgroundColor[k],
-				label : 'Cluster ' + i,
+				//label : 'Cluster ' + i,
+				label : 'Cluster ' + cluster_center,
 				data : array_data
 			})
 			
 			
 			k = k + 1
 		}
-		
-		/*		
-		object_data.x = 16
-		object_data.y = 16
-		
-		//array_data.push(object_data)
-		array_data.push({x:16, y:16});
-		
-		object_data.x = 20
-		object_data.y = 20
-		
-		//array_data.push(object_data)
-		array_data.push({x:20, y:20});
-		
-		object_data.x = 17
-		object_data.y = 17
-		
-		//array_data.push(object_data)
-		array_data.push({x:17, y:17});
-		
-		array_dataset.push(object_dataset)*/
 		
 		
 		var ctxSc = 'ctxSc' + i
@@ -459,19 +393,6 @@ function display_students_graph(students) {
 
 	}
 	
-	
-	
-	/*for (i = 1; i < students.length; i++) {
-		for (j = 0; j < students[i].length; j++) {
-
-			
-			
-			myBody.appendChild(myTr)
-		}
-	}*/
-	
-  
-
 }
 
 function display_answers(answers) {
@@ -705,13 +626,15 @@ function show_details_answer(question_id) {
 				label : '# of Answers',
 				// data: [12, 19, 3, 5, 2, 3],
 				data : array_data,
-				backgroundColor : [ 'rgba(255, 99, 132, 0.2)',
+				/*backgroundColor : [ 'rgba(255, 99, 132, 0.2)',
 						'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)',
 						'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)',
 						'rgba(255, 159, 64, 0.2)' ],
 				borderColor : [ 'rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)',
 						'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)',
-						'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)' ],
+						'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)' ],*/
+				backgroundColor : list_backgroundColor,
+				borderColor : list_borderColor,
 				borderWidth : 1
 			} ]
 		},
@@ -735,14 +658,16 @@ function show_details_answer(question_id) {
 	      labels: array_labels,
 	      datasets: [{
 	        data: array_data_percent,
-	        backgroundColor: ['rgba(255, 99, 132, 0.2)',
+	        /*backgroundColor: ['rgba(255, 99, 132, 0.2)',
 				'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)',
 				'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)'
 	        ],
 	        hoverBackgroundColor: ['rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)',
 				'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)',
 				'rgba(153, 102, 255, 1)'
-	        ]
+	        ]*/
+	        backgroundColor: list_borderColor,
+	        hoverBackgroundColor: list_backgroundColor
 	      }]
 	    },
 	    options: {
