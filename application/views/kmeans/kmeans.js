@@ -286,13 +286,18 @@ function display_students_graph(students) {
 	
 	//Arrays
 	
-	var list_borderColor = ["rgba( 99,0,125, .2)",
-					   		"rgba(199,0,025, .2)",
-					   		"rgba(299,0,025, .2)"]
+	var list_borderColor = ["rgba( 50,0,125, .2)",
+					   		"rgba(100,0, 25, .2)",
+					   		"rgba(150,0,125, .2)",
+					   		"rgba(200,0,125, .2)",
+					   		"rgba(250,0,125, .2)"]
 	
-	var list_backgroundColor = ["rgba( 99,0,125, .5)",
-		   				   		"rgba(199,0,025, .5)",
-		   				   		"rgba(299,0,025, .5)"]
+	var list_backgroundColor = ["rgba( 50,0,125, .5)",
+						   		"rgba(100,0, 25, .5)",
+						   		"rgba(150,0,125, .5)",
+						   		"rgba(200,0,125, .5)",
+						   		"rgba(250,0,125, .5)"]
+
 	
 	object_dataset = {
 			borderColor : '',
@@ -314,7 +319,7 @@ function display_students_graph(students) {
 	
 	document.getElementById("students-graph").innerHTML = "";
 	
-	for (i = 1; i < students.length; i++) {
+	/*for (i = 1; i < students.length; i++) {
 		
 		myDiv = document.createElement("div")
 		myDiv.setAttribute("class", "col-md-12")
@@ -327,33 +332,72 @@ function display_students_graph(students) {
 		myDiv.appendChild(myP)
 		myDiv.appendChild(myCanvas)
 
+		document.getElementById("students-graph").appendChild(myDiv)
+	}*/
+	
+	//return;
+	
+	//for (i = 1; i < students.length; i++) {
+	for (i = 0; i < 2; i++) {
 		
-		for (j = 0; j < students[i].length; j++) {
+		myDiv = document.createElement("div")
+		myDiv.setAttribute("class", "col-md-12")
+		myP = document.createElement("p")
+		myP.innerHTML = 'Cluster ' + i
+		
+		myCanvas = document.createElement("canvas")
+		myCanvas.setAttribute("id", "scatterChart" + i)
+		myCanvas.setAttribute("width","500")
+		myCanvas.setAttribute("height","200")
+		
+		myDiv.appendChild(myP)
+		myDiv.appendChild(myCanvas)
 
-			myTr = document.createElement("tr")
-
-			for (student_field in students[i][j]) {
-
-				mytd = document.createElement("td")
-				mytd.innerHTML = students[i][j][student_field]
-				myTr.appendChild(mytd)
-
-			}
-			
-			myBody.appendChild(myTr)
-		}
-		
-		
-		
-		
-		
-		
 		document.getElementById("students-graph").appendChild(myDiv)
 		
-		
-		var array_data = []
 		var array_dataset = []
+		var cluster_value = 0
+		var k = 0
+
+		while (k < global_data.cluster_number) {
 			
+			var array_data = []
+			
+			for (j = 0; j < students[i].length; j++) {
+				
+				/*for (student_field in students[i][j]) {
+
+					if (student_field == "index_cluster") {
+						cluster_value = students[i][j]["cluster_value"]
+						array_data.push({x:cluster_value, y:cluster_value});
+					}
+
+				}*/
+				
+				if (k == students[i][j]["index_cluster"]) {
+					cluster_value = students[i][j]["average"]
+					array_data.push({x:cluster_value, y:cluster_value});
+				}
+			}
+			
+			/*object_dataset.borderColor = list_borderColor[i - 1]
+			object_dataset.backgroundColor = list_backgroundColor[i - 1]
+			object_dataset.label = 'Cluster ' + i
+			object_dataset.data = array_data*/
+			
+			//array_dataset.push(object_dataset)
+			array_dataset.push({
+				borderColor: list_borderColor[k],
+				backgroundColor : list_backgroundColor[k],
+				label : 'Cluster ' + i,
+				data : array_data
+			})
+			
+			
+			k = k + 1
+		}
+		
+		/*		
 		object_data.x = 16
 		object_data.y = 16
 		
@@ -372,19 +416,17 @@ function display_students_graph(students) {
 		//array_data.push(object_data)
 		array_data.push({x:17, y:17});
 		
-		object_dataset.borderColor = list_borderColor[i - 1]
-		object_dataset.backgroundColor = list_backgroundColor[i - 1]
-		object_dataset.label = 'Cluster ' + i
-		object_dataset.data = array_data
+		array_dataset.push(object_dataset)*/
 		
-		array_dataset.push(object_dataset)
-			
-		var ctxSc = document.getElementById("scatterChart" + i).getContext('2d');
+		
+		var ctxSc = 'ctxSc' + i
+		
+		ctxSc = document.getElementById("scatterChart" + i).getContext('2d');
 		  var scatterData = {
 		    datasets: array_dataset
 		  }
 
-		  	var xd = 'config'+i;
+		  	var xd = 'config' + i;
 		  	xd = new Chart.Scatter(ctxSc, {
 		    data: scatterData,
 		    options: {
@@ -410,7 +452,9 @@ function display_students_graph(students) {
 		        }]
 		      }
 		    }
-		  });
+		  }); 
+		  	
+		// return;
 			
 
 	}
@@ -420,13 +464,7 @@ function display_students_graph(students) {
 	/*for (i = 1; i < students.length; i++) {
 		for (j = 0; j < students[i].length; j++) {
 
-			for (student_field in students[i][j]) {
-
-				mytd = document.createElement("td")
-				mytd.innerHTML = students[i][j][student_field]
-				myTr.appendChild(mytd)
-
-			}
+			
 			
 			myBody.appendChild(myTr)
 		}
