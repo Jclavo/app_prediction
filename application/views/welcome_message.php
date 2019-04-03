@@ -91,10 +91,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<p>Test Student:</p>
 		<code><a href="<?php echo 'http://localhost/app_prediction/index.php/Test/test_student' ?>">Test Student</a></code>
 		
+		<p>Correct Question:</p>
+		<code><a href="<?php echo 'http://localhost/app_prediction/index.php/Question/correct_question' ?>">Correct Question</a></code>
+		
 		<p>Kmeans:</p>
 		<code><a href="<?php echo 'http://localhost/app_prediction/index.php/Kmeans/index' ?>">Kmeans</a></code>
 		
-		<p>Kmeans Graph!:</p>
+		
+		
+
+		<p>Kmeans Graph!: DON'T WORK</p>
 		<code><a href="<?php echo 'http://localhost/app_prediction/index.php/Kmeans_graph/index' ?>">Kmeans</a></code>
 		
 		<br>
