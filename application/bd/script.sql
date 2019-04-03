@@ -63,7 +63,7 @@ CREATE TABLE `answer` (
   CONSTRAINT `answer_ibfk_2` FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_answer_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_answer_2` FOREIGN KEY (`test_id`) REFERENCES `test` (`test_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +72,7 @@ CREATE TABLE `answer` (
 
 LOCK TABLES `answer` WRITE;
 /*!40000 ALTER TABLE `answer` DISABLE KEYS */;
-INSERT INTO `answer` VALUES (41,'3',20,12,13),(42,'2',20,12,14),(43,'1',20,12,15),(44,'2',20,12,16),(45,'5',20,12,17),(46,'2',63,12,13),(47,'2',63,12,14),(48,'2',63,12,15),(49,'2',63,12,16),(50,'5',63,12,17),(51,'0',52,12,13),(52,'0',52,12,14),(53,'0',52,12,15),(54,'0',52,12,16),(55,'0',52,12,17);
+INSERT INTO `answer` VALUES (41,'3',20,12,13),(42,'2',20,12,14),(43,'1',20,12,15),(44,'2',20,12,16),(45,'5',20,12,17),(46,'2',63,12,13),(47,'2',63,12,14),(48,'2',63,12,15),(49,'2',63,12,16),(50,'5',63,12,17),(51,'0',52,12,13),(52,'0',52,12,14),(53,'0',52,12,15),(54,'0',52,12,16),(55,'0',52,12,17),(56,'0',64,16,20),(57,'0',65,16,20);
 /*!40000 ALTER TABLE `answer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,7 +197,6 @@ DROP TABLE IF EXISTS `question`;
 CREATE TABLE `question` (
   `question_id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(45) NOT NULL,
-  `predict` varchar(1) DEFAULT NULL,
   `correct` varchar(1) DEFAULT NULL,
   `test_id` int(11) NOT NULL,
   PRIMARY KEY (`question_id`),
@@ -212,7 +211,7 @@ CREATE TABLE `question` (
 
 LOCK TABLES `question` WRITE;
 /*!40000 ALTER TABLE `question` DISABLE KEYS */;
-INSERT INTO `question` VALUES (1,'Question 1',NULL,'3',1),(2,'Question 2',NULL,'2',1),(3,'Question 3',NULL,NULL,1),(8,'Question 1',NULL,'2',9),(9,'Question 2',NULL,'5',9),(10,'Question 1',NULL,NULL,10),(11,'Question 2',NULL,NULL,10),(13,'Question 1',NULL,'2',12),(14,'Question 2',NULL,'1',12),(15,'Question 3',NULL,'2',12),(16,'Question 4',NULL,'2',12),(17,'Question 5',NULL,'3',12),(18,'Question 1',NULL,NULL,13),(19,'Question 1',NULL,NULL,15),(20,'Question 1',NULL,NULL,16);
+INSERT INTO `question` VALUES (1,'Question 1','3',1),(2,'Question 2','2',1),(3,'Question 3',NULL,1),(8,'Question 1','1',9),(9,'Question 2','2',9),(10,'Question 1',NULL,10),(11,'Question 2',NULL,10),(13,'Question 1','2',12),(14,'Question 2','1',12),(15,'Question 3','2',12),(16,'Question 4','2',12),(17,'Question 5','3',12),(18,'Question 1',NULL,13),(19,'Question 1',NULL,15),(20,'Question 1',NULL,16);
 /*!40000 ALTER TABLE `question` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -947,11 +946,11 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_question_getbytest`(IN in_test_id INT(11))
 BEGIN
-	SELECT q.question_id, q.description, q.predict, q.correct, q.test_id 
+	SELECT q.question_id, q.description, q.correct, q.test_id 
 		FROM question as q
 	INNER JOIN test as t
 	ON q.test_id = t.test_id
@@ -1358,4 +1357,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-25 17:46:02
+-- Dump completed on 2019-04-03 11:11:31
