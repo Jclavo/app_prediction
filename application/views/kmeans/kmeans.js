@@ -471,9 +471,18 @@ function display_histograms(total_alternatives, histograms) {
 	var mytd
 	var myTr
 
-	// document.getElementById("form-list-kmeans-histograms-header").innerHTML =
-	// "";
-
+	document.getElementById("form-list-kmeans-histograms-header").innerHTML = "";
+	
+	// Add Column Value
+	mytd = document.createElement("th")
+	mytd.innerHTML = 'Value'
+	document.getElementById("form-list-kmeans-histograms-header").appendChild(mytd)	
+	// Add Column Letter
+	mytd = document.createElement("th")
+	mytd.innerHTML = 'Letter'
+	document.getElementById("form-list-kmeans-histograms-header").appendChild(mytd)	
+	
+	
 	while (j <= total_alternatives) {
 
 		mytd = document.createElement("th")
@@ -590,7 +599,7 @@ function display_histograms(total_alternatives, histograms) {
 
 function show_details_answer(question_id) {
 
-	// document.getElementById("form-list-kmeans-histograms-details").innerHTML
+	//document.getElementById("form-list-kmeans-histograms-details").innerHTML
 	// = "";
 
 	array_labels = []
