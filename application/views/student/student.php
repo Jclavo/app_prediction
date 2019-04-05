@@ -89,7 +89,7 @@
 					</tbody>
 				</table>
 			</div>
-			<br> 
+			<br>
 			<!-- view -->
 		</div>
 	</div>
@@ -99,6 +99,8 @@
 		src="<?php echo base_url('assets/js/jquery/jquery-3.3.1.min.js')?>"></script>
 	<script
 		src="<?php echo base_url('assets/js/bootstrap/bootstrap.min.js')?>"></script>
+	<script
+		src="<?php echo base_url('assets/js/notify/notify.min.js')?>"></script>
 	<script
 		src="<?php echo base_url('application/views/student/student.js')?>"></script>
 

@@ -8,6 +8,7 @@ class Student extends CI_Controller
     {
         parent::__construct();
         $this->load->model(array('student_model','exam_model'));
+        //$this->load->library('Message');
     }
 
     public function index()
@@ -19,6 +20,7 @@ class Student extends CI_Controller
     {
         $id = $this->input->get('id');
         $data['student'] = $this->student_model->get_student($id);
+        $data['status']  = $this->message->success('R');
         echo json_encode($data);
     }
 
@@ -28,7 +30,8 @@ class Student extends CI_Controller
         $lastname = $this->input->get('lastname');
         $cellphone = $this->input->get('cellphone');
 
-        $data['status'] = $this->student_model->create_student($name, $lastname, $cellphone);
+        $this->student_model->create_student($name, $lastname, $cellphone);
+        $data['status'] = $this->message->success('C');
         echo json_encode($data);
     }
 
