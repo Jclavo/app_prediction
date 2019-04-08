@@ -7,41 +7,26 @@ class Message
 {
     public function success($message = null) {
         $data['type']    = 'success';
-        
-        switch ($message) {
-            case 'C':
-                $data['message'] = 'Record created';
-                break;
-            case 'R':
-                $data['message'] = 'Records got successfully';
-                break;
-            case 'U':
-                $data['message'] = 'Record updated';
-                break;
-            case 'D':
-                $data['message'] = 'Record deleted';
-                break;
-            case '':
-                $data['message'] = 'OK';
-                break;
-            default:
-                $data['message'] = $message;
-            break;
+        if ($message == null) {
+            $data['message'] = 'OK';
         }
-        
+        else
+        {
+            $data['message'] = $this->set_message($message);
+        }
         return $data;
                     
     }
     
     public function info($message = null) {
         $data['type']    = 'info';
-        $data['message'] = $message;
+        $data['message'] = $this->set_message($message);
         return $data;
     }
     
     public function warning($message = null) {
         $data['type']    = 'warn';
-        $data['message'] = $message;
+        $data['message'] = $this->set_message($message);
         return $data;
     }
     
@@ -52,8 +37,31 @@ class Message
         }
         else
         {
-            $data['message'] = $message;
+            $data['message'] = $this->set_message($message);
         }
         return $data;
+    }
+    
+    function set_message($message) {
+        
+        switch ($message) {
+            case 'C':
+                $message = 'Record created';
+                break;
+            case 'R':
+                $message = 'Records got successfully';
+                break;
+            case 'U':
+                $message = 'Record updated';
+                break;
+            case 'D':
+                $message = 'Record deleted';
+                break;
+            /*
+            default:
+                break;
+            */
+        }
+        return $message;
     }
 } 
