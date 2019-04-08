@@ -23,6 +23,7 @@ class Student_course extends CI_Controller
         $data['course'] = $this->course_model->get_course();
         $this->db->close();
         $data['student'] = $this->student_model->get_student();
+        $data['status']  = $this->message->success('R');
         echo json_encode($data);
     }
 
@@ -31,14 +32,18 @@ class Student_course extends CI_Controller
         $student_id = $this->input->get('student_id');
         $course_id = $this->input->get('course_id');
 
-        $data['status'] = $this->student_course_model->create_student_course($student_id,$course_id);
+        $this->student_course_model->create_student_course($student_id,$course_id);
+        $data['status'] = $this->message->success('C');
+        
         echo json_encode($data);
     }
 
     public function delete_student_course()
     {
         $id = $this->input->get('id');
-        $data['status'] = $this->student_course_model->delete_student_course($id);
+        $this->student_course_model->delete_student_course($id);
+        $data['status'] = $this->message->error('D');
+        
         echo json_encode($data);
     }
     

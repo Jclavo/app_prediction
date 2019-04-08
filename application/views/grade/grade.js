@@ -66,6 +66,7 @@ function call_ajax(operation, data_input) {
 	}).done(function(data) {
 		// alert(data.grade);
 		console.log(data)
+		$.notify(data.status['message'], data.status['type']);
 		
 		switch (operation) {
 		case READ_ALL:
@@ -118,21 +119,6 @@ function display_grades(grade) {
 			myTr.appendChild(mytd)
 
 		}
-		var actionTd = document.createElement("td")
-		
-		var editBtn = document.createElement("button")
-		editBtn.innerHTML = "Edit"
-		editBtn.setAttribute("class", "btn btn-sm btn-primary")
-		editBtn.setAttribute("onclick", "edit_grade(" + grade[i]['grade_id'] + ")")
-
-		var deletebtn = document.createElement("button")
-		deletebtn.innerHTML = "Delete"
-		deletebtn.setAttribute("class", "btn btn-sm btn-danger")
-		deletebtn.setAttribute("onclick", "delete_grade(" + grade[i]['grade_id'] + ")")
-
-		actionTd.appendChild(editBtn)
-		actionTd.appendChild(deletebtn)
-		myTr.appendChild(actionTd)
 		
 		document.getElementById("form-list-grade-body").appendChild(myTr)
 	}

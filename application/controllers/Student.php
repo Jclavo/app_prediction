@@ -39,6 +39,7 @@ class Student extends CI_Controller
     {
         $id = $this->input->get('id');
         $data['status'] = $this->student_model->delete_student($id);
+        $data['status'] = $this->message->error('D');
         echo json_encode($data);
     }
     
@@ -49,7 +50,8 @@ class Student extends CI_Controller
         $lastname = $this->input->get('lastname');
         $cellphone = $this->input->get('cellphone');
 
-        $data['status'] = $this->student_model->update_student($id, $name, $lastname, $cellphone);
+        $this->student_model->update_student($id, $name, $lastname, $cellphone);
+        $data['status'] = $this->message->warning('U');
         echo json_encode($data);
     }
     

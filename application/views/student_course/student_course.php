@@ -93,6 +93,8 @@
 	<script
 		src="<?php echo base_url('assets/js/bootstrap/bootstrap.min.js')?>"></script>
 	<script
+		src="<?php echo base_url('assets/js/notify/notify.min.js')?>"></script>
+	<script
 		src="<?php echo base_url('application/views/student_course/student_course.js')?>"></script>
 
 </body>

@@ -121,14 +121,14 @@ function call_ajax(operation, data_input) {
 			display_courses(data.course)
 			break
 		case DELETE:
-			alert(data.status)
+			//alert(data.status)
 			call_ajax(READ_ALL,global_student)
 			break;
 		case READ:
 			display_student(data.student)
 			break
 		case UPDATE:
-			alert(data.status)
+			//alert(data.status)
 			call_ajax(READ_ALL,global_student)
 			break
 		default:

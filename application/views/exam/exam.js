@@ -104,11 +104,12 @@ function call_ajax(operation, data_input) {
 	}).done(function(data) {
 		// alert(data.exam);
 		console.log(data)
+		$.notify(data.status['message'], data.status['type']);
 		
 		clear_global_exam()
 		switch (operation) {
 		case CREATE:
-			alert(data.status)
+			//alert(data.status)
 			call_ajax(READ_ALL,global_exam)
 			break
 		case READ_ALL:
@@ -116,14 +117,14 @@ function call_ajax(operation, data_input) {
 			display_courses(data.course)
 			break
 		case DELETE:
-			alert(data.status)
+			//alert(data.status)
 			call_ajax(READ_ALL,global_exam)
 			break;
 		case READ:
 			display_exam(data.exam)
 			break
 		case UPDATE:
-			alert(data.status)
+			//alert(data.status)
 			call_ajax(READ_ALL,global_exam)
 			break
 		default:

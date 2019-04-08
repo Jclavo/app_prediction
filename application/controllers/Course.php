@@ -19,6 +19,7 @@ class Course extends CI_Controller
     {
         $id = $this->input->get('id');
         $data['course'] = $this->course_model->get_course($id);
+        $data['status']  = $this->message->success('R');
         echo json_encode($data);
     }
 
@@ -49,14 +50,15 @@ class Course extends CI_Controller
         
         $this->db->trans_complete();// End Tx, if there is any error, there is a ROLL BACK, otherwise a COMMIT 
         
-        $data['status'] = $course;
+        $data['status'] = $this->message->success('C');
         echo json_encode($data);
     }
 
     public function delete_course()
     {
         $id = $this->input->get('id');
-        $data['status'] = $this->course_model->delete_course($id);
+        $this->course_model->delete_course($id);
+        $data['status'] = $this->message->error('D');
         echo json_encode($data);
     }
     
@@ -66,7 +68,8 @@ class Course extends CI_Controller
         $name = $this->input->get('description');
         $started_date = $this->input->get('started_date');
 
-        $data['status'] = $this->course_model->update_course($id, $name, $started_date);
+        $this->course_model->update_course($id, $name, $started_date);
+        $data['status'] = $this->message->warning('U');
         echo json_encode($data);
     }
 }

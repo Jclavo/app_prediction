@@ -40,6 +40,8 @@ class Grade extends CI_Controller
         mysqli_next_result( $this->db->conn_id );
         $data['exam'] = $this->exam_model->get_exam($exam_id);
         
+        $data['status']  = $this->message->success('R');
+        
         echo json_encode($data);
     }
     
@@ -53,10 +55,12 @@ class Grade extends CI_Controller
         $grade = json_decode($grade,TRUE);
         
         foreach ($grade as $grade_aux) {
-            $data['status'] = $this->grade_model->update_grade($grade_aux['grade'],$grade_aux['student_id'],$grade_aux['exam_id']);
+            $data['status']  =  $this->grade_model->update_grade($grade_aux['grade'],$grade_aux['student_id'],$grade_aux['exam_id']);
         }
-
-        return $data['status'];
+        
+        $data['status']  = $this->message->success('U');
+        
+        echo json_encode($data);
     }
 
 }
