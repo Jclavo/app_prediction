@@ -153,6 +153,7 @@ class Kmeans extends CI_Controller
                 }
                 if ($histogram['question_id'] == $percent_histogram['question_id'])  {
                     $histograms[$key]['percentage'] =  ( $histograms[$key]['sum_cluster'] /  $percent_histogram['total'] ) * 100;
+                    $histograms[$key]['percentage'] = round($histograms[$key]['percentage'], 2);  
                     break;
                 }
             }
