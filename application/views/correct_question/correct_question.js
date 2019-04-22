@@ -45,7 +45,7 @@ function call_ajax(operation, data_input) {
 	
 	}).done(function(data) {
 		console.log(data)
-		
+		$.notify(data.status['message'], data.status['type']);
 		switch (operation) {
 		case READ_ALL_TEST:
             //alert(data.test)
@@ -102,7 +102,12 @@ function display_questions(questions,test) {
 				for (j = 0; j <= total_alternative; j++) {
 					
 					var myoption = document.createElement("option")
-					myoption.innerHTML = 'Option ' + j 
+					if (j == 0) {
+						myoption.innerHTML = 'None' 
+					} else {
+						myoption.innerHTML = 'Option ' + j 	
+					}
+					
 					myoption.setAttribute("value", j)
 					
 					if ( questions[i][question_field] == j )
@@ -161,11 +166,15 @@ function save_questions() {
 		
 	}); 
 	
-	table_data = JSON.stringify(table_data)
+	if (table_data.length == 0) {
+		$.notify('No data selected', 'E');
+	} else {
+		table_data = JSON.stringify(table_data)
+		//console.log(table_data)
+		call_ajax(SAVE,'questions='+table_data)
+	}	
 	
-	console.log(table_data)
-	
-	call_ajax(SAVE,'questions='+table_data)
+
 	
 }
 

@@ -21,6 +21,7 @@ class Test extends CI_Controller
         $data['test'] = $this->test_model->get_test($id);
         mysqli_next_result( $this->db->conn_id ); // Free BDD
         $data['course'] = $this->course_model->get_course($id);
+        $data['status']  = $this->message->success('R');
         echo json_encode($data);
     }
 
