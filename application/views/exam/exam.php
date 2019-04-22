@@ -22,11 +22,11 @@
 			<div class="col-md-12">
 				<form class="form-inline"  id="form-edit-exam">
 						<!-- Form Name -->
-						<legend>exam</legend>
+						<legend>Exam</legend>
 
 						<!-- Text input-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="exam-description">Description</label>
+							<label class="col-md-4 control-label" for="exam-description"><b>Description:</b></label>
 							<div class="col-md-4">
 								<input id="exam-description" name="exam-description" type="text"
 									placeholder="your exam's description" class="form-control input-md" required>
@@ -35,7 +35,7 @@
 
 						<!-- Prepended text-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="exam-course">Courses</label>
+							<label class="col-md-4 control-label" for="exam-course"><b>Courses:</b></label>
 							<div class="col-md-8">
 								<div class="input-group">
 									<select 
