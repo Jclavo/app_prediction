@@ -13,10 +13,9 @@
 		<div class="row">
 			<!-- FORM  -->
 			<div class="col-md-12">
-				<form class="form-horizontal" id="form-edit-grade">
-					<fieldset>
+				<form class="form-inline" id="form-edit-grade">
 						<!-- Form Name -->
-						<legend>Grade</legend>
+						<legend>Assign grades to student</legend>
 
 						<!-- Text input-->
 						<div class="form-group">
@@ -29,8 +28,8 @@
 
 						<!-- Text input-->
 						<div class="form-group row">
-							<label class="col-md-4 control-label" for="course-description">Course</label>
-							<div class="col-md-4">
+							<label class="col-md-4 control-label" for="course-description"><b>Course:</b></label>
+							<div class="col-md-8">
 								<input id="course-description" name="course-description" type="text"
 									   class="form-control-plaintext">
 							</div>
@@ -46,17 +45,13 @@
 
 						<!-- Text input-->
 						<div class="form-group row">
-							<label class="col-md-4 control-label" for="exam-description">Exam</label>
-							<div class="col-md-4">
+							<label class="col-md-4 control-label" for="exam-description"><b>Exam:</b></label>
+							<div class="col-md-8">
 								<input id="exam-description" name="exam-description" type="text"
 									   class="form-control-plaintext">
 							</div>
 						</div>
-
-
 						<!-- Button -->
-
-					</fieldset>
 				</form>
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="btn-save"></label>
