@@ -30,11 +30,11 @@
 				
 						<!-- Form Name -->
 						
-						<legend>Student</legend>
+						<legend><b>Student</b></legend>
 
 						<!-- Text input-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="student-name">Name</label>
+							<label class="col-md-4 control-label" for="student-name"><b>Name:</b></label>
 							<div class="col-md-4">
 								<input id="student-name" name="student-name" type="text"
 									placeholder="your student's name" class="form-control input-md" required>
@@ -43,7 +43,7 @@
 
 						<!-- Text input-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="student-lastname">LastName</label>
+							<label class="col-md-4 control-label" for="student-lastname"><b>LastName:</b></label>
 							<div class="col-md-4">
 								<input id="student-lastname" name="student-lastname" type="text"
 									placeholder="your student's lastname"
@@ -76,7 +76,7 @@
 
 			<!-- LIST -->
 			<div class=col-md-12>
-				List of students
+				<b>List of students</b>
 				<table class="table table-bordered table-condensed table-hover">
 					<thead>
 						<tr>

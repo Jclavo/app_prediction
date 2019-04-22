@@ -13,19 +13,20 @@
 		<div class="row">
 			<!-- FORM  -->
 			<div class="col-md-12">
-				<form class="form-horizontal" id="form-edit-answer">
-					<fieldset>
+				<form class="form-inline" id="form-edit-answer">
 						<!-- Form Name -->
-						<legend>Answer</legend>
+						<legend><b>Answer</b></legend>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="test-id">Id test</label>
+							<label class="col-md-4 control-label" for="test-id"><b>Id test:</b></label>
 							<div class="col-md-6">
 								<input id="test-id" name="test-id" 
 							     	type="text" class="form-control-plaintext"
 									value="<?php echo $test_id;?>" disabled>
 							</div>
-							<label class="col-md-4 control-label" for="test-description">Test description</label>
+						</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="test-description"><b>Test description:</b></label>
 							<div class="col-md-6">
 								<input id="test-description" name="test-description" type="text"
 									   class="form-control-plaintext">
@@ -34,7 +35,6 @@
 
 						<!-- Button -->
 
-					</fieldset>
 				</form>
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="btn-save"></label>
@@ -47,7 +47,7 @@
 
 			<!-- LIST -->
 			<div class=col-md-12>
-				List of questions
+				<b>List of questions</b>
 				<table class="table table-bordered table-condensed table-hover">
 					<thead>
 						<tr>

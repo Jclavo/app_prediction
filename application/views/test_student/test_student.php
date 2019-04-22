@@ -13,15 +13,15 @@
 		<div class="row">
 			<!-- FORM  -->
 			<div class="col-md-12">
-				<form class="form-horizontal" id="form-edit-test">
+				<form class="form-inline" id="form-edit-test">
 					<fieldset>
 						<!-- Form description -->
-						<legend>Test Student</legend>
+						<legend><b>Check Students by test</b></legend>
 					
 						<!-- Select  -->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="test_student-test">tests</label>
-							<div class="col-md-4">
+							<label class="col-md-2 control-label" for="test_student-test"><b>Tests:</b></label>
+							<div class="col-md-10">
 								<div class="input-group">
 									<select 
 										class="form-control" id="test_student-test">
@@ -45,7 +45,7 @@
 
 			<!-- LIST -->
 			<div class=col-md-12>
-				List of tests
+				<b>List of tests</b>
 				<table class="table table-bordered table-condensed table-hover">
 					<thead>
 						<tr>

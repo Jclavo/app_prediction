@@ -15,7 +15,7 @@
 			<div class="col-md-12">
 				<form class="form-inline" id="form-edit-test">
 						<!-- Form description -->
-						<legend>Kmeans execution</legend>
+						<legend><b>Kmeans execution</b></legend>
 
 						<!-- Select  -->
 						<div class="form-group">

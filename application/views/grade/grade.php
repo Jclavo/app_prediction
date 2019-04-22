@@ -15,7 +15,7 @@
 			<div class="col-md-12">
 				<form class="form-inline" id="form-edit-grade">
 						<!-- Form Name -->
-						<legend>Assign grades to student</legend>
+						<legend><b>Assign grades to student</b></legend>
 
 						<!-- Text input-->
 						<div class="form-group">
@@ -64,7 +64,7 @@
 
 			<!-- LIST -->
 			<div class=col-md-12>
-				List of grades
+				<b>List of grades</b>
 				<table class="table table-bordered table-condensed table-hover">
 					<thead>
 						<tr>

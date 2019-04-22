@@ -22,7 +22,7 @@
 			<div class="col-md-12">
 				<form class="form-inline"  id="form-edit-exam">
 						<!-- Form Name -->
-						<legend>Exam</legend>
+						<legend><b>Exam</b></legend>
 
 						<!-- Text input-->
 						<div class="form-group">
@@ -57,7 +57,7 @@
 
 			<!-- LIST -->
 			<div class=col-md-12>
-				List of exams
+				<b>List of exams</b>
 				<table class="table table-bordered table-condensed table-hover">
 					<thead>
 						<tr>

@@ -22,10 +22,10 @@
 			<div class="col-md-12">
 				
 				<form class="form-horizontal" id="form-edit-test">
-						<legend>Test</legend>
+						<legend><b>Test</b></legend>
 						<!-- Text input-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="test-description">Description:</label>
+							<label class="col-md-4 control-label" for="test-description"><b>Description:</b></label>
 							<div class="col-md-4">
 								<input id="test-description" name="test-description" type="text"
 									placeholder="your test's description" class="form-control input-md" required>
@@ -34,7 +34,7 @@
 
 						<!-- Text input-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="test-total_question">Questions:</label>
+							<label class="col-md-4 control-label" for="test-total_question"><b>Questions:</b></label>
 							<div class="col-md-4">
 								<input id="test-total_question" name="test-total_question" type="number"
 									class="form-control input-md" required>
@@ -43,7 +43,7 @@
 						
 						<!-- Text input-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="test-total_alternative">Options:</label>
+							<label class="col-md-4 control-label" for="test-total_alternative"><b>Options:</b></label>
 							<div class="col-md-4">
 								<input id="test-total_alternative" name="test-total_alternative" type="number"
 									class="form-control input-md" required>
@@ -52,7 +52,7 @@
 						<!-- Button -->
 						<!-- Select-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="test-course">Courses</label>
+							<label class="col-md-4 control-label" for="test-course"><b>Courses:</b></label>
 							<div class="col-md-4">
 								<div class="input-group">
 									<select 
@@ -74,7 +74,7 @@
 
 			<!-- LIST -->
 			<div class=col-md-12>
-				List of tests
+				<b>List of tests</b>
 				<table class="table table-bordered table-condensed table-hover">
 					<thead>
 						<tr>

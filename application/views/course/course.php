@@ -23,11 +23,11 @@
 			<div class="col-md-12">
 				<form class="form-inline" id="form-edit-course">
 						<!-- Form description -->
-						<legend>Course</legend>
+						<legend><b>Course</b></legend>
 
 						<!-- Text input-->
 						<div class="form-group">
-							<label class="col-md-3 control-label" for="course-description">Description</label>
+							<label class="col-md-3 control-label" for="course-description"><b>Description:</b></label>
 							<div class="col-md-3">
 								<input id="course-description" name="course-description" type="text"
 									placeholder="your course's description" class="form-control input-md" required>
@@ -36,7 +36,7 @@
 
 						<!-- Text input-->
 						<div class="form-group">
-							<label class="col-md-3 control-label" for="course-started_date">Started Date</label>
+							<label class="col-md-3 control-label" for="course-started_date"><b>Started Date:</b></label>
 							<div class="col-md-3">
 								<input id="course-started_date" name="course-started_date" type="date"
 									placeholder="your course's started date"
@@ -46,7 +46,7 @@
 						
 						<!-- Select  -->
 						<div class="form-group">
-							<label class="col-md-3 control-label" for="course-course">Courses</label>
+							<label class="col-md-3 control-label" for="course-course"><b>Courses:</b></label>
 							<div class="col-md-9">
 								<div class="input-group">
 									<select 
@@ -74,7 +74,7 @@
 
 			<!-- LIST -->
 			<div class=col-md-12>
-				List of courses
+				<b>List of courses</b>
 				<table class="table table-bordered table-condensed table-hover">
 					<thead>
 						<tr>

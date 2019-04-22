@@ -23,12 +23,12 @@
 			<div class="col-md-12">
 				<form class="form-inline" id="form-edit-student_course">
 						<!-- Form Name -->
-						<legend>Enroll students in a course</legend>
+						<legend><b>Enroll students in a course</b></legend>
 
 						
 						<!-- Prepended text-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="student_course-student">Students</label>
+							<label class="col-md-4 control-label" for="student_course-student"><b>Students:</b></label>
 							<div class="col-md-8">
 								<div class="input-group">
 									<select 
@@ -40,7 +40,7 @@
 
 						<!-- Prepended text-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="student_course-course">Courses</label>
+							<label class="col-md-4 control-label" for="student_course-course"><b>Courses:</b></label>
 							<div class="col-md-8">
 								<div class="input-group">
 									<select 
@@ -62,7 +62,7 @@
 
 			<!-- LIST -->
 			<div class=col-md-12>
-				List of student_courses
+				<b>List of students registers in courses</b>
 				<table class="table table-bordered table-condensed table-hover">
 					<thead>
 						<tr>
