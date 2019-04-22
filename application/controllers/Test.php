@@ -21,7 +21,9 @@ class Test extends CI_Controller
         $data['test'] = $this->test_model->get_test($id);
         mysqli_next_result( $this->db->conn_id ); // Free BDD
         $data['course'] = $this->course_model->get_course($id);
-        $data['status']  = $this->message->success('R');
+        
+        $data['status']  = $this->message->array_isEmpty($data['test'],'Test');
+
         echo json_encode($data);
     }
 
@@ -57,14 +59,16 @@ class Test extends CI_Controller
         
         $this->db->trans_complete();// End Tx, if there is any error, there is a ROLL BACK, otherwise a COMMIT 
 
-        $data['status'] =  $data_test;
+        $data['status'] = $this->message->success('C');
         echo json_encode($data);
     }
 
     public function delete_test()
     {
         $id = $this->input->get('id');
-        $data['status'] = $this->test_model->delete_test($id);
+        $this->test_model->delete_test($id);
+        $data['status'] = $this->message->warning('D');
+        
         echo json_encode($data);
     }
     
@@ -74,7 +78,9 @@ class Test extends CI_Controller
         $description  = $this->input->get('description');
         $course_id = $this->input->get('course_id');
 
-        $data['status'] = $this->test_model->update_test($id, $description, $course_id);
+        $this->test_model->update_test($id, $description, $course_id);
+        $data['status'] = $this->message->warning('U');
+        
         echo json_encode($data);
     }
     

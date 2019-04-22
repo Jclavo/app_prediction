@@ -58,7 +58,7 @@ class Grade extends CI_Controller
             $data['status']  =  $this->grade_model->update_grade($grade_aux['grade'],$grade_aux['student_id'],$grade_aux['exam_id']);
         }
         
-        $data['status']  = $this->message->success('U');
+        $data['status']  = $this->message->warning('U');
         
         echo json_encode($data);
     }

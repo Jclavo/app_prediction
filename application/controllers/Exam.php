@@ -21,7 +21,9 @@ class Exam extends CI_Controller
         $data['exam'] = $this->exam_model->get_exam($id);
         $this->db->close();
         $data['course'] = $this->course_model->get_course();
-        $data['status']  = $this->message->success('R');
+        
+        $data['status']  = $this->message->array_isEmpty($data['exam'],'Exams');
+
         echo json_encode($data);
     }
 

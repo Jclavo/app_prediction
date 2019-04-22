@@ -30,8 +30,7 @@ class Question extends CI_Controller
         mysqli_next_result( $this->db->conn_id ); // Free BDD
         $data['test'] = $this->test_model->get_test($id);
         
-        $data['status']  = $this->message->success('R');
-        
+        $data['status']  = $this->message->array_isEmpty($data['questions'],'Questions');
         
         echo json_encode($data);
     }
@@ -49,7 +48,7 @@ class Question extends CI_Controller
             //mysqli_next_result( $this->db->conn_id );//Free BDD
         }
         
-        return $data['status'];
+        $data['status'] = $this->message->warning('U');
         echo json_encode($data);
     }
     

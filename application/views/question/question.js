@@ -43,7 +43,8 @@ function call_ajax(operation, data_input) {
 	}).done(function(data) {
 		// alert(data.answer);
 		console.log(data)
-
+		$.notify(data.status['message'], data.status['type']);
+		
 		switch (operation) {
 		case GET_INITIAL_DATA:
 			display_test_info(data.test)
@@ -93,7 +94,15 @@ function display_questions(questions, test) {
 		for (j = 0; j <= total_alternative; j++) {
 
 			var myoption = document.createElement("option")
-			myoption.innerHTML = 'Option ' + j
+			
+			if (j == 0) {
+				myoption.innerHTML = 'None'
+			}
+			else
+			{
+				myoption.innerHTML = 'Option ' + j
+			}
+			
 			myoption.setAttribute("value", j)
 
 			if (questions[i]['correct'] == j) {
