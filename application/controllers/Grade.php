@@ -40,7 +40,7 @@ class Grade extends CI_Controller
         mysqli_next_result( $this->db->conn_id );
         $data['exam'] = $this->exam_model->get_exam($exam_id);
         
-        $data['status']  = $this->message->success('R');
+        $data['status']  = $this->message->array_isEmpty($data['grade'],'Grades');
         
         echo json_encode($data);
     }
