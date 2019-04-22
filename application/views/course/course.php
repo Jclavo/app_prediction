@@ -12,24 +12,22 @@
 	<div class="container">
 		<div class="row">
 			<!-- FORM  -->
+			<!-- Text input-->
+			<div class="form-group">
+				<div class="col-md-3">
+					<input id="course-id" name="course-id" type="hidden"
+						placeholder="" class="form-control input-md" disabled>
+				</div>
+			</div>
 			<div class="col-md-12">
-				<form class="form-horizontal" id="form-edit-course">
-					<fieldset>
+				<form class="form-inline" id="form-edit-course">
 						<!-- Form description -->
-						<legend>course</legend>
+						<legend>Course</legend>
 
 						<!-- Text input-->
 						<div class="form-group">
-							<div class="col-md-4">
-								<input id="course-id" name="course-id" type="hidden"
-									placeholder="" class="form-control input-md" disabled>
-							</div>
-						</div>
-
-						<!-- Text input-->
-						<div class="form-group">
-							<label class="col-md-4 control-label" for="course-description">Description</label>
-							<div class="col-md-4">
+							<label class="col-md-3 control-label" for="course-description">Description</label>
+							<div class="col-md-3">
 								<input id="course-description" name="course-description" type="text"
 									placeholder="your course's description" class="form-control input-md" required>
 							</div>
@@ -37,8 +35,8 @@
 
 						<!-- Text input-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="course-started_date">Started Date</label>
-							<div class="col-md-4">
+							<label class="col-md-3 control-label" for="course-started_date">Started Date</label>
+							<div class="col-md-3">
 								<input id="course-started_date" name="course-started_date" type="date"
 									placeholder="your course's started date"
 									class="form-control input-md" required>
@@ -47,8 +45,8 @@
 						
 						<!-- Select  -->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="course-course">Courses</label>
-							<div class="col-md-4">
+							<label class="col-md-3 control-label" for="course-course">Courses</label>
+							<div class="col-md-8">
 								<div class="input-group">
 									<select 
 										class="form-control" id="course-course">
@@ -58,19 +56,17 @@
 						</div>
 
 						<!-- Button -->
-
-					</fieldset>
 				</form>
 				<div class="form-group">
-					<label class="col-md-8 control-label" for="btn-save"></label>
-					<div class="col-md-4" id="saveupdate">
+					<label class="col-md-6 control-label" for="btn-save"></label>
+					<div class="col-md-6" id="saveupdate">
 						<button id="btn-save" name="btn-save" class="btn btn-success"
 							onclick="add_course()">Save</button>
 					</div>
 				
     				<div class="form-check">
                         <input type="checkbox" class="form-check-input" id="course-copy">
-                        <label class="form-check-label" for="course-copy">Copy</label>
+                        <label class="form-check-label" for="course-copy">Copy students from an existing course </label>
                     </div>
                 </div>
 			</div>
