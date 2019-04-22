@@ -13,15 +13,14 @@
 		<div class="row">
 			<!-- FORM  -->
 			<div class="col-md-12">
-				<form class="form-horizontal" id="form-edit-test">
-					<fieldset>
+				<form class="form-inline" id="form-edit-test">
 						<!-- Form description -->
 						<legend>Kmeans execution</legend>
 
 						<!-- Select  -->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="kmeans-test">tests</label>
-							<div class="col-md-4">
+							<label class="col-md-3 control-label" for="kmeans-test"><b>Tests:</b></label>
+							<div class="col-md-9">
 								<div class="input-group">
 									<select class="form-control" id="kmeans-test">
 									</select>
@@ -31,14 +30,12 @@
 
 						<!-- Text input-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="test-total_question"># Clusters</label>
-							<div class="col-md-4">
+							<label class="col-md-4 control-label" for="test-total_question"><b># Clusters</b></label>
+							<div class="col-md-2">
 								<input id="kmeans-cluster_number" name="kmeans-cluster_number" type="number" min="2"
 									class="form-control input-md" required>
 							</div>
 						</div>
-
-					</fieldset>
 				</form>
 				<div class="form-group">
 					<label class="col-md-8 control-label" for="btn-save"></label>
