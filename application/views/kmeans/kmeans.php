@@ -68,12 +68,13 @@
 				<div id="clusters" class="tab-pane active">
 					<br>
 					<div class="col-md-12">
-						Clusters
+						<b>Clusters</b>
 						<table class="table table-bordered table-condensed table-hover">
 							<thead>
 								<tr>
 									<th>Value</th>
 									<th>Letter</th>
+									<th>Index letter</th>
 								</tr>
 
 							</thead>
@@ -88,7 +89,7 @@
 				<div id="students" class="container tab-pane fade">
 					<br>
 					<div class=col-md-12>
-						Students
+						<b>Students</b>
 						<table class="table table-bordered table-condensed table-hover">
 							<thead>
 								<tr>
@@ -111,7 +112,7 @@
 				<div id="students-graph" class="container tab-pane fade">
 					<br>
 					<div class=col-md-12>
-						GRAPH
+						<b>GRAPH</b>
 						<canvas id="scatterChart">
 						</canvas>
 					</div>					
@@ -121,7 +122,7 @@
 				<div id="histograms" class="container tab-pane fade">
 					<br>
 					<div class=col-md-12>
-						Histograms
+						<b>Histograms</b>
 						<table class="table table-bordered table-condensed table-hover">
 							<thead>
 								<tr id="form-list-kmeans-histograms-header">
@@ -141,7 +142,7 @@
 				<div id="answers" class="container tab-pane fade">
 					<br>
 					<div class=col-md-12>
-						Answers
+						<b>Answers</b>
 						<table class="table table-bordered table-condensed table-hover">
 							<thead>
 								<tr id="form-list-kmeans-answers-header">
@@ -160,7 +161,7 @@
 						</table>
 					</div>
 					<div class=col-md-12>
-						Percentage of correct answers
+						<b>Percentage of correct answers</b>
 						<canvas id="pieChart">
 						</canvas>
 					</div>
