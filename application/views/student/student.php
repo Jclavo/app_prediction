@@ -19,8 +19,8 @@
 		<div class="row">
 			<!-- FORM  -->
 			<div class="col-md-12">
-				<form class="form-horizontal" id="form-edit-student">
-					<fieldset>
+				<form class="form-inline" id="form-edit-student">
+				
 						<!-- Form Name -->
 						<legend>Student</legend>
 
@@ -65,7 +65,7 @@
 						</div>
 						<!-- Button -->
 
-					</fieldset>
+
 				</form>
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="btn-save"></label>
