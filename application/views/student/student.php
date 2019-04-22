@@ -19,18 +19,18 @@
 		<div class="row">
 			<!-- FORM  -->
 			<div class="col-md-12">
+				<!-- Text input-->
+				<div class="form-group">
+					<div class="col-md-4">
+						<input id="student-id" name="student-id" type="hidden"
+							placeholder="" class="form-control input-md" disabled>
+					</div>
+				</div>
 				<form class="form-inline" id="form-edit-student">
 				
 						<!-- Form Name -->
+						
 						<legend>Student</legend>
-
-						<!-- Text input-->
-						<div class="form-group">
-							<div class="col-md-4">
-								<input id="student-id" name="student-id" type="hidden"
-									placeholder="" class="form-control input-md" disabled>
-							</div>
-						</div>
 
 						<!-- Text input-->
 						<div class="form-group">
@@ -51,22 +51,20 @@
 							</div>
 						</div>
 
-						<!-- Prepended text-->
-						<div class="form-group" id="student-cellphone">
-							<label class="col-md-4 control-label" for="student-cellphone">cellphone
-								Number</label>
-							<div class="col-md-4">
-								<div class="input-group">
-									<input id="student-cellphone" name="student-cellphone"
-										class="form-control" type="text"
-										placeholder="your student's cellphone">
-								</div>
-							</div>
-						</div>
-						<!-- Button -->
-
-
 				</form>
+				<!-- Prepended text-->
+				<div class="form-group" id="student-cellphone">
+					<label class="col-md-4 control-label" for="student-cellphone">cellphone
+						Number</label>
+					<div class="col-md-4">
+						<div class="input-group">
+							<input id="student-cellphone" name="student-cellphone"
+								class="form-control" type="text"
+								placeholder="your student's cellphone">
+						</div>
+					</div>
+				</div>
+				<!-- Button -->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="btn-save"></label>
 					<div class="col-md-4" id="saveupdate">
