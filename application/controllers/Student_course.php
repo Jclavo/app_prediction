@@ -23,7 +23,7 @@ class Student_course extends CI_Controller
         $data['course'] = $this->course_model->get_course();
         $this->db->close();
         $data['student'] = $this->student_model->get_student();
-        $data['status']  = $this->message->success('R');
+        $data['status']  = $this->message->array_isEmpty($data['course'],'');
         echo json_encode($data);
     }
 
