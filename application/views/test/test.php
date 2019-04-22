@@ -10,25 +10,22 @@
 </head>
 <body>
 	<div class="container">
+			<!-- Text input-->
+		<div class="form-group">
+			<div class="col-md-4">
+				<input id="test-id" name="test-id" type="hidden"
+					placeholder="" class="form-control input-md" disabled>
+			</div>
+		</div>
 		<div class="row">
 			<!-- FORM  -->
 			<div class="col-md-12">
+				
 				<form class="form-horizontal" id="form-edit-test">
-					<fieldset>
-						<!-- Form Name -->
-						<legend>test</legend>
-
+						<legend>Test</legend>
 						<!-- Text input-->
 						<div class="form-group">
-							<div class="col-md-4">
-								<input id="test-id" name="test-id" type="hidden"
-									placeholder="" class="form-control input-md" disabled>
-							</div>
-						</div>
-
-						<!-- Text input-->
-						<div class="form-group">
-							<label class="col-md-4 control-label" for="test-description">Description</label>
+							<label class="col-md-4 control-label" for="test-description">Description:</label>
 							<div class="col-md-4">
 								<input id="test-description" name="test-description" type="text"
 									placeholder="your test's description" class="form-control input-md" required>
@@ -37,7 +34,7 @@
 
 						<!-- Text input-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="test-total_question">Questions</label>
+							<label class="col-md-4 control-label" for="test-total_question">Questions:</label>
 							<div class="col-md-4">
 								<input id="test-total_question" name="test-total_question" type="number"
 									class="form-control input-md" required>
@@ -46,14 +43,13 @@
 						
 						<!-- Text input-->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="test-total_alternative">Options</label>
+							<label class="col-md-4 control-label" for="test-total_alternative">Options:</label>
 							<div class="col-md-4">
 								<input id="test-total_alternative" name="test-total_alternative" type="number"
 									class="form-control input-md" required>
 							</div>
 						</div>
 						<!-- Button -->
-						
 						<!-- Select-->
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="test-course">Courses</label>
@@ -65,9 +61,8 @@
 								</div>
 							</div>
 						</div>
-
-					</fieldset>
 				</form>
+					
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="btn-save"></label>
 					<div class="col-md-4" id="saveupdate">
