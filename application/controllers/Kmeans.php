@@ -36,7 +36,15 @@ class Kmeans extends CI_Controller
         
         $students = $this->course_model->get_avegareByCourse($course_id);
         
+        //Validation
         if (count($students) < 1) {
+            $DATA['status'] = $this->message->error('Students relate to this test do not have great.');
+            echo json_encode($DATA);
+            return;
+        }
+        if ($cluster_number > count($students)/2 ) {
+            $DATA['status'] = $this->message->error('# cluster is too large to make the calculation.');
+            echo json_encode($DATA);
             return;
         }
         
@@ -187,7 +195,7 @@ class Kmeans extends CI_Controller
          }
          
          $DATA['answers']  = $questions;
-        
+         $DATA['status']   = $this->message->success('C');
         
         echo json_encode($DATA);
           

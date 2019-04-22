@@ -231,7 +231,10 @@
 		src="<?php echo base_url('assets/js/bootstrap/bootstrap.min.js')?>"></script>
 	<script
 		src="<?php echo base_url('application/views/kmeans/kmeans.js')?>"></script>
-	<script src="<?php echo base_url('assets/js/mdb/mdb.js')?>"></script>
+	<script
+		src="<?php echo base_url('assets/js/notify/notify.min.js')?>"></script>	
+	<script 
+		src="<?php echo base_url('assets/js/mdb/mdb.js')?>"></script>
 
 </body>
 </html>

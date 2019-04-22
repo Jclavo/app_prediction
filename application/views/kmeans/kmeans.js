@@ -55,22 +55,29 @@ function call_ajax(operation, data_input) {
 
 	}).done(function(data) {
 		console.log(data)
-
-		switch (operation) {
-		case READ_ALL_TEST:
-			// alert(data.test)
-			select_tests(data.test)
-			break
-		case EXECUTE_KMEANS:
-			// alert(data.test)
-			display_clusters(data.clusters)
-			display_students(data.students)
-			display_students_graph(data.students)
-			display_histograms(data.total_alternatives, data.histograms)
-			display_answers(data.answers)
-			// call_ajax(READ_ALL,global_test)
-			break
+		if (data.status['type'] == 'error') {
+			$.notify(data.status['message'], data.status['type']);
 		}
+		else
+		{
+			$.notify(data.status['message'], data.status['type']);
+			switch (operation) {
+			case READ_ALL_TEST:
+				// alert(data.test)
+				select_tests(data.test)
+				break
+			case EXECUTE_KMEANS:
+				// alert(data.test)
+				display_clusters(data.clusters)
+				display_students(data.students)
+				display_students_graph(data.students)
+				display_histograms(data.total_alternatives, data.histograms)
+				display_answers(data.answers)
+				// call_ajax(READ_ALL,global_test)
+				break
+			}
+		}	
+		
 	});
 
 }
