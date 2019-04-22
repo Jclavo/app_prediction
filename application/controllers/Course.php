@@ -19,7 +19,7 @@ class Course extends CI_Controller
     {
         $id = $this->input->get('id');
         $data['course'] = $this->course_model->get_course($id);
-        $data['status']  = $this->message->success('R');
+        $data['status']  = $this->message->array_isEmpty($data['course'],'Courses');
         echo json_encode($data);
     }
 
