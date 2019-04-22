@@ -141,7 +141,7 @@ function display_clusters(clusters) {
 
 		myDiv = document.createElement("div")
 		myDiv.setAttribute("class", "col-md-12")
-		myP = document.createElement("p")
+		myP = document.createElement("b")
 		myP.innerHTML = 'Cluster ' + i
 
 		myTable = document.createElement("table")
@@ -156,6 +156,9 @@ function display_clusters(clusters) {
 		myTr.appendChild(myTh)
 		myTh = document.createElement("th")
 		myTh.innerHTML = 'Letter'
+		myTr.appendChild(myTh)
+		myTh = document.createElement("th")
+		myTh.innerHTML = 'Index letter'
 		myTr.appendChild(myTh)
 		myHead.appendChild(myTr)
 		myTable.appendChild(myHead)
@@ -225,7 +228,7 @@ function display_students(students) {
 
 		myDiv = document.createElement("div")
 		myDiv.setAttribute("class", "col-md-12")
-		myP = document.createElement("p")
+		myP = document.createElement("b")
 		myP.innerHTML = 'Cluster ' + i
 
 		myTable = document.createElement("table")
@@ -314,7 +317,7 @@ function display_students_graph(students) {
 		
 		myDiv = document.createElement("div")
 		myDiv.setAttribute("class", "col-md-12")
-		myP = document.createElement("p")
+		myP = document.createElement("b")
 		myP.innerHTML = 'Cluster ' + i
 		
 		myCanvas = document.createElement("canvas")
@@ -341,9 +344,18 @@ function display_students_graph(students) {
 				if (k == students[i][j]["index_cluster"]) {
 					average_value = students[i][j]["average"]
 					cluster_center = students[i][j]["cluster_value"]
-					array_data.push({x:average_value, y:average_value});
-					
+					if (!searchValueArray(average_value, array_data)) {
+						array_data.push({x:average_value, y:average_value});
+					}
+
 				}
+			}
+			
+			j = 0;
+			while(j < 6)
+			{
+				array_data.push({x:cluster_center, y:cluster_center});
+				j = j + 1;
 			}
 			
 		
@@ -397,10 +409,20 @@ function display_students_graph(students) {
 		  	
 		// return;
 			
-
 	}
 	
 }
+
+function searchValueArray(nameKey, myArray){
+    for (var i=0; i < myArray.length; i++) {
+        if (myArray[i].x === nameKey) {
+            //return myArray[i];
+            return true
+        }
+    }
+    return false;
+}
+
 
 function display_answers(answers) {
 
@@ -450,11 +472,17 @@ function display_answers(answers) {
 	percentage_correct = (correct_answers / total_questions ) * 100
 	percentage_incorrect = 100 - percentage_correct
 	
+	var array_labels = [];
+	//array_labels.push("Incorrect: " + percentage_incorrect + "%");
+	//array_labels.push("Correct: " + percentage_correct + "%");
+	array_labels.push("Incorrect: ");
+	array_labels.push("Correct: ");
+	
 	var ctxP = document.getElementById("pieChart").getContext('2d');
 	  var myPieChart = new Chart(ctxP, {
 	    type: 'pie',
 	    data: {
-	      labels: ["Incorrect", "Correct"],
+	      labels: array_labels,
 	      datasets: [{
 	        data: [percentage_incorrect, percentage_correct],
 	        backgroundColor: ["#F7464A", "#46BFBD"],
@@ -691,3 +719,5 @@ function show_details_answer(question_id) {
 	    }
 	  });
 }
+
+
