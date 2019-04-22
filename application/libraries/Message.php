@@ -52,16 +52,41 @@ class Message
                 $message = 'Records got successfully';
                 break;
             case 'U':
-                $message = 'Record updated';
+                $message = 'Records updated';
                 break;
             case 'D':
-                $message = 'Record deleted';
+                $message = 'Records deleted';
                 break;
+            case 'N':
+                
+                break;
+                
             /*
             default:
                 break;
             */
         }
         return $message;
+    }
+    
+    function array_isEmpty($array,$name)
+    {
+        if (count($array) == 0) {
+            $data['type']    = 'error';
+            if ($name != null) {
+                $data['message'] = $name . ' records not found';
+            }
+            else{
+                $data['message'] = 'Records not found';
+            }
+            
+        }
+        else{
+            $data['type']    = 'success';
+            $data['message'] = 'Records got successfully';
+        }
+        
+        
+        return $data;
     }
 } 
