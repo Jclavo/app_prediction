@@ -72,6 +72,15 @@ class Student extends CI_Controller
         mysqli_next_result( $this->db->conn_id ); // Free BDD
         
         $data['student'] = $this->student_model->get_studentbycourse($course_id);
+        
+        /*if (count($data['student']) == 0) {
+            $data['status'] = $this->message->error('N');
+        }
+        else{
+            $data['status']  = $this->message->success('R');
+        }*/
+        
+        $data['status']  = $this->message->array_isEmpty($data['student'],'Students');
         echo json_encode($data);
     }
       

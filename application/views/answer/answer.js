@@ -68,7 +68,7 @@ function call_ajax(operation, data_input) {
 	}).done(function(data) {
 		// alert(data.answer);
 		console.log(data)
-		
+		$.notify(data.status['message'], data.status['type']);
 		switch (operation) {
 		case GET_INITIAL_DATA:
 			display_answers(data.answer,data.test)

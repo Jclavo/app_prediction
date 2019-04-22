@@ -94,6 +94,8 @@
 	<script
 		src="<?php echo base_url('assets/js/bootstrap/bootstrap.min.js')?>"></script>
 	<script
+		src="<?php echo base_url('assets/js/notify/notify.min.js')?>"></script>
+	<script
 		src="<?php echo base_url('application/views/answer/answer.js')?>"></script>
 
 </body>

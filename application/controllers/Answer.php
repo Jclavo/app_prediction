@@ -41,7 +41,7 @@ class Answer extends CI_Controller
         $data['answer'] = $this->answer_model->get_answerbystudentbytest($student_id,$test_id);
         
 //         $this->db->trans_complete();// End Tx, if there is any error, there is a ROLL BACK, otherwise a COMMIT
-        
+        $data['status']  = $this->message->array_isEmpty($data['answer'],'Answers');
         echo json_encode($data);
     }
 
@@ -58,7 +58,8 @@ class Answer extends CI_Controller
             $data['status'] = $this->answer_model->update_answer($answer['answer_id'],$answer['selected_option']);
         }
         
-        return $data['status'];
+        $data['status'] = $this->message->warning('U');
+        echo json_encode($data);
     }
     
 

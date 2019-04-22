@@ -42,6 +42,7 @@ function call_ajax(operation, data_input) {
 	
 	}).done(function(data) {
 		console.log(data)
+		$.notify(data.status['message'], data.status['type']);
 		
 		switch (operation) {
 		case READ_ALL_TEST:
