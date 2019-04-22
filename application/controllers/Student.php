@@ -20,7 +20,7 @@ class Student extends CI_Controller
     {
         $id = $this->input->get('id');
         $data['student'] = $this->student_model->get_student($id);
-        $data['status']  = $this->message->success('R');
+        $data['status']  = $this->message->array_isEmpty($data['student'],'Students');
         echo json_encode($data);
     }
 

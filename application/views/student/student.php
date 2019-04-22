@@ -7,6 +7,12 @@
 <link
 	href="<?php echo base_url('assets/css/bootstrap/bootstrap.min.css')?>"
 	rel="stylesheet">
+
+<style>
+#student-cellphone{
+  display: none;
+}
+</style>
 </head>
 <body>
 	<div class="container">
@@ -46,7 +52,7 @@
 						</div>
 
 						<!-- Prepended text-->
-						<div class="form-group">
+						<div class="form-group" id="student-cellphone">
 							<label class="col-md-4 control-label" for="student-cellphone">cellphone
 								Number</label>
 							<div class="col-md-4">
@@ -79,7 +85,6 @@
 							<th>Id</th>
 							<th>Name</th>
 							<th>Lastname</th>
-							<th>Cellphone</th>
 							<th>Actions</th>
 						</tr>
 

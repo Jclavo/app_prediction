@@ -157,10 +157,11 @@ function display_students(student) {
 
 		for (student_field in student[i]) {
 
-			var mytd = document.createElement("td")
-			mytd.innerHTML = student[i][student_field]
-			myTr.appendChild(mytd)
-
+			if (student_field != 'cellphone') {
+				var mytd = document.createElement("td")
+				mytd.innerHTML = student[i][student_field]
+				myTr.appendChild(mytd)
+			}
 		}
 		var actionTd = document.createElement("td")
 		
