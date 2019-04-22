@@ -10,21 +10,19 @@
 </head>
 <body>
 	<div class="container">
+	   <!-- Text input-->
+    	<div class="form-group">
+    		<div class="col-md-4">
+    			<input id="exam-id" name="exam-id" type="hidden"
+    				placeholder="" class="form-control input-md" disabled>
+    		</div>
+    	</div>
 		<div class="row">
 			<!-- FORM  -->
 			<div class="col-md-12">
-				<form class="form-horizontal" id="form-edit-exam">
-					<fieldset>
+				<form class="form-inline"  id="form-edit-exam">
 						<!-- Form Name -->
 						<legend>exam</legend>
-
-						<!-- Text input-->
-						<div class="form-group">
-							<div class="col-md-4">
-								<input id="exam-id" name="exam-id" type="hidden"
-									placeholder="" class="form-control input-md" disabled>
-							</div>
-						</div>
 
 						<!-- Text input-->
 						<div class="form-group">
@@ -38,7 +36,7 @@
 						<!-- Prepended text-->
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="exam-course">Courses</label>
-							<div class="col-md-4">
+							<div class="col-md-8">
 								<div class="input-group">
 									<select 
 										class="form-control" id="exam-course">
@@ -46,8 +44,7 @@
 								</div>
 							</div>
 						</div>
-						
-					</fieldset>
+
 				</form>
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="btn-save"></label>
