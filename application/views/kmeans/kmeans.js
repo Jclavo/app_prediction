@@ -463,8 +463,7 @@ function display_answers(answers) {
 
 		}
 
-		document.getElementById("form-list-kmeans-answers-body").appendChild(
-				myTr)
+		document.getElementById("form-list-kmeans-answers-body").appendChild(myTr)
 	}
 	
 	
@@ -634,7 +633,9 @@ function display_histograms(total_alternatives, histograms) {
 
 function show_details_answer(question_id) {
 
-	//document.getElementById("form-list-kmeans-histograms-details").innerHTML
+	//document.getElementById("form-list-kmeans-histograms-details").innerHTML = 
+	document.getElementById("myChart").innerHTML = ""
+		document.getElementById("polarChart").innerHTML = ""
 	// = "";
 
 	array_labels = []
@@ -664,19 +665,10 @@ function show_details_answer(question_id) {
 	var myChart = new Chart(ctx, {
 		type : 'bar',
 		data : {
-			// labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
 			labels : array_labels,
 			datasets : [ {
 				label : '# of Answers',
-				// data: [12, 19, 3, 5, 2, 3],
 				data : array_data,
-				/*backgroundColor : [ 'rgba(255, 99, 132, 0.2)',
-						'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)',
-						'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)',
-						'rgba(255, 159, 64, 0.2)' ],
-				borderColor : [ 'rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)',
-						'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)',
-						'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)' ],*/
 				backgroundColor : list_backgroundColor,
 				borderColor : list_borderColor,
 				borderWidth : 1
@@ -702,14 +694,6 @@ function show_details_answer(question_id) {
 	      labels: array_labels,
 	      datasets: [{
 	        data: array_data_percent,
-	        /*backgroundColor: ['rgba(255, 99, 132, 0.2)',
-				'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)',
-				'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)'
-	        ],
-	        hoverBackgroundColor: ['rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)',
-				'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)',
-				'rgba(153, 102, 255, 1)'
-	        ]*/
 	        backgroundColor: list_borderColor,
 	        hoverBackgroundColor: list_backgroundColor
 	      }]
