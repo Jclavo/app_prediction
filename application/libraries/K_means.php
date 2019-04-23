@@ -141,6 +141,7 @@ class K_means
                 {
                     if ($random_cluster['value'] == $point['cluster_value']) {
                         $random_clusters[$key]['value'] = ( $point['low'] + $point['high'] ) / 2;
+                        $random_clusters[$key]['value'] = round( $random_clusters[$key]['value'], 2);
                     }
                 }
                 
@@ -168,7 +169,7 @@ class K_means
         
         foreach ($listStudent as $std) {
             $student['id'] = $std['student_id'];
-            $student['average'] = $std['average'];
+            $student['average'] = round($std['average'],2);
             $student['cluster'] = '';
             $student['cluster_value'] = '';
             
@@ -187,7 +188,7 @@ class K_means
         $random_cluster = array();
         
         foreach ($clusters as $cluster) {
-            $random_cluster['value'] = $students[$cluster]['average'];
+            $random_cluster['value'] = round($students[$cluster]['average'],2);
             $random_cluster['letter'] = $alphabet[$contador_alphabet];
             $random_cluster['number'] = $contador_alphabet;
             array_push($random_clusters,$random_cluster);
