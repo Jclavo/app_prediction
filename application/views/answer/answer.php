@@ -10,34 +10,33 @@
 </head>
 <body>
 	<div class="container">
+	<!-- Text input-->
+		<div class="form-group">
+			<div class="col-md-4">
+				<input id="student-id" name="student-id" type="hidden"
+					class="form-control input-md" 
+					value="<?php echo $student_id;?>" disabled>
+			</div>
+		</div>
+	
 		<div class="row">
 			<!-- FORM  -->
 			<div class="col-md-12">
-				<form class="form-horizontal" id="form-edit-answer">
-					<fieldset>
+				<form class="form-inline" id="form-edit-answer">
 						<!-- Form Name -->
-						<legend>Answer</legend>
-
-						<!-- Text input-->
-						<div class="form-group">
-							<div class="col-md-4">
-								<input id="student-id" name="student-id" type="hidden"
-									class="form-control input-md" 
-									value="<?php echo $student_id;?>" disabled>
-							</div>
-						</div>
+						<legend><b>Answer</b></legend>
 
 						<!-- Text input-->
 						<div class="form-group row">
-							<label class="col-md-4 control-label" for="student-description">Student</label>
-							<div class="col-md-4">
+							<label class="col-md-4 control-label" for="student-description"><b>Student:</b></label>
+							<div class="col-md-8">
 								<input id="student-description" name="student-description" type="text"
 									   class="form-control-plaintext">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<div class="col-md-4">
+							<div class="col-md-8">
 								<input id="test-id" name="test-id" type="hidden"
 									class="form-control input-md" 
 									value="<?php echo $test_id;?>" disabled>
@@ -46,7 +45,7 @@
 
 						<!-- Text input-->
 						<div class="form-group row">
-							<label class="col-md-4 control-label" for="test-description">test</label>
+							<label class="col-md-4 control-label" for="test-description"><b>test:</b></label>
 							<div class="col-md-4">
 								<input id="test-description" name="test-description" type="text"
 									   class="form-control-plaintext">
@@ -55,7 +54,6 @@
 
 						<!-- Button -->
 
-					</fieldset>
 				</form>
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="btn-save"></label>
