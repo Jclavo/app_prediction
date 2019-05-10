@@ -8,9 +8,13 @@
 
 {\bf Ejemplo:}\par
 
-A medida que las ciudades crecían, el propio sistema urbano como un todo iba quedando cada vez más complejo e insuficiente para atender la fuerte demanda de la población por servicios urbanos. Las instituciones responsables por la oferta de tales servicios urbanos no han podido acompañar el ritmo de crecimiento de las demandas, ya que necesitan inversiones para ampliar los servicios de proyectos innovadores que se adapten a la nueva realidad de la sociedad moderna y de modelos de gestión más eficientes y eficaces que dinamicen la toma de decisiones, así como una participación más proactiva de la comunidad y de todos los actores involucrados de forma directa e indirecta en esos servicios.   
+En esta investigación se realizará la predicción de la respuesta correcta de una pregunta de opción múltiple, este tipo de pregunta de una evaluación requiere de conocimiento previo para ser respondida, mediante técnicas de aprendizaje no supervisado asociado con la experiencia previa. Como experiencia previa se usará las calificaciones anteriores obtenidas de los 2 últimos exámenes de los estudiantes.
 \vskip 0.3cm
-El transporte de carga tiene cierta ventaja sobre el transporte de personas, pues es posible intervenir e influir en los flujos de los viajes a través  de una buena administración de los horarios de los sistemas logísticos de entrega, y colecta de las empresas y por medio de la implementación de proyectos de logística urbana y definición de políticas de transporte de carga por parte de los gobiernos locales, en sociedad con las empresas transportadoras y la comunidad. Diversos proyectos se han aplicado con bastante éxito en varias ciudades del primer mundo \citep{Santos}, trayendo ganancias a todos los actores y una reducción significativa de los impactos negativos en los principales centros urbanos.    
+Para ello se plantea desarrollar un algoritmo de aprendizaje automático no supervisado llamado K-means, el cual sirve para crear clusters. Estos clusters se formarán con la data de las calificaciones  anteriores  de  los  estudiantes.Así  se  obtendría  un  valor  promedio,  Además,  se utilizará técnicas de estadísticas para crear un histograma de las opciones de las preguntas respondidas. Combinando estas 2 técnicas se obtendría un predicción por cada pregunta.
+\vskip 0.3cm  
+Este proyecto fue pensado debido a la problemática que se tiene al aplicar una evaluación y tener que esperar demasiado tiempo para obtener las respuestas correctas. Pero con lo que se desarrollara se obtendrá la respuesta correcta en corto tiempo.
+\vskip 0.3cm 
+Para cumplir los objetivos de este proyecto se tendrá primero que investigar acerca del aprendizaje automático no supervisado, así como las técnicas de estadísticas. Luego se desarrollará el algoritmo de aprendizaje automático no supervisado; ya hecho esto se procederá al desarrollo del prototipo de software web para poder ingresar los datos y hacer las pruebas. Finalmente se documentarán los resultados obtenidos.
 
 \section{Justificación de la investigación}
 La mayoría de las investigaciones se efectúan con un propósito definido. Tal propósito debe ser lo suficientemente fuerte para que justifique su realización. \cite{Erica}  
@@ -31,22 +35,10 @@ De esta forma, los sistemas integrados para el manejo, tratamiento y disposició
 
 
 \section{Formulación del problema}
-Plantear el problema no es otra cosa mas que afinar y estructurar formalmente la idea de investigación. El planteamiento del problema puede ser sencillo o complejo dependiendo de la familiarización del investigador en el tema a tratar.\par    
-\vskip 0.3cm
-Los criterios para formular un problema de investigación son:
-\begin{enumerate}
-\item[a)] El problema debe ser formulado claramente y sin ambiguedad como pregunta: ¿Qué efecto?; ¿en qué condiciones ...?; ¿cuál es la probabilidad de ...?; ¿cómo se relaciona ... con ...?; ¿cómo ...?.
-\vskip 0.3cm
-\item[b)] El planteamiento debe implicar la posibilidad de realizar una prueba empírica o una recolección de datos, es decir, la factibilidad de observarse en la realidad o en un entorno. 
-\end{enumerate}
-Por lo tanto, los elementos para plantear un problema de investigación son tres y estan relacionados entre si: Los objetivos que persigue la investigación; las preguntas de investigación y la justificación del estudio. \cite{Erica}
-\vskip 0.3cm
 
-{\bf Ejemplo:}\par
-
-  En este trabajo, se propone discutir el modelo de red  de logística reversa basado en el problema del ruteo de vehículos para responder a la siguiente pregunta:
+  En este trabajo, se propone responder a la siguiente pregunta:
  \begin{center} 
-     ?`Cómo viabilizar una red logística reversa en regiones urbanas minimizando los costos logísticos de ruteo y transporte de los RSU hasta su disposición final?
+     ¿ Cómo predecir la respuesta correcta de una pregunta de opción múltiple?
  \end{center}
 
 
@@ -76,48 +68,31 @@ Segun \cite{Rojas}, los objetivos tienen que expresarse con claridad para evitar
 Describir el objetivo central o propósito del proyecto de investigación (debe estar alineado con el problema e hipótesis), así como los objetivos específicos, los cuales deben reflejar los cambios que se esperan lograr en trabajo de tesis (variables). Para estos objetivos específicos utilice verbos como: describir, indicar, modificar, controlar, producir (tecnologías), recuperar, etc..
 
 \subsection{Generales}
-Debe explicitar lo que se espera lograr con el estudio en términos de conocimiento. Debe dar una noción clara de lo que se pretende describir, determinar, identificar, comparar y verificar.
+\begin{enumerate}
+\item[a)] Desarrollar un algoritmo de aprendizaje no supervisado para predecir la respuesta correcta de una pregunta de opción múltiple.
+\end{enumerate}
 
 
 \subsection{Específicos}
-Son la descomposición y secuencia lógica del objetivo general. Son un anticipo del diseño de la investigación.
-\vskip 0.3cm
-
-
-
-{\bf Ejemplo de objetivos:}\\
-{\bf Objetivo General:}
 \begin{enumerate}
-\item[a)] La investigación tiene como objetivo principal modelar y planificar una red logística reversa para una región urbana, dimensionando el flujo de RSU que será transportado a lo largo de la red y determinar el número y capacidad de las estaciones de colecta y de la unidades productivas y especiales necesarias para la atención de la región, en cuanto a la colecta, transporte y disposición final de los RSU.
+\item[a)] Codificar el algoritmo de aprendizaje no supervisado para trabajar con clusters.
+\item[b)] Desarrollar del prototipo de software y aplicarla a la predicción de la respuesta correcta.
+\item[c)] Realizar las pruebas y documentar resultados.
+\end{enumerate}
 \vskip 0.3cm
-\item[b)]Con la optimización del modelo de colecta de RSU, es posible reorganizar el sistema logístico reverso de una ciudad de forma que se consiga un mejor dimensionamiento de la red, con la consecuente disminución del número que circulan en la ciudad.
-\end{enumerate}
-\vskip 0.2cm
-{\bf Objetivos específicos:}
-\begin{enumerate}
-\item[a)] Aplicar una metodología de programación lineal entera, considerada computacionalmente como un problema que pertenece a la clase de complejidad NP \citep{Korte} para solucionar el problema.
-\item[b)] Implementar con CPLEX, rodando en el sistema operativo Linux, los modelos propuestos, validarlos y testarlos en un caso práctico.
-\end{enumerate}
-
-
 
 
 \section{Estructura de la tesis}
 
 {\bf Ejemplo:}\par
 \vskip 0.1cm
-El presente trabajo está dividido en cinco capítulos. El primer capítulo presenta los aspectos generales de la investigación realizada tal como justificación, formulación del problema, hipótesis, los objetivos y la estructura de la tesis.
+El presente trabajo está dividido en cinco capítulos. El primer capítulo presenta los aspectos generales del tema tratado: la formulación del problema, importancia de la investigación, los objetivos, además de la metodología de la investigación y la estructura de la tesis. En el segundo capítulo se contempla los conceptos de predicción, pregunta de opción múltiple y de prototipo de software.
 
-En el capítulo dos se presenta el referencial teórico, soporte del tema, contemplando los conceptos de sustentabilidad urbana, logística directa y reversa, modelamiento y ruteo. Finalmente el método empleado en la investigación.
+El tercer capítulo trata del tema central de la tesis, diseñándose el algoritmo K-means, se muestra el proceso para hacer la predicción y como se desarrolló el prototipo de aplicación web.
 
-El tercer capítulo trata del tema central de la tesis, diseñandose los modelos respectivos propuestos...   
+En el cuarto capítulo se presentan los resultados obtenidos en la investigación. En el quinto capitulo se presentan las conclusiones, seguidas de las recomendaciones para futuras investigaciones relacionadas al tema en cuestión. 
 
- En el cuarto capítulo se presentan los resultados y discusión obtenida en la investigación. En el capítulo cinco se presentan las consideraciones finales obtenidas en esta tesis. Inicialmente se presentan las conclusiones, seguida de las recomendaciones para futuras investigaciones relacionadas al tema en cuestión.
-
-Finalmente las referencias bibliográficas usadas para la investigación en esta tesis y los anexos donde se presentan los programas elaborados y en apéndice un pequeño glosario de ciertos términos usados en esta investigación. Finalmente la declaración jurada y autorización de la tesis.
-
-
-
+Finalmente las referencias bibliográficas usadas para la investigación. Además de los apéndices donde se presentan el algoritmo elaborado, los datos de los resultados y los instrumentos usados para recoger información.
 
 \chapter{Materiales y métodos}
 
@@ -128,6 +103,135 @@ En este capítulo se explica cual fue la metodología empleada para la solución
 
 
 \section{Marco teórico}
+\subsection{Aprendizaje no supervisado}
+
+\subsubsection{Definición}
+
+Aprendizaje no supervisado es un método de aprendizaje automático donde un modelo esa justado  a  las  observaciones.  Se  distingue  del  aprendizaje  supervisado  por  el  hecho  de  que no hay un conocimiento a priori. En el aprendizaje no supervisado, un conjunto de datos de objetos de entrada es tratado. Así, el aprendizaje no supervisado típicamente trata los objetos de entrada como un conjunto de variables aleatorias, siendo construido un modelo de densidad para el conjunto de datos.
+\vskip 1cm
+En este método contamos con “objetos” o muestras que tiene un conjunto de características,de las que no sabemos a que clase o categoría pertenece, entonces la finalidad es el descubrimiento de grupos de “objetos” cuyas características afines nos permitan separar las diferentes clases \citep{Araujo}.
+
+\subsubsection{Características}
+
+En este apartado se muestran las principales características del método de aprendizaje no supervisadas \citep{Hinton_Sejnowski}.
+
+\begin{itemize}
+\item No necesitan de un profesor externo.
+\item Muestran cierto grado de auto-organización.
+\item La red descubre en los datos de entrada y de forma autónoma: características, regularidades, correlaciones y categorías.
+\item Suelen requerir menores tiempos de entrenamiento que las supervisadas.
+\item Abordan los siguientes tipos de problemas: familiaridad, análisis de componentes principales, agrupamiento y relación de características.
+\end{itemize}
+
+\subsubsection{Técnicas}
+
+\begin{description}
+	\item[Clustering] Agrupan objetos en regiones donde la similitud mutua es elevada.
+	\item[Visualización] Permiten observar el espacio de instancias en un espacio de menor dimensión.
+	\item[Reducción de la dimensionalidad] Los datos de entrada son agrupados en subespacios de una dimensión más baja que la inicial.
+	\item[Extracción de características] construyen nuevos atributos (pocos) a partir de los atributos originales (muchos).
+\end{description}
+
+
+\subsection{Clustering}
+
+Análisis de grupo o agrupamiento (en inglés, clustering) es un procedimiento de agrupación de una serie de vectores de acuerdo con un criterio. Esos criterios son por lo general distancia o similitud. La cercanía se define en términos de una determinada función de distancia, como la euclídea, aunque existen otras más robustas o que permiten extenderla a variables discretas. La medida más utilizada para medir la similitud entre los casos es la matriz de correlación entre los \( N x N \) casos. Sin embargo, también existen muchos algoritmos que se basan en la maximización de una propiedad estadística llamada verosimilitud \citep{Leonard_Peter}
+\vskip 1cm
+Generalmente, los vectores de un mismo grupo (o clústers) comparten propiedades comunes. El conocimiento de los grupos puede permitir una descripción sintética de un conjunto de datos multidimensional complejo. De ahí su uso en minería de datos. Esta descripción sintética se consigue sustituyendo el detalle de todos los elementos de un grupo por la de un representante característico del mismo.
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[width=0.3\textwidth]{clustering}
+	\end{center}
+	\begin{center}
+		\vskip -0.5cm
+		\caption{\small{El resultado de un análisis de grupo, mostrado como la coloración de cuadrados en tres grupos.}}
+		{\small{Fuente: }}
+	\end{center}
+\end{figure}
+
+Clustering es considerado una técnica de aprendizaje no supervisado puesto que busca encontrar relaciones entre variables descriptivas pero no la que guardan con respecto a una variable objetivo.
+
+
+\subsubsection{Técnicas de clustering}
+
+Existen dos grandes técnicas para el agrupamiento de casos:
+
+\begin{itemize}
+	\item Agrupamiento jerárquico, que puede ser aglomerativo o divisivo.
+	\item Agrupamiento no jerárquico, en los que el número de grupos se determina de antemano y las observaciones se van asignando a los grupos en función de su cercanía. Existen los métodos de K-means y K-medoid.
+
+\end{itemize}
+
+\subsubsection{Algoritmos}
+
+Existen diversas implementaciones de algoritmos concretos. Por ejemplo, el de las K-mediaso K-means. Es uno de los más antiguos pero su uso es muy extendido en la actualidad.
+\vskip 1cm
+El algoritmo de K-means es un algoritmo particional y fue propuesto en los ’50. El algoritmo intenta encontrar una partición de nuestros ejemplos en \(K\) agrupaciones, de forma que cada ejemplo pertenezca a una de ellas, concretamente a aquella cuyo centro geométrico esté más cerca. El mejor valor de \(K\) para que la clasificación separe lo mejor posible los ejemplos no se conoce a priori, y depende completamente de los datos con los que trabajemos \citep{Jain}
+\vskip 1cm 
+A pesar de que su primera aparición es desde hace más de 50 años sigue siendo de los algoritmos más utilizados para clustering por su facilidad de implementación, simpleza y buenos resultados empíricos.
+\vskip 1cm 
+
+\textbf{Los principales pasos del algoritmo son los siguientes:}
+
+\begin{enumerate}
+	\item Seleccionar una partición inicial (determinada por los centros de los clusters) con \(K\) clus-ters, repetir los pasos 2 y 3 hasta que los clusters se lleguen a estabilizar.
+	\item Generar una nueva partición asignando cada dato al cluster cuyo centro está más cercano.	
+	\item Calcular los nuevos centros de los clusters \(c(1)....c(K)\) (promediando los datos asignados a ese cluster en el paso anterior si la distancia es la euclídea).
+\end{enumerate}
+
+\textbf{El algoritmo K-medias requiere del usuario los siguientes parámetros:}
+
+\begin{itemize}
+	\item Número de clusters.
+	\item Inicialización de los clusters (centros).
+	\item Distancia (en general la distancia euclídea).
+\end{itemize}
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{proceso_kmeans}
+	\end{center}
+	\begin{center}
+		\vskip -0.5cm
+		\caption{\small{Proceso K-means.}}
+		{\small{Fuente: }}
+	\end{center}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Algoritmos de clustering}
+
+\subsection{Probabilidad}
+
+\subsubsection{Definición}
+\subsubsection{Técnicas}
+\subsubsection{Teoría de bayes}
+
+\subsection{Aprendizaje no supervisado}
+
+\subsubsection{Definición}
+\subsubsection{Ventajas}
+\subsubsection{Aplicación web}
+\subsubsection{LAMP}
+\subsubsection{Software}
+
+
+
+
+
+
+
 \subsection{Optimización combinatoria y complejidad computacional}
 \subsubsection{Problemas combinatorios}
 \subsubsection{Heurísticas y metaheurísticas}
