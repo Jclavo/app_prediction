@@ -309,16 +309,18 @@ function display_students_graph(students) {
 	var myP
 	var myCanvas
 	
+	
 	document.getElementById("students-graph").innerHTML = "";
 
+	cluster_number = document.getElementById("kmeans-cluster_number").value
 	
 	//for (i = 1; i < students.length; i++) {
-	for (i = 0; i < 2; i++) {
+	for (i = 0; i < cluster_number; i++) {
 		
 		myDiv = document.createElement("div")
 		myDiv.setAttribute("class", "col-md-12")
 		myP = document.createElement("b")
-		myP.innerHTML = 'Cluster ' + i
+		myP.innerHTML = 'Iteración ' + ( i + 1 )
 		
 		myCanvas = document.createElement("canvas")
 		myCanvas.setAttribute("id", "scatterChart" + i)
@@ -385,7 +387,7 @@ function display_students_graph(students) {
 		    options: {
 		      title: {
 		        display: true,
-		        text: 'Cluster # ..'
+		        text: 'Clusters'
 		      },
 		      scales: {
 		        xAxes: [{
