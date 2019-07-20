@@ -4,13 +4,9 @@
 %\renewcommand{\baselinestretch}{2} %doble espacio paratodo el texto
 %\renewcommand{\baselinestretch }{1.5}
  
-
-
-{\bf Ejemplo:}\par
-
 En esta investigación se realizará la predicción de la respuesta correcta de una pregunta de opción múltiple, este tipo de pregunta de una evaluación requiere de conocimiento previo para ser respondida, mediante técnicas de aprendizaje no supervisado asociado con la experiencia previa. Como experiencia previa se usará las calificaciones anteriores obtenidas de los 2 últimos exámenes de los estudiantes.
 \vskip 0.3cm
-Para ello se plantea desarrollar un algoritmo de aprendizaje automático no supervisado llamado K-means, el cual sirve para crear clusters. Estos clusters se formarán con la data de las calificaciones  anteriores  de  los  estudiantes.Así  se  obtendría  un  valor  promedio,  Además,  se utilizará técnicas de estadísticas para crear un histograma de las opciones de las preguntas respondidas. Combinando estas 2 técnicas se obtendría un predicción por cada pregunta.
+Para ello se plantea desarrollar un algoritmo de aprendizaje automático no supervisado llamado K-means, el cual sirve para crear clusters. Estos clusters se formarán con la data de las calificaciones  anteriores  de  los  estudiantes. Así  se  obtendría  un  valor  promedio,  Además,  se utilizará técnicas de estadísticas para crear un histograma de las opciones de las preguntas respondidas. Combinando estas 2 técnicas se obtendría un predicción por cada pregunta.
 \vskip 0.3cm  
 Este proyecto fue pensado debido a la problemática que se tiene al aplicar una evaluación y tener que esperar demasiado tiempo para obtener las respuestas correctas. Pero con lo que se desarrollara se obtendrá la respuesta correcta en corto tiempo.
 \vskip 0.3cm 
@@ -96,9 +92,7 @@ Finalmente las referencias bibliográficas usadas para la investigación. Ademá
 
 \chapter{Materiales y métodos}
 
-{\bf Ejemplo:}\par
-
-En este capítulo se explica cual fue la metodología empleada para la solución del problema formulado, además de una reseña del material bibliográfico investigado con relación a los temas considerados en esta investigación. Los conocimientos investigados son muy amplios, principalmente aquel que ayudó a consolidar las bases del conocimiento científico para elaborar esta tesis, como lo son los temas de optimización combinatoria, complejidad computacional, metaheurísticas, ciencia de la información y logística, conocimientos sin los cuales sería difícil de modelar y solucionar matemática y computacionalmente cualquier tipo de problema de optimización.
+En este capítulo se explica cual fue la metodología empleada para la solución del problema formulado, además de una reseña del material bibliográfico investigado con relación a los temas considerados en esta investigación. Los conocimientos investigados son muy amplios, principalmente aquel que ayudó a consolidar las bases del conocimiento científico para elaborar esta tesis, como lo son los temas de *******************************************
 %\vskip 1cm 
 
 
@@ -107,7 +101,7 @@ En este capítulo se explica cual fue la metodología empleada para la solución
 
 \subsubsection{Definición}
 
-Aprendizaje no supervisado es un método de aprendizaje automático donde un modelo esa justado  a  las  observaciones.  Se  distingue  del  aprendizaje  supervisado  por  el  hecho  de  que no hay un conocimiento a priori. En el aprendizaje no supervisado, un conjunto de datos de objetos de entrada es tratado. Así, el aprendizaje no supervisado típicamente trata los objetos de entrada como un conjunto de variables aleatorias, siendo construido un modelo de densidad para el conjunto de datos.
+Aprendizaje no supervisado es un método de aprendizaje automático donde un modelo es ajustado  a  las  observaciones.  Se  distingue  del  aprendizaje  supervisado  por  el  hecho  de  que no hay un conocimiento a priori. En el aprendizaje no supervisado, un conjunto de datos de objetos de entrada es tratado. Así, el aprendizaje no supervisado típicamente trata los objetos de entrada como un conjunto de variables aleatorias, siendo construido un modelo de densidad para el conjunto de datos.
 \vskip 1cm
 En este método contamos con “objetos” o muestras que tiene un conjunto de características,de las que no sabemos a que clase o categoría pertenece, entonces la finalidad es el descubrimiento de grupos de “objetos” cuyas características afines nos permitan separar las diferentes clases \citep{Araujo}.
 
@@ -126,10 +120,10 @@ En este apartado se muestran las principales características del método de apr
 \subsubsection{Técnicas}
 
 \begin{description}
-	\item[Clustering] Agrupan objetos en regiones donde la similitud mutua es elevada.
-	\item[Visualización] Permiten observar el espacio de instancias en un espacio de menor dimensión.
-	\item[Reducción de la dimensionalidad] Los datos de entrada son agrupados en subespacios de una dimensión más baja que la inicial.
-	\item[Extracción de características] construyen nuevos atributos (pocos) a partir de los atributos originales (muchos).
+	\item[Clustering:] Agrupan objetos en regiones donde la similitud mutua es elevada.
+	\item[Visualización:] Permiten observar el espacio de instancias en un espacio de menor dimensión.
+	\item[Reducción de la dimensionalidad:] Los datos de entrada son agrupados en subespacios de una dimensión más baja que la inicial.
+	\item[Extracción de características:] construyen nuevos atributos (pocos) a partir de los atributos originales (muchos).
 \end{description}
 
 
@@ -137,7 +131,7 @@ En este apartado se muestran las principales características del método de apr
 
 Análisis de grupo o agrupamiento (en inglés, clustering) es un procedimiento de agrupación de una serie de vectores de acuerdo con un criterio. Esos criterios son por lo general distancia o similitud. La cercanía se define en términos de una determinada función de distancia, como la euclídea, aunque existen otras más robustas o que permiten extenderla a variables discretas. La medida más utilizada para medir la similitud entre los casos es la matriz de correlación entre los \( N x N \) casos. Sin embargo, también existen muchos algoritmos que se basan en la maximización de una propiedad estadística llamada verosimilitud \citep{Leonard_Peter}
 \vskip 1cm
-Generalmente, los vectores de un mismo grupo (o clústers) comparten propiedades comunes. El conocimiento de los grupos puede permitir una descripción sintética de un conjunto de datos multidimensional complejo. De ahí su uso en minería de datos. Esta descripción sintética se consigue sustituyendo el detalle de todos los elementos de un grupo por la de un representante característico del mismo.
+Generalmente, los vectores de un mismo grupo o clúster comparten propiedades comunes. El conocimiento de los grupos puede permitir una descripción sintética de un conjunto de datos multidimensional complejo. Esta descripción sintética se consigue sustituyendo el detalle de todos los elementos de un grupo por la de un representante característico del mismo.
 
 \begin{figure}[ht]
 	\begin{center}
@@ -158,8 +152,8 @@ Clustering es considerado una técnica de aprendizaje no supervisado puesto que 
 Existen dos grandes técnicas para el agrupamiento de casos:
 
 \begin{itemize}
-	\item Agrupamiento jerárquico, que puede ser aglomerativo o divisivo.
-	\item Agrupamiento no jerárquico, en los que el número de grupos se determina de antemano y las observaciones se van asignando a los grupos en función de su cercanía. Existen los métodos de K-means y K-medoid.
+	\item Agrupamiento jerárquico: En este agrupamiento puede ser aglomerativo o divisivo.
+	\item Agrupamiento no jerárquico: En este agrupamiento el número de grupos se determina de antemano y las observaciones se van asignando a los grupos en función de su cercanía. Existen los métodos de K-means y K-medoid.
 
 \end{itemize}
 
@@ -167,7 +161,7 @@ Existen dos grandes técnicas para el agrupamiento de casos:
 
 Existen diversas implementaciones de algoritmos concretos. Por ejemplo, el de las K-mediaso K-means. Es uno de los más antiguos pero su uso es muy extendido en la actualidad.
 \vskip 1cm
-El algoritmo de K-means es un algoritmo particional y fue propuesto en los ’50. El algoritmo intenta encontrar una partición de nuestros ejemplos en \(K\) agrupaciones, de forma que cada ejemplo pertenezca a una de ellas, concretamente a aquella cuyo centro geométrico esté más cerca. El mejor valor de \(K\) para que la clasificación separe lo mejor posible los ejemplos no se conoce a priori, y depende completamente de los datos con los que trabajemos \citep{Jain}
+El algoritmo de K-means es un algoritmo particional y fue propuesto en los ’50. Este algoritmo intenta encontrar una partición de nuestros ejemplos en \(K\) agrupaciones, de forma que cada ejemplo pertenezca a una de ellas, concretamente a aquella cuyo centro geométrico esté más cerca. El mejor valor de \(K\) para que la clasificación separe lo mejor posible los ejemplos no se conoce a priori, y depende completamente de los datos con los que trabajemos \citep{Jain}.
 \vskip 1cm 
 A pesar de que su primera aparición es desde hace más de 50 años sigue siendo de los algoritmos más utilizados para clustering por su facilidad de implementación, simpleza y buenos resultados empíricos.
 \vskip 1cm 
@@ -213,9 +207,7 @@ A pesar de que su primera aparición es desde hace más de 50 años sigue siendo
 
 \subsubsection{Definición}
 
-Según \citep{histograma_unam} una histograma es una gráfica de la distribución de un conjunto de datos. Es un tipo especial de gráfica de barras, en la cual una barra va pegada a la otra, es decir no hay espacio entre las barras. Cada barra representa un subconjunto de los datos.
-\vskip 0.2cm 
-Otra definición sostiene que un histograma es un gráfico de barras vertical que representa la distribución de frecuencias de un conjunto de datos \citep{histograma_aiteco}.
+Según \citep{histograma_unam} una histograma es una gráfica de la distribución de un conjunto de datos. Es un tipo especial de gráfica de barras y cada barra representa un subconjunto de los datos. Otra definición sostiene que un histograma es un gráfico de barras vertical que representa la distribución de frecuencias de un conjunto de datos \citep{histograma_aiteco}.
 
 \vskip 1cm 
 \subsubsection{Tipos}
@@ -305,7 +297,7 @@ Predicción es una expresión que anticipa aquello que, supuestamente, va a suce
 	\vskip 0.1cm 
 	La predicción constituye una de las esencias claves de la ciencia, de una teoría científica o de un modelo científico. Así, el éxito se mide por el éxito o acierto que tengan sus predicciones \citep{mora_prediccion}.
 	\vskip 0.1cm 
-	La  predicción  en  el  contexto  científico  es  una  declaración  precisa  de  lo  que  ocurrirá  en determinadas  condiciones  especificadas.  Se  puede  expresar  a  través  del  silogismo:  "Si  A  es cierto, entonces B también será cierto.
+	La  predicción  en  el  contexto  científico  es  una  declaración  precisa  de  lo  que  ocurrirá  en determinadas  condiciones  especificadas.  Se  puede  expresar  a  través  del  silogismo:  "Si  A  es cierto, entonces B también será cierto".
 	\vskip 0.1cm 
 	El método científico concluye con la prueba de afirmaciones que son consecuencias lógicas del corpus de las teorías científicas. Generalmente esto se hace a través de experimentos que deben poder repetirse o mediante estudios observacionales rigurosos.
 	\vskip 0.1cm 
@@ -393,10 +385,9 @@ Un formato típico puede ser el de un enunciado seguido de una pregunta al respe
 
 \subsubsection{Definición}
 
-En Ingeniería de software un prototipo es una representación limitada del diseño de un producto que permite a las partes responsables de su creación experimentar su uso \citep{pressman_troya} El prototipo debe ser construido en poco tiempo, usando los programas adecuados y no se debe utilizar muchos recursos.
+En Ingeniería de software un prototipo es una representación limitada del diseño de un producto que permite a las partes responsables de su creación experimentar su uso \citep{pressman_troya}, el prototipo debe ser construido en poco tiempo, usando los programas adecuados y no se debe utilizar muchos recursos.
 \vskip 0.3cm
-El diseño rápido se centra en una representación de aquellos aspectos del software que serán visibles para el cliente o el usuario final. Este diseño conduce a la construcción de un prototipo, el cual es evaluado por el cliente para una retroalimentación; gracias a ésta se refinan los requisitos del software que se desarrollará. La interacción ocurre cuando el prototipo se ajusta para satisfacer las necesidades del cliente. Esto permite que al mismo tiempo el desarrollador en-
-tienda mejor lo que se debe hacer y el cliente vea resultados a corto plazo \citep{pressman_troya}.
+El diseño rápido se centra en una representación de aquellos aspectos del software que serán visibles para el cliente o el usuario final. Este diseño conduce a la construcción de un prototipo, el cual es evaluado por el cliente para una retroalimentación; gracias a ésta se refinan los requisitos del software que se desarrollará. La interacción ocurre cuando el prototipo se ajusta para satisfacer las necesidades del cliente. Esto permite que al mismo tiempo el desarrollador entienda mejor lo que se debe hacer y el cliente vea resultados a corto plazo \citep{pressman_troya}.
 
 
 \subsubsection{Ventajas}
@@ -436,7 +427,7 @@ A pesar de que el origen de estos programas de código abierto no han sido espec
 
 \begin{figure}[ht]
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]{proceso_kmeans}
+		\includegraphics[width=0.8\textwidth]{LAMP_software}
 	\end{center}
 	\begin{center}
 		\vskip -0.5cm
@@ -448,8 +439,6 @@ A pesar de que el origen de estos programas de código abierto no han sido espec
 
 
 \chapter{Nombre de la propuesta o tema central de la tesis}
-
-{\bf Ejemplo:}\par
 
 Basados en los conceptos discutidos en los capítulos 1 y 2. Se procederá a realizar el modelamiento de todo el proceso de predicción de la respuesta correcta, el desarrollo del algoritmo y de cada paso del proceso hasta llegar a resultado final.
 
@@ -467,14 +456,13 @@ El algoritmo tiene diferentes pasos en su proceso los cuales vemos en la Figura 
 	\end{center}
 	\begin{center}
 		\vskip -0.5cm
-		\caption{\small{Diagrama de actividades/flujo .}}
+		\caption{\small{Diagrama de actividades/flujo algoritmo Kmeans.}}
 		{\small{Fuente: }}
 	\end{center}
 \end{figure}
 
 \subsubsection{Pseudocodigo}
-
-
+En la figura [] se muestra los pasos del algoritmo representado en Pseudocodigo.
 
 \begin{algorithm}
 \begin{algorithmic}[1]
@@ -500,18 +488,108 @@ El algoritmo tiene diferentes pasos en su proceso los cuales vemos en la Figura 
 \end{algorithm}
 
 
+\subsection{Proceso}
 
+En esta sección se muestra el proceso que sigue K-means en las Figuras [] a través de todas las iteraciones que realiza hasta lograr que los grupos se puedan estabilizar en ese momento las iteraciones finalizan.
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{step_kmeans_1}
+	\end{center}
+	\begin{center}
+		\vskip -0.5cm
+		\caption{\small{Grupos obtenidos en la iteración 1 .}}
+		{\small{Fuente: Propia. }}
+	\end{center}
+\end{figure}
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{step_kmeans_2}
+	\end{center}
+	\begin{center}
+		\vskip -0.5cm
+		\caption{\small{Grupos obtenidos en la iteración 2 .}}
+		{\small{Fuente: Propia. }}
+	\end{center}
+\end{figure}
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{step_kmeans_3}
+	\end{center}
+	\begin{center}
+		\vskip -0.5cm
+		\caption{\small{Grupos obtenidos en la iteración 3 (Final) .}}
+		{\small{Fuente: Propia. }}
+	\end{center}
+\end{figure}
+
+
+\section{Histograma}
+
+\subsubsection{Diagrama de flujo}
+
+El histograma tiene diferentes pasos en su proceso los cuales vemos en la Figura \ref{fig:steps_histogram}
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{steps_histogram}
+	\end{center}
+	\begin{center}
+		\vskip -0.5cm
+		\caption{\small{Diagrama de actividades/flujo Histograma. }}
+		{\small{Fuente: Propia.}}
+	\end{center}
+\end{figure}
+
+\subsubsection{Pseudocodigo}
+En la figura [] se muestra los pasos representados en Pseudocodigo.
+
+\begin{algorithm}
+	\begin{algorithmic}[2]
+		\REQUIRE Respuestas de una pregunta.  % Entrada
+		\label{lin:algorithm_histogram}
+		\ENSURE Sumatoria por cada opción de la pregunta .                                                       % Salida
+		
+		\STATE Obtener respuestas por pregunta.
+		
+		\STATE Sumar respuestas según la opción marcada. 
+		
+	
+		\IF {Existen más respuestas en la pregunta}
+		\STATE {\bf Goto} [ Paso 2]
+		\ENDIF
+		
+		\RETURN  Sumatoria por cada opción de la pregunta.
+		
+	\end{algorithmic}
+\end{algorithm}
 
 \subsection{Proceso}
 
-En esta sección se muestra el proceso que sigue K-means en las Figuras 3.2 , 3.3 y 3.4 a través de todas las iteraciones que realiza hasta lograr que los grupos se puedan estabilizar en ese momento las iteraciones finalizan.
+En esta sección se muestra el proceso donde se genera el histograma.
 
 
 
 
-\subsection{Resultado}
 
-Se mostrara el resultado asi como la informacion que muestra (que valores)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \section{Prototipo de aplicación web} 
@@ -557,7 +635,7 @@ El proceso del crear el histograma tiene diferentes pasos los cuales vemos en la
 
 \begin{figure}[ht]
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]{steps_histogram_process}
+		\includegraphics[width=0.8\textwidth]{steps_histogram}
 	\end{center}
 	\begin{center}
 		\vskip -0.5cm
