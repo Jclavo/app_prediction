@@ -635,11 +635,34 @@ function display_histograms(total_alternatives, histograms) {
 
 function show_details_answer(question_id) {
 
-	//document.getElementById("form-list-kmeans-histograms-details").innerHTML = 
-	document.getElementById("myChart").innerHTML = ""
-		document.getElementById("polarChart").innerHTML = ""
+	document.getElementById("modal_histogram_question").innerHTML = ""
+	
+	//TOTAL ANSWERS CHART
+	 //var ctx = 'ctx' + question_id
+	 var myChart = 'myChart' + question_id
+    //Polar
+	//var ctxPA = 'ctxPA' + question_id
+	var myPolarChart = 'myPolarChart' + question_id
+	
+	var canvasHistogramChart
+	var canvasPolarChart
+	
+	canvasHistogramChart = document.createElement("canvas")
+	canvasPolarChart     = document.createElement("canvas")
+	
+	canvasHistogramChart.setAttribute("id", myChart)
+	canvasHistogramChart.setAttribute("class", "col-md-12")
+	
+	canvasPolarChart.setAttribute("id", myPolarChart)
+	canvasPolarChart.setAttribute("class", "col-md-12")
+		
+	document.getElementById("modal_histogram_question").appendChild(canvasHistogramChart)
+	document.getElementById("modal_histogram_question").appendChild(canvasPolarChart)
+	
+	//document.getElementById("myChart").innerHTML = ""
+	//document.getElementById("polarChart").innerHTML = ""
 	// = "";
-
+		
 	array_labels = []
 	array_data = []
 	array_data_percent = []
@@ -663,8 +686,9 @@ function show_details_answer(question_id) {
 	}
 
 	//TOTAL ANSWERS CHART
-	var ctx = document.getElementById("myChart").getContext('2d');
-	var myChart = new Chart(ctx, {
+
+	//ctx = document.getElementById("myChart").getContext('2d');
+	myChart = new Chart(canvasHistogramChart, {
 		type : 'bar',
 		data : {
 			labels : array_labels,
@@ -689,8 +713,9 @@ function show_details_answer(question_id) {
 	
 	//PERCENTAGE ANSWERS CHART
 	//polar
-	  var ctxPA = document.getElementById("polarChart").getContext('2d');
-	  var myPolarChart = new Chart(ctxPA, {
+	
+	//ctxPA = document.getElementById("polarChart").getContext('2d');
+	myPolarChart = new Chart(canvasPolarChart, {
 	    type: 'polarArea',
 	    data: {
 	      labels: array_labels,

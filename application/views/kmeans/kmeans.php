@@ -184,7 +184,7 @@
 					</div>
 
 					<!-- Modal body -->
-					<div class="modal-body">
+					<div class="modal-body" id="modal_histogram_question">
 						<!--
     					<div class=col-md-12>
     						Details
@@ -207,10 +207,12 @@
     						</table>
     					</div>
     					 -->
+    					 <!--
 						<canvas id="myChart" class=col-md-12>
     					</canvas>
 						<canvas id="polarChart" class=col-md-12>
 						</canvas>
+						-->
 
 					</div>
 
