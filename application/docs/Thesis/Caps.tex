@@ -6,28 +6,22 @@
  
 En esta investigación se realizará la predicción de la respuesta correcta de una pregunta de opción múltiple, este tipo de pregunta de una evaluación requiere de conocimiento previo para ser respondida, mediante técnicas de aprendizaje no supervisado asociado con la experiencia previa. Como experiencia previa se usará las calificaciones anteriores obtenidas de los 2 últimos exámenes de los estudiantes.
 \vskip 0.3cm
-Para ello se plantea desarrollar un algoritmo de aprendizaje automático no supervisado llamado K-means, el cual sirve para crear clusters. Estos clusters se formarán con la data de las calificaciones  anteriores  de  los  estudiantes. Así  se  obtendría  un  valor  promedio,  Además,  se utilizará técnicas de estadísticas para crear un histograma de las opciones de las preguntas respondidas. Combinando estas 2 técnicas se obtendría un predicción por cada pregunta.
+Para ello se plantea desarrollar un algoritmo de aprendizaje automático no supervisado llamado K-means, el cual sirve para crear clusters. Estos clusters se formarán con la data de las calificaciones  anteriores  de  los  estudiantes. Así  se  obtendría  un  valor  promedio,  Además,  se utilizará técnicas de estadísticas para crear un histograma de las opciones de las preguntas respondidas. Combinando estas 2 técnicas se obtendría una predicción por cada pregunta.
 \vskip 0.3cm  
 Este proyecto fue pensado debido a la problemática que se tiene al aplicar una evaluación y tener que esperar demasiado tiempo para obtener las respuestas correctas. Pero con lo que se desarrollara se obtendrá la respuesta correcta en corto tiempo.
 \vskip 0.3cm 
-Para cumplir los objetivos de este proyecto se tendrá primero que investigar acerca del aprendizaje automático no supervisado, así como las técnicas de estadísticas. Luego se desarrollará el algoritmo de aprendizaje automático no supervisado; ya hecho esto se procederá al desarrollo del prototipo de software web para poder ingresar los datos y hacer las pruebas. Finalmente se documentarán los resultados obtenidos.
+Para cumplir los objetivos de este proyecto se tendrá primero que investigar acerca del aprendizaje automático no supervisado, así como las teorías de la probabilidad. Luego se desarrollará el algoritmo de aprendizaje automático no supervisado; ya hecho esto se procederá al desarrollo del prototipo de software web para poder ingresar los datos y hacer las pruebas. Finalmente se documentarán los resultados obtenidos.
 
 \section{Justificación de la investigación}
-La mayoría de las investigaciones se efectúan con un propósito definido. Tal propósito debe ser lo suficientemente fuerte para que justifique su realización. \cite{Erica}  
+La investigación es justificada por lo siguiente:   
 
 \begin{enumerate}
-\item[(a)] Razones o motivos e importancia del tema a ser investigado. 
-\item[(b)]Sustentar la pertinencia de la pregunta o problema que se abordará en la investigación.
-\item[(c)]Considerar los resultados esperados e impactos previstos.
+\item[(a)] En esta investigación pondremos en practica técnicas de aprendizaje de máquinas no supervisado, además se utilizará teorías de predicción para poder llevar acabo su objetivo. 
+
+\item[(b)]Esta investigación permitirá a los estudiantes tener un predicción del resultado de su examen en corto tiempo y así tener una idea de como sera su resultado. Además los educadores podrán usar esta información para la toma de decisiones.
+
+\item[(c)]Los resultados de la investigación presentarán cómo resultado esperado, un prototipo de software que permita predecir la respuesta correcta de las pregunta de la evaluación. Este prototipo de software usará un algoritmo de aprendizaje no supervisado para trabajar con la información previa de los estudiantes (sus calificaciones anteriores).
 \end{enumerate}
-
-
-
-{\bf Ejemplo:}\par
-
-De esta forma, los sistemas integrados para el manejo, tratamiento y disposición final de los RSU que ya existen en diversas ciudades y capitales de los países desarrollados, se hacen referencias para la investigación y justifican posibles adaptaciones para la realidad peruana con el objetivo de que las ciudades sean ambientes más sustentables y competitivos.
-\vskip 0.3cm
- Por lo tanto, se puede concluir que realmente existe una necesidad para planificar y modelar una red logística reversa que atienda a las necesidades de una región urbana y que contribuya con la adecuada disposición de los residuos urbanos. A partir del modelamiento es posible estructurar el sistema organizacional, gerencial, operacional y de información de toda la red  de logística reversa, y todas las otras acciones.
 
 
 \section{Formulación del problema}
@@ -39,6 +33,7 @@ De esta forma, los sistemas integrados para el manejo, tratamiento y disposició
 
 
 \section{Hipótesis}
+FALTA COMPLETAR
 Preferentemente para investigaciones explicativas debe ser una respuesta a priori y tentativa guardando coherencia con el problema científico, se formula como una proposición afirmativa, con un lenguaje claro y específico.  Las hipótesis se obtienen por deducción lógica y está sustentada en los conocimientos científicos. \par  
 \vskip 0.3cm
 {\bf Criterios para formular hipótesis:} \cite{Erica}
@@ -53,21 +48,12 @@ Preferentemente para investigaciones explicativas debe ser una respuesta a prior
 \end{enumerate}
 
 
-
-
-
 \section{Objetivos}
-Es necesario establecer qué pretende la investigación, es decir, cuáles son sus objetivos. Hay investigaciones que buscan contribuir a resolver un problema en especial, y otras tienen como objetivo principal probar una teoría o aportar evidencia empírica en favor de ella. \par 
-\vskip 0.3cm
-Segun \cite{Rojas}, los objetivos tienen que expresarse con claridad para evitar posibles desviaciones en el proceso de investigación y deben ser susceptibles de alcanzarse; son las guías del estudio y hay que tenerlos presentes durante todo su desarrollo. Los objetivos deben ser congruentes entre sí.
-\vskip 0.3cm
-Describir el objetivo central o propósito del proyecto de investigación (debe estar alineado con el problema e hipótesis), así como los objetivos específicos, los cuales deben reflejar los cambios que se esperan lograr en trabajo de tesis (variables). Para estos objetivos específicos utilice verbos como: describir, indicar, modificar, controlar, producir (tecnologías), recuperar, etc..
 
 \subsection{Generales}
 \begin{enumerate}
 \item[a)] Desarrollar un algoritmo de aprendizaje no supervisado para predecir la respuesta correcta de una pregunta de opción múltiple.
 \end{enumerate}
-
 
 \subsection{Específicos}
 \begin{enumerate}
@@ -80,19 +66,22 @@ Describir el objetivo central o propósito del proyecto de investigación (debe 
 
 \section{Estructura de la tesis}
 
-{\bf Ejemplo:}\par
 \vskip 0.1cm
-El presente trabajo está dividido en cinco capítulos. El primer capítulo presenta los aspectos generales del tema tratado: la formulación del problema, importancia de la investigación, los objetivos, además de la metodología de la investigación y la estructura de la tesis. En el segundo capítulo se contempla los conceptos de predicción, pregunta de opción múltiple y de prototipo de software.
+El presente trabajo está dividido en cinco capítulos. El primer capítulo presenta los aspectos generales del tema tratado: justificación de la investigación, formulación del problema, hipótesis, objetivos y la estructura de la tesis.
+
+En el segundo capítulo se contempla el marco teórico donde se hace referencia a los conceptos de predicción, pregunta de opción múltiple y de prototipo de software, además se hace referencia a la metodología de la investigación.
 
 El tercer capítulo trata del tema central de la tesis, diseñándose el algoritmo K-means, se muestra el proceso para hacer la predicción y como se desarrolló el prototipo de aplicación web.
 
-En el cuarto capítulo se presentan los resultados obtenidos en la investigación. En el quinto capitulo se presentan las conclusiones, seguidas de las recomendaciones para futuras investigaciones relacionadas al tema en cuestión. 
+En el cuarto capítulo se presentan los resultados obtenidos en la investigación. 
 
-Finalmente las referencias bibliográficas usadas para la investigación. Además de los apéndices donde se presentan el algoritmo elaborado, los datos de los resultados y los instrumentos usados para recoger información.
+En el quinto capitulo se presentan las conclusiones, seguidas de las recomendaciones para futuras investigaciones relacionadas al tema en cuestión. 
+
+Finalmente las referencias bibliográficas usadas para la investigación. Además de los apéndices donde se presenta el algoritmo elaborado, los datos de los resultados y los instrumentos usados para recoger información.
 
 \chapter{Materiales y métodos}
 
-En este capítulo se explica cual fue la metodología empleada para la solución del problema formulado, además de una reseña del material bibliográfico investigado con relación a los temas considerados en esta investigación. Los conocimientos investigados son muy amplios, principalmente aquel que ayudó a consolidar las bases del conocimiento científico para elaborar esta tesis, como lo son los temas de *******************************************
+En este capítulo se explica cual fue la metodología empleada para la solución del problema formulado, además de una reseña del material bibliográfico investigado con relación a los temas considerados en esta investigación. Los conocimientos investigados son muy amplios, principalmente los que ayudaron a consolidar las bases del conocimiento científico para elaborar esta tesis, como lo son los temas de ******************************************* FALTA COMPLETAR
 %\vskip 1cm 
 
 
@@ -101,13 +90,13 @@ En este capítulo se explica cual fue la metodología empleada para la solución
 
 \subsubsection{Definición}
 
-Aprendizaje no supervisado es un método de aprendizaje automático donde un modelo es ajustado  a  las  observaciones.  Se  distingue  del  aprendizaje  supervisado  por  el  hecho  de  que no hay un conocimiento a priori. En el aprendizaje no supervisado, un conjunto de datos de objetos de entrada es tratado. Así, el aprendizaje no supervisado típicamente trata los objetos de entrada como un conjunto de variables aleatorias, siendo construido un modelo de densidad para el conjunto de datos.
+Aprendizaje no supervisado es un método de adiestramiento automático donde un modelo es ajustado a las observaciones. Se distingue del  aprendizaje supervisado por el hecho de que no hay un conocimiento a priori. En el aprendizaje no supervisado, un conjunto de datos de objetos de entrada es tratado. Así, el aprendizaje no supervisado típicamente trata los objetos de entrada como un conjunto de variables aleatorias, siendo construido un modelo de densidad para el conjunto de datos.
 \vskip 1cm
-En este método contamos con “objetos” o muestras que tiene un conjunto de características,de las que no sabemos a que clase o categoría pertenece, entonces la finalidad es el descubrimiento de grupos de “objetos” cuyas características afines nos permitan separar las diferentes clases \citep{Araujo}.
+En este método contamos con “objetos” o muestras, que tiene un conjunto de características, de las que no sabemos a que clase o categoría pertenece, entonces la finalidad es el descubrimiento de grupos de “objetos” cuyas características afines nos permitan separar las diferentes clases \citep{Araujo}.
 
 \subsubsection{Características}
 
-En este apartado se muestran las principales características del método de aprendizaje no supervisadas \citep{Hinton_Sejnowski}.
+En este apartado se muestran las principales características del método de aprendizaje no supervisado. \citep{Hinton_Sejnowski}.
 
 \begin{itemize}
 \item No necesitan de un profesor externo.
@@ -118,20 +107,23 @@ En este apartado se muestran las principales características del método de apr
 \end{itemize}
 
 \subsubsection{Técnicas}
+Existen diferentes técnicas para el método de aprendizaje no supervisado.
 
 \begin{description}
 	\item[Clustering:] Agrupan objetos en regiones donde la similitud mutua es elevada.
-	\item[Visualización:] Permiten observar el espacio de instancias en un espacio de menor dimensión.
+	\item[Visualización:] Permiten observar la amplitud de instancias en un espacio de menor dimensión.
 	\item[Reducción de la dimensionalidad:] Los datos de entrada son agrupados en subespacios de una dimensión más baja que la inicial.
-	\item[Extracción de características:] construyen nuevos atributos (pocos) a partir de los atributos originales (muchos).
+	\item[Extracción de características:] construyen nuevos atributos (pocos) a partir de los originales (muchos).
 \end{description}
 
 
 \subsection{Clustering}
 
-Análisis de grupo o agrupamiento (en inglés, clustering) es un procedimiento de agrupación de una serie de vectores de acuerdo con un criterio. Esos criterios son por lo general distancia o similitud. La cercanía se define en términos de una determinada función de distancia, como la euclídea, aunque existen otras más robustas o que permiten extenderla a variables discretas. La medida más utilizada para medir la similitud entre los casos es la matriz de correlación entre los \( N x N \) casos. Sin embargo, también existen muchos algoritmos que se basan en la maximización de una propiedad estadística llamada verosimilitud \citep{Leonard_Peter}
+\subsubsection{Definición}
+
+Análisis de grupo o agrupamiento (en inglés, clustering) es un procedimiento de agrupación de una serie de vectores de acuerdo con un criterio. Esos criterios son por lo general distancia o similitud. La cercanía se define en términos de una determinada función de distancia, como la euclídea. La medida más utilizada para medir la similitud entre los casos es la matriz de correlación entre los \( N x N \) casos.
 \vskip 1cm
-Generalmente, los vectores de un mismo grupo o clúster comparten propiedades comunes. El conocimiento de los grupos puede permitir una descripción sintética de un conjunto de datos multidimensional complejo. Esta descripción sintética se consigue sustituyendo el detalle de todos los elementos de un grupo por la de un representante característico del mismo.
+Generalmente, los vectores de un mismo grupo o clúster comparten propiedades comunes. El conocimiento de los grupos puede permitir una descripción de un conjunto de datos multidimensional complejo. Esta descripción se consigue sustituyendo el detalle de todos los elementos de un grupo por la de un representante característico del mismo.
 
 \begin{figure}[ht]
 	\begin{center}
@@ -144,7 +136,7 @@ Generalmente, los vectores de un mismo grupo o clúster comparten propiedades co
 	\end{center}
 \end{figure}
 
-Clustering es considerado una técnica de aprendizaje no supervisado puesto que busca encontrar relaciones entre variables descriptivas pero no la que guardan con respecto a una variable objetivo.
+Clustering es considerado una técnica de aprendizaje no supervisado puesto que busca encontrar relaciones entre variables dependiendo del criterio de la distancia.
 
 
 \subsubsection{Técnicas de clustering}
@@ -152,14 +144,14 @@ Clustering es considerado una técnica de aprendizaje no supervisado puesto que 
 Existen dos grandes técnicas para el agrupamiento de casos:
 
 \begin{itemize}
-	\item Agrupamiento jerárquico: En este agrupamiento puede ser aglomerativo o divisivo.
+	\item Agrupamiento jerárquico: En puede ser un agrupamiento aglomerativo o divisivo.
 	\item Agrupamiento no jerárquico: En este agrupamiento el número de grupos se determina de antemano y las observaciones se van asignando a los grupos en función de su cercanía. Existen los métodos de K-means y K-medoid.
 
 \end{itemize}
 
 \subsubsection{Algoritmos}
 
-Existen diversas implementaciones de algoritmos concretos. Por ejemplo, el de las K-mediaso K-means. Es uno de los más antiguos pero su uso es muy extendido en la actualidad.
+Existen diversas implementaciones de algoritmos concretos. Por ejemplo, el de las K-medias o K-means. Es uno de los más antiguos pero su uso es muy extendido en la actualidad.
 \vskip 1cm
 El algoritmo de K-means es un algoritmo particional y fue propuesto en los ’50. Este algoritmo intenta encontrar una partición de nuestros ejemplos en \(K\) agrupaciones, de forma que cada ejemplo pertenezca a una de ellas, concretamente a aquella cuyo centro geométrico esté más cerca. El mejor valor de \(K\) para que la clasificación separe lo mejor posible los ejemplos no se conoce a priori, y depende completamente de los datos con los que trabajemos \citep{Jain}.
 \vskip 1cm 
@@ -169,17 +161,18 @@ A pesar de que su primera aparición es desde hace más de 50 años sigue siendo
 \textbf{Los principales pasos del algoritmo son los siguientes:}
 
 \begin{enumerate}
-	\item Seleccionar una partición inicial (determinada por los centros de los clusters) con \(K\) clus-ters, repetir los pasos 2 y 3 hasta que los clusters se lleguen a estabilizar.
-	\item Generar una nueva partición asignando cada dato al cluster cuyo centro está más cercano.	
-	\item Calcular los nuevos centros de los clusters \(c(1)....c(K)\) (promediando los datos asignados a ese cluster en el paso anterior si la distancia es la euclídea).
+	\item[1] Generar las particiones iniciales determinada por los \(c(1)....c(K)\) centros de los clusters ingresados.
+	\item[2] Generar una nueva partición asignando cada dato\(K\) al cluster\(K\) cuyo centro está más cercano.	
+	\item[3] Calcular los nuevos centros de los clusters \(c(1)....c(K)\) (promediando los datos asignados a ese cluster en el paso anterior si la distancia es la euclídea).
+	\item[4] Repetir los pasos 2 y 3 hasta que los clusters se lleguen a estabilizar.
 \end{enumerate}
 
-\textbf{El algoritmo K-medias requiere del usuario los siguientes parámetros:}
+\textbf{El algoritmo K-means requiere del usuario los siguientes parámetros:}
 
 \begin{itemize}
 	\item Número de clusters.
 	\item Inicialización de los clusters (centros).
-	\item Distancia (en general la distancia euclídea).
+%	\item Distancia (en general la distancia euclídea).
 \end{itemize}
 
 \begin{figure}[ht]
@@ -216,66 +209,32 @@ Se agrupan los datos en clases, y se cuenta cuántas observaciones (frecuencia a
 \begin{itemize}
 	\item \textbf{Simple:} Se representan los intervalos de clase en el eje de abscisas (eje horizontal) y las frecuencias, absolutas o relativas, en el de ordenadas (eje vertical).
 	
-	\begin{figure}[ht]
-		\begin{center}
-			\includegraphics[width=0.8\textwidth]{histograma_simple}
-		\end{center}
-		\begin{center}
-			\vskip -0.5cm
-			\caption{\small{Histograma simple.}}
-			{\small{Fuente: \citep{histograma_tipos}}}
-		\end{center}
-	\end{figure}
+%	\begin{figure}[ht]
+%		\begin{center}
+%			\includegraphics[width=0.8\textwidth]{histograma_simple}
+%		\end{center}
+%		\begin{center}
+%			\vskip -0.5cm
+%			\caption{\small{Histograma simple.}}
+%			{\small{Fuente: \citep{histograma_tipos}}}
+%		\end{center}
+%	\end{figure}
 	
 	\item \textbf{Por grupos:} Se representan simultáneamente los histogramas de una variable en dos situaciones distintas.
 	
-	\begin{figure}[ht]
-		\begin{center}
-			\includegraphics[width=0.8\textwidth]{histograma_grupos}
-		\end{center}
-		\begin{center}
-			\vskip -0.5cm
-			\caption{\small{Histograma por grupos.}}
-			{\small{Fuente: \citep{histograma_tipos}}}
-		\end{center}
-	\end{figure}
-	
-
 	\item \textbf{Dirigido:} Se representan dos histogramas de la misma variable en dos situaciones distintas.
-	
-	\begin{figure}[ht]
-		\begin{center}
-			\includegraphics[width=0.8\textwidth]{histograma_dirigido}
-		\end{center}
-		\begin{center}
-			\vskip -0.5cm
-			\caption{\small{Histograma dirigidos.}}
-			{\small{Fuente: \citep{histograma_tipos}}}
-		\end{center}
-	\end{figure}
 	
 	\item \textbf{Estratificado:} Se representan el conjunto dividido en subconjuntos, a cada subconjunto se le denomina estrato.
 	
-	\begin{figure}[ht]
-		\begin{center}
-			\includegraphics[width=0.8\textwidth]{histograma_estratificado}
-		\end{center}
-		\begin{center}
-			\vskip -0.5cm
-			\caption{\small{Histograma dirigidos.}}
-			{\small{Fuente: \citep{histograma_tipos}}}
-		\end{center}
-	\end{figure}
-
 \end{itemize}
 
 \vskip 1cm 
-\subsubsection{Utilidades}
+\subsubsection{Aplicaciones}
 \cite{histograma_tipos} nos indica las siguientes utilidades.
 \begin{itemize}
 	\item Proporciona, mediante el estudio de la distribución de los datos, un excelente punto de partida para formular hipótesis acerca de un funcionamiento insatisfactorio.
 	\item El histograma es especialmente útil cuando se tiene un amplio número de datos que es preciso organizar, para analizar más detalladamente o tomar decisiones sobre la base de ellos.
-	\item Es un medio eficaz para transmitir a otras personas información sobre un proceso de forma precisa e inteligible.
+	\item Es un medio eficaz para transmitir a otras personas información sobre un proceso de forma precisa.
 	\item Permite la comparación de los resultados de un proceso con las especificaciones previamente establecidas para el mismo. Ayuda a determinar si el proceso satisface los requisitos del cliente.
 	\item Hace posible determinar si ha habido cambios en un proceso.
 	
@@ -527,6 +486,8 @@ En esta sección se muestra el proceso que sigue K-means en las Figuras [] a tra
 
 
 \section{Histograma}
+
+\subsection{Implementación}
 
 \subsubsection{Diagrama de flujo}
 
