@@ -137,12 +137,12 @@ function display_clusters(clusters) {
 	var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 	document.getElementById("clusters").innerHTML = "";
-	for (i = 1; i < clusters.length; i++) {
+	for (i = 0; i < clusters.length - 1; i++) {
 
 		myDiv = document.createElement("div")
 		myDiv.setAttribute("class", "col-md-12")
 		myP = document.createElement("b")
-		myP.innerHTML = 'Cluster ' + i
+		myP.innerHTML = 'Cluster ' + ( i + 1 )
 
 		myTable = document.createElement("table")
 		myTable.setAttribute("class",
@@ -224,12 +224,12 @@ function display_students(students) {
 	var myBody
 
 	document.getElementById("students").innerHTML = "";
-	for (i = 1; i < students.length; i++) {
+	for (i = 0; i < students.length - 1; i++) {
 
 		myDiv = document.createElement("div")
 		myDiv.setAttribute("class", "col-md-12")
 		myP = document.createElement("b")
-		myP.innerHTML = 'Cluster ' + i
+		myP.innerHTML = 'Iteration ' + ( i + 1 )
 
 		myTable = document.createElement("table")
 		myTable.setAttribute("class",
