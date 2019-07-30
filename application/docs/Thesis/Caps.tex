@@ -33,20 +33,8 @@ La investigación es justificada por lo siguiente:
 
 
 \section{Hipótesis}
-FALTA COMPLETAR
-Preferentemente para investigaciones explicativas debe ser una respuesta a priori y tentativa guardando coherencia con el problema científico, se formula como una proposición afirmativa, con un lenguaje claro y específico.  Las hipótesis se obtienen por deducción lógica y está sustentada en los conocimientos científicos. \par  
+Mediante el desarrollo de un algoritmo de aprendizaje no supervisado y experiencia previa, se puede predecir la respuesta correcta de una pregunta de opcion multiple. \par  
 \vskip 0.3cm
-{\bf Criterios para formular hipótesis:} \cite{Erica}
-\begin{enumerate}
-\item[a)] Toda hipótesis de investigación debe ser verificable estadísticamente.  Puede ser difícil o imposible de verificar porque no existe un conocimiento sobre el cual se pueda formular una hipótesis, o bien, porque una o más variables no son medibles.
-\vskip 0.2cm
-\item[b)] Toda hipótesis debe indicar la relación entre variables, lo que implica que las variables deben ser medibles.
-\vskip 0.2cm
-\item[c)] Toda hipótesis debe tener sus límites. Pueden escogerse hipótesis que sean sencillas de validar, y sin embargo, altamente significativas.
-\vskip 0.2cm
-\item[d)] El investigador debe tener una razón específica para considerar una hipótesis, ya sea teórica o por alguna evidencia concreta.    
-\end{enumerate}
-
 
 \section{Objetivos}
 
@@ -469,6 +457,9 @@ Aplicando la formula obtenemos que la muestra es de tamaño 170.57 = 171. La cua
 	\item Testear, validar y documentar los resultados de la investigación.
 \end{enumerate}
 
+
+
+
 \chapter{Tema central de la tesis}
 
 Basados en los conceptos discutidos en los capítulos 1 y 2. Se procederá a realizar el modelamiento de todo el proceso de predicción de la respuesta correcta, el desarrollo del algoritmo y de cada paso del proceso hasta llegar a resultado final.
@@ -479,26 +470,26 @@ Basados en los conceptos discutidos en los capítulos 1 y 2. Se procederá a rea
 
 \subsubsection{Diagrama de flujo}
 
-El algoritmo tiene diferentes pasos en su proceso los cuales vemos en la Figura \ref{fig:steps_kmeans}
+El algoritmo tiene diferentes pasos en su proceso los cuales vemos en la \textbf{figura \ref{fig:steps_kmeans}}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\begin{center}
 		\includegraphics[width=0.8\textwidth]{steps_kmeans}
 	\end{center}
 	\begin{center}
 		\vskip -0.5cm
-		\caption{\small{Diagrama de actividades/flujo algoritmo Kmeans.}}
-		{\small{Fuente: }}
+		\caption{\label{fig:steps_kmeans}\small{Diagrama de actividades/flujo algoritmo Kmeans.}}
+		{\small{Fuente: Propia }}
 	\end{center}
 \end{figure}
 
 \subsubsection{Pseudocodigo}
-En la figura [] se muestra los pasos del algoritmo representado en Pseudocodigo.
+Se muestra los pasos del \textbf{ algoritmo \ref{alg:algorithm_kmeans} } representado en pseudocodigo.
 
-\begin{algorithm}
+\begin{algorithm}[H]
 \begin{algorithmic}[1]
 		\REQUIRE Grupo de datos, Número de clusters.  % Entrada
-		\label{lin:algorithm_kmeans}
+		%\label{alg:algorithm_kmeans}
 		\ENSURE Centroides, Datos con sus respectivos clusters.                                                       % Salida
 		
 		\STATE Iniciar centroides.
@@ -515,47 +506,62 @@ En la figura [] se muestra los pasos del algoritmo representado en Pseudocodigo.
 			
 		\RETURN  Centroides, Datos con sus respectivos clusters.
 		
+		\begin{center}
+		    \vskip -0.5cm
+	    	\caption{\label{alg:algorithm_kmeans}\small{Pseudocodigo  Kmeans.}}
+	    \end{center}
+
 \end{algorithmic}
 \end{algorithm}
 
 
 \subsection{Proceso}
 
-En esta sección se muestra el proceso que sigue K-means en las Figuras [] a través de todas las iteraciones que realiza hasta lograr que los grupos se puedan estabilizar en ese momento las iteraciones finalizan.
+En esta sección se muestra el proceso que sigue K-means en las \textbf{figuras \ref{fig:step_kmeans_1}, \ref{fig:step_kmeans_2}, \ref{fig:step_kmeans_3},\ref{fig:step_kmeans_final}} a través de todas las iteraciones que realiza hasta lograr que los grupos se puedan estabilizar en ese momento las iteraciones finalizan.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\begin{center}
 		\includegraphics[width=0.8\textwidth]{step_kmeans_1}
 	\end{center}
 	\begin{center}
 		\vskip -0.5cm
-		\caption{\small{Grupos obtenidos en la iteración 1 .}}
+		\caption{\label{fig:step_kmeans_1}\small{Grupos obtenidos en la iteración 1 .}}
 		{\small{Fuente: Propia. }}
 	\end{center}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\begin{center}
 		\includegraphics[width=0.8\textwidth]{step_kmeans_2}
 	\end{center}
 	\begin{center}
 		\vskip -0.5cm
-		\caption{\small{Grupos obtenidos en la iteración 2 .}}
+		\caption{\label{fig:step_kmeans_2}\small{Grupos obtenidos en la iteración 2 .}}
 		{\small{Fuente: Propia. }}
 	\end{center}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\begin{center}
 		\includegraphics[width=0.8\textwidth]{step_kmeans_3}
 	\end{center}
 	\begin{center}
 		\vskip -0.5cm
-		\caption{\small{Grupos obtenidos en la iteración 3 (Final) .}}
+		\caption{\label{fig:step_kmeans_3}\small{Grupos obtenidos en la iteración 3 (Final) .}}
 		{\small{Fuente: Propia. }}
 	\end{center}
 \end{figure}
 
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{step_kmeans_final}
+	\end{center}
+	\begin{center}
+		\vskip -0.5cm
+		\caption{\label{fig:step_kmeans_final}\small{Grupos obtenidos en la iteración FINAL (estabilizado) .}}
+		{\small{Fuente: Propia. }}
+	\end{center}
+\end{figure}
 
 \section{Histograma}
 
@@ -563,26 +569,26 @@ En esta sección se muestra el proceso que sigue K-means en las Figuras [] a tra
 
 \subsubsection{Diagrama de flujo}
 
-El histograma tiene diferentes pasos en su proceso los cuales vemos en la Figura \ref{fig:steps_histogram}
+El histograma tiene diferentes pasos en su proceso los cuales vemos en la \textbf{ figura \ref{fig:steps_histogram}}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\begin{center}
 		\includegraphics[width=0.8\textwidth]{steps_histogram}
 	\end{center}
 	\begin{center}
 		\vskip -0.5cm
-		\caption{\small{Diagrama de actividades/flujo Histograma. }}
+		\caption{\label{fig:steps_histogram}\small{Diagrama de actividades/flujo Histograma. }}
 		{\small{Fuente: Propia.}}
 	\end{center}
 \end{figure}
 
-\subsubsection{Pseudocodigo}
-En la figura [] se muestra los pasos representados en Pseudocodigo.
 
-\begin{algorithm}
+\subsubsection{Pseudocodigo}
+Los pasos representados en \textbf{ algoritmo \ref{alg:pseudocode_histogram}}.
+
+\begin{algorithm}[H]
 	\begin{algorithmic}[2]
 		\REQUIRE Respuestas de una pregunta.  % Entrada
-		\label{lin:algorithm_histogram}
 		\ENSURE Sumatoria por cada opción de la pregunta .                                                       % Salida
 		
 		\STATE Obtener respuestas por pregunta.
@@ -596,13 +602,29 @@ En la figura [] se muestra los pasos representados en Pseudocodigo.
 		
 		\RETURN  Sumatoria por cada opción de la pregunta.
 		
+		\begin{center}
+			\vskip -0.5cm
+			\caption{\label{alg:pseudocode_histogram}\small{Pseudocodigo del actividades/flujo histograma.}}
+		\end{center}
+		
 	\end{algorithmic}
 \end{algorithm}
 
+
 \subsection{Proceso}
 
-En esta sección se muestra el proceso donde se genera el histograma.
+En esta sección se muestra el proceso donde se genera el histograma, en las \textbf{figuras \ref{fig:step_kmeans_1}, \ref{fig:step_kmeans_2}, \ref{fig:step_kmeans_3},\ref{fig:step_kmeans_final}} a través de todas las iteraciones que realiza hasta lograr que los grupos se puedan estabilizar en ese momento las iteraciones finalizan.
 
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{step_kmeans_1}
+	\end{center}
+	\begin{center}
+		\vskip -0.5cm
+		\caption{\label{fig:step_kmeans_1}\small{Grupos obtenidos en la iteración 1 .}}
+		{\small{Fuente: Propia. }}
+	\end{center}
+\end{figure}
 
 
 

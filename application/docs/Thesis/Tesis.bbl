@@ -1,0 +1,93 @@
+\begin{thebibliography}{}
+
+\bibitem[aiteco, 2019]{histograma_aiteco}
+aiteco (2019).
+\newblock Histograma – herramientas de la calidad.
+\newblock https://www.aiteco.com/histograma/.
+
+\bibitem[Alvarez~Franco and Rojas~Rojas, 2010]{alvarez_rojas}
+Alvarez~Franco, L.~C. and Rojas~Rojas, J.~B. (2010).
+\newblock {\em Teoría de la probabilidad.}
+\newblock Sello Editorial de la Universidad de Medellín.
+
+\bibitem[Apache, 2019]{apache}
+Apache (2019).
+\newblock Xamp.
+\newblock https://www.apachefriends.org/es/index.html.
+
+\bibitem[Araujo, 2006]{Araujo}
+Araujo, B. (2006).
+\newblock {\em Aprendizaje automático: conceptos básicos y avanzados}.
+\newblock Pearson Education; 1st. edition (2006).
+
+\bibitem[Bayes, 1763]{bayes}
+Bayes, T. (1763).
+\newblock An essay towards solving a problem in the doctrine of chances.
+\newblock {\em Philosophical Transactions of the Royal Society of London},
+  1(2):370--418.
+
+\bibitem[Hinton and Sejnowski, 1999]{Hinton_Sejnowski}
+Hinton, G.~E. and Sejnowski, T.~J. (1999).
+\newblock {\em Unsupervised learning: foundations of neural computation}.
+\newblock MIT press.
+
+\bibitem[HRC, 2019]{histograma_tipos}
+HRC (2019).
+\newblock Ejemplos de tipos de representaciones gráficas.
+\newblock http://www.hrc.es/bioest/Ejemplos%histo.html.
+
+\bibitem[Jain, 2010]{Jain}
+Jain, A. (2010).
+\newblock Data clustering: 50 years beyond k-means.
+\newblock {\em Pattern Recognition Letters}, 31(8):651--666.
+
+\bibitem[Julián and María, 2014]{julian_maria}
+Julián, P. and María, M. (2014).
+\newblock Definición de predicción.
+\newblock http://definicion.de/prediccion/.
+
+\bibitem[kchung, 2016]{pregunta_opcion_multiple}
+kchung (2016).
+\newblock Hoja de respuestas de opción múltiple.
+
+\bibitem[Loeve, 1978]{loeve}
+Loeve, M. (1978).
+\newblock {\em Probability theory}.
+\newblock Technical report.
+
+\bibitem[Mora, 1974]{mora_prediccion}
+Mora, J.~F., B. E.~G. (1974).
+\newblock {\em Diccionario de filosofía abreviado.}
+\newblock Editorial Sudamericana.
+
+\bibitem[Mora, 2001]{mora}
+Mora, S.~L. (2001).
+\newblock {\em Programación en Internet: clientes web.}
+\newblock Editorial Club Universitario.
+
+\bibitem[Parzen, XXXX]{bayes_formula}
+Parzen, E. (XXXX).
+\newblock {\em Teoría moderna de probabilidades y sus aplicaciones}.
+\newblock Limusa Grupo Noriega Editores.
+
+\bibitem[Pressman and Troya, 1988]{pressman_troya}
+Pressman, R.~S. and Troya, J.~M. (1988).
+\newblock {\em Ingeniería del software.}
+
+\bibitem[RAE, 2019]{rae_prediccion}
+RAE (2019).
+\newblock Predicción.
+\newblock http://dle.rae.es/srv/search=prediccion.
+
+\bibitem[Salkind, 2012]{salkind}
+Salkind, N. (2012).
+\newblock {\em Métodos de investigación.}
+\newblock Pearson Education.
+
+\bibitem[UNAM, 2019]{histograma_unam}
+UNAM (2019).
+\newblock Histograma.
+\newblock
+  http://asesorias.cuautitlan2.unam.mx/Laboratoriovirtualdeestadistica/DOCUMENTOS/TEMA%201/7.%20HISTOGRAMAS.pdf.
+
+\end{thebibliography}
